@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+
+message EntityPb {
+    string id =1;
+    LifetimeEnum lifetime =2;
+}
+
+enum LifetimeEnum {
+    UNKNOWN=0;
+    ACTIVE =1;
+    DELETE =2;
+    BLOCK = 3;
+}
