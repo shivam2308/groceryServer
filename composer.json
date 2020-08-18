@@ -9,10 +9,15 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+<<<<<<< HEAD
         "bensampo/laravel-enum": "^2.1",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "google/protobuf": "^3.13",
+=======
+        "fideloper/proxy": "^4.2",
+        "fruitcake/laravel-cors": "^2.0",
+>>>>>>> 5ddeab3626135a03d0bca7456853a368c1da48f9
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0"
