@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+enum RequestMethodEnum {
+    UNKNOWN_METHOD = 0;
+    GET = 1;
+    POST = 2;
+    PUT = 3;
+}
+
+

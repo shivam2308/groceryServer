@@ -7,12 +7,7 @@ use App\IndexerHelpers\EntityIndexerProvider;
 
 class UpdateEntityTable extends Migration
 {
-    private $m_EntityIndexerProvider;
-
-    function __construct(){
-        $m_EntityIndexerProvider = new EntityIndexerProvider();
-    }
-
+    
     /**
      * Run the migrations.
      *
@@ -21,7 +16,7 @@ class UpdateEntityTable extends Migration
     public function up()
     {
         Schema::table('ENTITY', function (Blueprint $table) {
-                $table->string($this->m_EntityIndexerProvider->getDATA()->value);
+                
         });
     }
 
