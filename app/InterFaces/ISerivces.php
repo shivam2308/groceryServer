@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Interfaces;
+
 Interface IServices {
     public function get($id);
     public function create($pb);

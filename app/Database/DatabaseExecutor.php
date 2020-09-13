@@ -2,6 +2,7 @@
 
 namespace App\Database;
 use Exception;
+use PDO;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
@@ -34,17 +35,20 @@ class DatabaseExecutor{
         ]);
         $capsule->setAsGlobal();  //this is important
         $capsule->bootEloquent();
+        $capsule->setFetchMode(PDO::FETCH_ASSOC);
     }
 
     function executeQuery($query){
-        echo $query;
+        echo nl2br($query);
+        echo nl2br("\n");
         $this->result = Capsule::select($query);
-        if($this->result == NULL){
+        /*if($this->result == NULL){
            throw new Exception("Query Executing having Null value", 1);   
         }else{
             var_dump($this->result);
             return $this->result;
-        }
+        }*/
+        return $this->result;
     }
 
 }

@@ -4,6 +4,9 @@ namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 use App\Database\DatabaseExecutor;
+use App\BaseCode\IntegerToAlphaConvertor;
+use App\EntityModule\EntityService;
+
 
 class UserTest extends TestCase
 {
@@ -14,7 +17,8 @@ class UserTest extends TestCase
      */
     public function testExample()
     {
-        $executor = new DatabaseExecutor();
-        echo $executor->executeQuery("Select * from migrations;");
+        $service = new EntityService();
+        echo $service->get();
+        
     }
 }
