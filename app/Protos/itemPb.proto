@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option php_namespace = "App\\Protobuff";
+option php_metadata_namespace = "App\\GPBMetadata";
+
+import "entityPb.proto";
+import "namePb.proto";
+import "imagePb.proto";
+
+enum ItemTypeEnum {
+    VEGETABLES = 0;
+    FRUITS = 1;
+    MILK = 2;
+    BEVERAGES = 3;
+}
+
+message ItemPb {
+    EntityPb dbInfo = 1;
+    NamePb itemName = 2;
+    ImagePb itemUrl = 3;
+    string quantity = 4;
+    int32 price = 5;
+    ItemTypeEnum itemType = 6;
+}
