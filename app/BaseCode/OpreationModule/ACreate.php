@@ -1,14 +1,12 @@
 <?php
 
-namespace APP\BaseCode\OpreationModule;
+namespace App\BaseCode\OpreationModule;
 
 use App\BaseCode\QueryBuilders\InsertQueryBuilder;
 use App\Database\DatabaseExecutor;
 use App\ServerConfig\ServerListner;
 
-class ACreate
-{
-
+class ACreate{
     private $m_queryBuilder;
     private $m_databaseExecutor;
     private $m_serverListner;

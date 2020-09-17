@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\ServerConfig\ServerListner;
+use App\CustomerModule\CustomerRequestHandler;
+use App\Protobuff\RequestMethodEnum;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $serverListner  = new ServerListner();
+    return $serverListner->getEnvironment();
+});
+
+Route::get('/customer/{id}', function ($id) {
+    $handler = new CustomerRequestHandler();
+    return $handler->handle(urldecode($id),RequestMethodEnum::GET);
 });
