@@ -1,5 +1,7 @@
 <?php
 
+namespace App\BaseCode\HttpRequestHandler;
+
 class RequestHandlerHelper {
 
     function isSearchReq($req){

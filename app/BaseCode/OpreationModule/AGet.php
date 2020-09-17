@@ -25,7 +25,8 @@ class AGet{
     {
         $array = array();
         $array['DBID'] = $id;
-        return $this->m_databaseExecutor->executeQuery($this->m_queryBuilder->getQuery($array, $this->m_helper->getTableName($tableName, $this->m_serverListner->getEnvironment())));
+        $arrayPb = $this->m_databaseExecutor->executeQuery($this->m_queryBuilder->getQuery($array, $this->m_helper->getTableName($tableName, $this->m_serverListner->getEnvironment())));
+        return json_decode(json_encode($arrayPb[0]),true);
     }
 
     public function getEntity($array, $tableName){

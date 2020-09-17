@@ -39,8 +39,7 @@ class DatabaseExecutor{
     }
 
     function executeQuery($query){
-        echo nl2br($query);
-        echo nl2br("\n");
+        error_log($query);
         $this->result = Capsule::select($query);
         /*if($this->result == NULL){
            throw new Exception("Query Executing having Null value", 1);   

@@ -10,6 +10,8 @@ protoc --proto_path=. --php_out=../.. ./contactDetailPb.proto
 protoc --proto_path=. --php_out=../.. ./genderPb.proto
 protoc --proto_path=. --php_out=../.. ./imagePb.proto
 protoc --proto_path=. --php_out=../.. ./namePb.proto
+protoc --proto_path=. --php_out=../.. ./summaryPb.proto
+protoc --proto_path=. --php_out=../.. ./customerPb.proto
 
 cd ..
 cd ..
