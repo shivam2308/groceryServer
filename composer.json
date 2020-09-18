@@ -18,7 +18,8 @@
         "laravel/tinker": "^2.0",
         "marc-mabe/php-enum": "^4.3",
         "doctrine/cache": "^1.10.2",
-        "cache/cache": "1.0.0"
+        "cache/cache": "1.0.0",
+        "keboola/csv": "^2.2.1"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
