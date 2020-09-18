@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option php_namespace = "App\\Protobuff";
+option php_metadata_namespace = "App\\GPBMetadata";
+
+enum GenderEnum {
+    UNKNOWN_GENDER = 0;
+    MALE = 1;
+    FEMALE = 2;
+}

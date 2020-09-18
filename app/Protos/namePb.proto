@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option php_namespace = "App\\Protobuff";
+option php_metadata_namespace = "App\\GPBMetadata";
+
+message NamePb {
+    string firstName = 1;
+    string lastName = 2;
+    string canonicalName = 3;
+}
