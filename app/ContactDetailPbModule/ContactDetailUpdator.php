@@ -11,9 +11,20 @@ class ContactDetailUpdator implements IUpdator{
 
     public function update($pb){
         $pbArray = array();
-        $pbArray[ContactDetailIndexers::getLOCALPART()] = $pb->getEmail()->getLocalPart();
-        $pbArray[ContactDetailIndexers::getDOMAINPART()] = $pb->getEmail()->getDomainPart();
-        $pbArray[ContactDetailIndexers::getMOBILENO()] = $pb->getMobile()->getMobileNo();
+        if(Strings::notEmpty($pb->getEmail()->getLocalPart())){
+            $pbArray[ContactDetailIndexers::getLOCALPART()] = strtolower($pb->getEmail()->getLocalPart());
+        }else{
+            return new Exception("Email Local Part is missing");
+        }
+        if(Strings::notEmpty($pb->getEmail()->getDomainPart())){
+            $pbArray[ContactDetailIndexers::getDOMAINPART()] = strtolower($pb->getEmail()->getDomainPart());
+        }else{
+            return new Exception("Email Domain Part is missing");
+        }
+        if(Strings::notEmpty($pb->getMobile()->getMobileNo())){
+            $pbArray[ContactDetailIndexers::getMOBILENO()] = strtolower($pb->getMobile()->getMobileNo());
+        }
+        return $pbArray;
     }
 }
 

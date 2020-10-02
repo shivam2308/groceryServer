@@ -2,7 +2,7 @@
 
 namespace App\ContactDetailPbModule;
 
-use App\Interfaces\IConverter;
+use App\Interfaces\IConvertor;
 use App\BaseCode\Strings;
 use App\ContactDetailPbModule\ContactDetailIndexers;
 use App\Protobuff\ContactDetailPb;

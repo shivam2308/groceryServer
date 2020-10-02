@@ -2,7 +2,7 @@
 
 namespace App\NamePbModule;
 
-use App\Interfaces\IConverter;
+use App\Interfaces\IConvertor;
 use App\BaseCode\Strings;
 use App\NamePbModule\NameIndexers;
 use App\Protobuff\NamePb;

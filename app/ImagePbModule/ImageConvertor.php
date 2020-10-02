@@ -2,7 +2,7 @@
 
 namespace App\ImagePbModule;
 
-use App\Interfaces\IConverter;
+use App\Interfaces\IConvertor;
 use App\BaseCode\Strings;
 use App\ImagePbModule\ImageIndexers;
 use App\Protobuff\ImagePb;

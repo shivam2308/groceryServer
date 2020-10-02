@@ -2,31 +2,41 @@
 
 namespace App\BaseCode\QueryBuilders;
 
-class CommonQueryHelper {
+class CommonQueryHelper
+{
 
-    public function getStringInParanthesis($data){
-        return "(".$data.")";
+    public function getStringInParanthesis($data)
+    {
+        return "(" . $data . ")";
     }
 
-    public function getEqual(){
+    public function getEqual()
+    {
         return "=";
     }
 
-    public function getStringInQuotes($data){
-        return "'".$data."'";
+    public function getStringInQuotes($data)
+    {
+        return "'" . $data . "'";
     }
 
-    public function getSpace(){
+    public function getSpace()
+    {
         return " ";
     }
 
-    public function getAND(){
+    public function getComma()
+    {
+        return ",";
+    }
+
+    public function getAND()
+    {
         return "AND";
     }
 
-    public function getOR(){
+    public function getOR()
+    {
         return "OR";
     }
 }
-
-?>

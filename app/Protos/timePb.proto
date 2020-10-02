@@ -1,10 +1,8 @@
 syntax = "proto3";
-option php_namespace = "App\\Protobuff";
-option php_metadata_namespace = "App\\GPBMetadata";
-
 
 option php_namespace = "App\\Protobuff";
 option php_metadata_namespace = "App\\GPBMetadata";
+
 
 
 enum TimeZoneEnum{
@@ -21,5 +19,6 @@ message TimePb {
     string formattedDate = 5;
     TimeZoneEnum timezone =6;
 }
+
 
 
