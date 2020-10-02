@@ -18,7 +18,11 @@ use App\BaseCode\Strings;
 use App\BaseCode\JsonConvertor\JsonConvertor;
 use \Memcache;
 use Doctrine\Common\Cache\MemcacheCache;
-
+use App\Protobuff\ItemPb;
+use App\Protobuff\ItemTypeEnum;
+use App\Protobuff\AvailabilityStatusEnum;
+use App\ItemPbModule\ItemPbDefaultProvider;
+use App\ItemPbModule\ItemService;
 
 class UserTest extends TestCase
 {
@@ -32,19 +36,20 @@ class UserTest extends TestCase
         //$this->getResultsPb();
         //$this->pbJsonConvert();
         //$this->myurldecode();
-        $this->testCache();
+        //$this->testCache();
+        $this->createItem();
     }
 
-    public function testCache(){
-        $memcache = new Memcached();
-        $cache = new MemcacheCache();
-        $cache->setMemcache($memcache);
+    // public function testCache(){
+    //     $memcache = new Memcached();
+    //     $cache = new MemcacheCache();
+    //     $cache->setMemcache($memcache);
         
-        $cache->set('key', 'value');
+    //     $cache->set('key', 'value');
         
-        echo $cache->get('key') ;// prints "value"
+    //     echo $cache->get('key') ;// prints "value"
         
-    }
+    // }
 
     public function myurldecode(){
         echo urldecode("X");
@@ -60,5 +65,18 @@ class UserTest extends TestCase
     public function getResultsPb(){
         $service = new CustomerRequestHandler();
         echo $service->handle("{\"privilege\":\"NORMAL\"}",RequestMethodEnum::GET);
+    }
+
+    public function createItem() {
+        $pb = new ItemPbDefaultProvider();
+        $service = new ItemService();
+        $itemPb = $pb->getDefaultPb();
+        $itemPb->getItemName()->setFirstName('potato');
+        $itemPb->getItemName()->setLastName('potato');
+        $itemPb->getItemName()->setCanonicalName('Allu');
+        $itemPb->getItemUrl()->setUrl('potato');
+        $itemPb->setItemType(ItemTypeEnum::VEGETABLES);
+        $itemPb->setAvailabilityStatus(AvailabilityStatusEnum::AVAILABLE);
+        $service->create($itemPb);
     }
 }

@@ -18,7 +18,7 @@ class InsertQueryBuilder implements IQueryBuilder{
     }
 
     function getQuery($array ,$tableName){
-        var_dump($array,$tableName);
+       // var_dump($array,$tableName);
         $query = $this->m_insertInto . " " . $tableName;
         if(empty($array) || Strings::isEmpty($tableName)){
             throw new Exception("Array is Empty Or table Missing", 1);

@@ -9,10 +9,10 @@ class ItemIndexers extends Enum{
     const PRICE = 'PRICE';
 
     public static function getQUANTITY(){
-        return ItemIndexers::fromValue(ItemIndexers::QUANTITY);
+        return Enums::value(ItemIndexers::fromValue(ItemIndexers::QUANTITY));
     }
     public static function getPRICE(){
-        return ItemIndexers::fromValue(ItemIndexers::PRICE);
+        return Enums::value(ItemIndexers::fromValue(ItemIndexers::PRICE));
     }
 
 }

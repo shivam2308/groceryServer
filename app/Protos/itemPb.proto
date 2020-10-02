@@ -6,12 +6,19 @@ option php_metadata_namespace = "App\\GPBMetadata";
 import "entityPb.proto";
 import "namePb.proto";
 import "imagePb.proto";
+import "summaryPb.proto";
 
 enum ItemTypeEnum {
-    VEGETABLES = 0;
-    FRUITS = 1;
-    MILK = 2;
-    BEVERAGES = 3;
+    UNKNOWN_ITEM_TYPE = 0;
+    VEGETABLES = 1;
+    FRUITS = 2;
+    MILK = 3;
+    BEVERAGES = 4;
+}
+enum AvailabilityStatusEnum {
+    UNKNOWN_AVAILABILITY_STATUS = 0;
+    AVAILABLE = 1;
+    NOT_AVAILABLE = 2;
 }
 
 message ItemPb {
@@ -21,4 +28,12 @@ message ItemPb {
     string quantity = 4;
     int32 price = 5;
     ItemTypeEnum itemType = 6;
+    AvailabilityStatusEnum availabilityStatus = 7;
+}
+message ItemSearchRequestPb {
+    
+}
+message ItemSearchResponsePb {
+    SummaryPb summary = 1;
+    repeated ItemPb results = 2;
 }

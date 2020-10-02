@@ -3,9 +3,6 @@ option php_namespace = "App\\Protobuff";
 option php_metadata_namespace = "App\\GPBMetadata";
 
 
-option php_namespace = "App\\Protobuff";
-option php_metadata_namespace = "App\\GPBMetadata";
-
 
 enum TimeZoneEnum{
     UNKNOWN_TIME_ZONE = 0;
