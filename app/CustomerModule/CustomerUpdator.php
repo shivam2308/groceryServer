@@ -56,4 +56,15 @@ class CustomerUpdator implements IUpdator
         $array = array_merge($array, $this->m_timeUpdator->update($pb->getTime()));
         return $array;
     }
+
+    public function refUpdate($pb)
+    {
+        $array = array();
+        if (Strings::notEmpty($pb->getId())) {
+            $array[CustomerIndexers::getCUSTOMER_REF_ID()] = $pb->getId();
+        }
+        $array = array_merge($array, $this->m_nameUpdator->update($pb->getName()));
+        $array = array_merge($array, $this->m_contactDeatilsUpdator->update($pb->getContact()));
+        return $array;
+    }
 }

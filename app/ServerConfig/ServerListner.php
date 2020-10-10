@@ -4,20 +4,18 @@ namespace App\ServerConfig;
 
 use App\Enums\EnvironmentTypeEnum;
 
- class ServerListner{
+class ServerListner
+{
 
-    STATIC $m_evironment;
+    static $m_evironment;
 
-    function __construct(){
+    function __construct()
+    {
         $this::$m_evironment = EnvironmentTypeEnum::DEVEL;
     }
 
-    function getEnvironment(){
+    function getEnvironment()
+    {
         return $this::$m_evironment;
     }
-
-
-    
 }
-
-?>

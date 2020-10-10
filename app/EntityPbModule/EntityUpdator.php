@@ -10,31 +10,36 @@ use App\Protobuff\StatusEnum;
 use App\Protobuff\TimeZoneEnum;
 use App\Protobuff\LocalePb;
 
-class EntityUpdator implements IUpdator{
+class EntityUpdator implements IUpdator
+{
 
-    public function update($pb){
+    public function update($pb)
+    {
         $pbArray = array();
-        if(Strings::isEmpty($pb->getId())){
+        if (Strings::isEmpty($pb->getId())) {
             return new Exception("Entity id cannot be empty");
-        }else{
+        } else {
             $pbArray[EntityIndexers::getDBID()] = $pb->getId();
         }
-        if($pb->getLifeTime()==StatusEnum::UNKNOWN_STATUS){
+        if ($pb->getLifeTime() == StatusEnum::UNKNOWN_STATUS) {
             $pbArray[EntityIndexers::getLIFETIME()] = StatusEnum::name(StatusEnum::ACTIVE);
-        }else{
+        } else {
             $pbArray[EntityIndexers::getLIFETIME()] = StatusEnum::name($pb->getLifeTime());
         }
-        if($pb->getLocale()==NULL){
+        if ($pb->getLocale() == NULL) {
             $pb->setlocale(new LocalePb());
         }
-        if($pb->getLocale()->getDefaultTimeZone()==TimeZoneEnum::UNKNOWN_TIME_ZONE){
+        if ($pb->getLocale()->getDefaultTimeZone() == TimeZoneEnum::UNKNOWN_TIME_ZONE) {
             $pbArray[EntityIndexers::getDEFAULT_TIMEZONE()] = TimeZoneEnum::name(TimeZoneEnum::IST);
-        }else{
+        } else {
             $pbArray[EntityIndexers::getDEFAULT_TIMEZONE()] = TimeZoneEnum::name($pb->getLocale()->getDefaultTimeZone());
         }
 
         return $pbArray;
     }
-}
 
-?>
+    public function refUpdate($pb)
+    {
+        return NULL;
+    }
+}

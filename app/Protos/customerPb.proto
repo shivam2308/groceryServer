@@ -31,6 +31,12 @@ message CustomerPb {
     TimePb time = 8;
 }
 
+message CustomerPbRef {
+    string id = 1;
+    NamePb name =2;
+    ContactDetailPb contact = 3;
+}
+
 message CustomerSearchRequestPb {
     PrivilegeTypeEnum privilege =1;
 }

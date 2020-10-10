@@ -23,6 +23,8 @@ use App\BaseCode\Strings;
 use App\BaseCode\JsonConvertor\JsonConvertor;
 use App\DeliveryManPbModule\DeliveryManPbDefaultProvider;
 use App\DeliveryManPbModule\DeliveryManService;
+use App\LoginPbModule\LoginPbDefaultProvider;
+use App\LoginPbModule\LoginService;
 use Doctrine\Common\Cache\MemcacheCache;
 use App\Protobuff\ItemPb;
 use App\Protobuff\ItemTypeEnum;
@@ -45,6 +47,24 @@ class UserTest extends TestCase
         //$this->testCache();
         $this->createItem();
         //$this->createCustomer();
+
+        //$this->createDeliveryMan();
+        $this->createLogin();
+    }
+    public function createLogin()
+    {
+        $service = new LoginService();
+        $defaultPbProvider = new LoginPbDefaultProvider();
+        $pb = $defaultPbProvider->getDefaultPb();
+        $pb->getCustomerRef()->setId('nZ');
+        $pb->getCustomerRef()->getName()->setFirstName("Shubham");
+        $pb->getCustomerRef()->getName()->setLastName("Tiwari");
+        $pb->getCustomerRef()->getContact()->getEmail()->setLocalPart("shubhamtiwaricr07");
+        $pb->getCustomerRef()->getContact()->getEmail()->setDomainPart("gmail.com");
+        $pb->getCustomerRef()->getContact()->getMobile()->setMobileNo("9621019232");
+        $pb->getTime()->setTimezone(TimeZoneEnum::IST);
+        echo JsonConvertor::json($service->create($pb));
+
     }
 
     // public function testCache(){

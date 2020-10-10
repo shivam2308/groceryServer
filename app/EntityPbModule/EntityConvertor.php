@@ -21,6 +21,8 @@ class EntityConvertor implements IConvertor{
         $entityPb->getLocale()->setDefaultTimeZone(TimeZoneEnum::value($array[EntityIndexers::getDEFAULT_TIMEZONE()]));
         return $entityPb;
     }
+    public function refConvert($array)
+    {
+        return NULL;
+    }
 }
-
-?>

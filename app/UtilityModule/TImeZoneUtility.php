@@ -5,7 +5,8 @@ namespace App\UtilityModule;
 use Exception;
 use App\Protobuff\TimeZoneEnum;
 
-class TimeZoneUtility {
+class TimeZoneUtility
+{
 
     public function getTimeZome($timeZoneEnum){
         switch ($timeZoneEnum) {
@@ -15,7 +16,4 @@ class TimeZoneUtility {
                 return new Exception('Unknown Timezone');
         }
     }
-
 }
-
-?>
