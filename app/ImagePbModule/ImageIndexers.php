@@ -3,13 +3,14 @@
 namespace App\ImagePbModule;
 
 use BenSampo\Enum\Enum;
+use App\BaseCode\Enums;
 
 class ImageIndexers extends Enum{
     const URL = 'URL';
 
 
     public static function getURL(){
-        return ImageIndexers::fromValue(ImageIndexers::URL);
+        return Enums::value(ImageIndexers::fromValue(ImageIndexers::URL));
     }
 
 }

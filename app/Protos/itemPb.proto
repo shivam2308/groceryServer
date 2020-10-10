@@ -7,6 +7,7 @@ import "entityPb.proto";
 import "namePb.proto";
 import "imagePb.proto";
 import "summaryPb.proto";
+import "timePb.proto";
 
 enum ItemTypeEnum {
     UNKNOWN_ITEM_TYPE = 0;
@@ -29,6 +30,7 @@ message ItemPb {
     int32 price = 5;
     ItemTypeEnum itemType = 6;
     AvailabilityStatusEnum availabilityStatus = 7;
+    TimePb time = 8;
 }
 message ItemSearchRequestPb {
     

@@ -11,9 +11,16 @@ class NameUpdator implements IUpdator{
 
     public function update($pb){
         $pbArray = array();
-        $pbArray[NameIndexers::getFIRSTNAME()] = $pb->getFirstName();
-        $pbArray[NameIndexers::getLASTNAME()] = $pb->getLastName();
-        $pbArray[NameIndexers::getCANONICAL_NAME()] = $pb->getCanonicalName();
+        if(Strings::notEmpty($pb->getFirstName())){
+            $pbArray[NameIndexers::getFIRSTNAME()] = strtolower($pb->getFirstName());
+        }
+        if(Strings::notEmpty($pb->getLastName())){
+            $pbArray[NameIndexers::getLASTNAME()] = strtolower($pb->getLastName());
+        }
+        if(Strings::notEmpty($pb->getCanonicalName())){
+            $pbArray[NameIndexers::getCANONICAL_NAME()] = strtolower($pb->getCanonicalName());
+        }
+        return $pbArray;
     }
 }
 

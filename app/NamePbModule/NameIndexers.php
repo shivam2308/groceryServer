@@ -3,6 +3,7 @@
 namespace App\NamePbModule;
 
 use BenSampo\Enum\Enum;
+use App\BaseCode\Enums;
 
 class NameIndexers extends Enum{
     const FIRSTNAME = 'FIRSTNAME';
@@ -10,13 +11,13 @@ class NameIndexers extends Enum{
     const CANONICAL_NAME = 'CANONICAL_NAME';
 
     public static function getFIRSTNAME(){
-        return NameIndexers::fromValue(NameIndexers::FIRSTNAME);
+        return Enums::value(NameIndexers::fromValue(NameIndexers::FIRSTNAME));
     }
     public static function getLASTNAME(){
-        return NameIndexers::fromValue(NameIndexers::LASTNAME);
+        return Enums::value(NameIndexers::fromValue(NameIndexers::LASTNAME));
     }
     public static function getCANONICAL_NAME(){
-        return NameIndexers::fromValue(NameIndexers::CANONICAL_NAME);
+        return Enums::value(NameIndexers::fromValue(NameIndexers::CANONICAL_NAME));
     }
 }
 

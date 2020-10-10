@@ -41,6 +41,10 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.AvailabilityStatusEnum availabilityStatus = 7;</code>
      */
     protected $availabilityStatus = 0;
+    /**
+     * Generated from protobuf field <code>.TimePb time = 8;</code>
+     */
+    protected $time = null;
 
     /**
      * Constructor.
@@ -55,6 +59,7 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      *     @type int $price
      *     @type int $itemType
      *     @type int $availabilityStatus
+     *     @type \App\Protobuff\TimePb $time
      * }
      */
     public function __construct($data = NULL) {
@@ -242,6 +247,38 @@ class ItemPb extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkEnum($var, \App\Protobuff\AvailabilityStatusEnum::class);
         $this->availabilityStatus = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.TimePb time = 8;</code>
+     * @return \App\Protobuff\TimePb
+     */
+    public function getTime()
+    {
+        return isset($this->time) ? $this->time : null;
+    }
+
+    public function hasTime()
+    {
+        return isset($this->time);
+    }
+
+    public function clearTime()
+    {
+        unset($this->time);
+    }
+
+    /**
+     * Generated from protobuf field <code>.TimePb time = 8;</code>
+     * @param \App\Protobuff\TimePb $var
+     * @return $this
+     */
+    public function setTime($var)
+    {
+        GPBUtil::checkMessage($var, \App\Protobuff\TimePb::class);
+        $this->time = $var;
 
         return $this;
     }

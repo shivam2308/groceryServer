@@ -18,6 +18,7 @@ class BaseService extends AService{
     private $m_responsePb;
     private $m_entityService;
     private $m_searchResultHandler;
+    private $m_baseSearcher;
 
     public function __construct($updator,$convertor,$searcher,$responsePb,$tableName){
         parent::__construct($tableName);
@@ -26,6 +27,7 @@ class BaseService extends AService{
         $this->m_searcher = $searcher;
         $this->m_responsePb = $responsePb;
         $this->m_entityService = new EntityService();
+        $this->m_baseSearcher = new BaseSearcher();
         $this->m_searchResultHandler = new SearchResultHandler($this->m_convertor, $this->m_responsePb);
         
     }
@@ -34,7 +36,9 @@ class BaseService extends AService{
         return $this->m_convertor->convert($this->getEntity($id));
     }
     public function create($pb){
+
         $id = $this->m_entityService->get();
+    
         $pb->setDbInfo(new EntityPb());
         $pb->getDbInfo()->setId($id);
         $this->createEntity($this->m_updator->update($pb));
@@ -56,9 +60,9 @@ class BaseService extends AService{
 
     }
     public function search($pb){
-        
         $resp = $this->searchEntity($this->m_searcher->search($pb));
-        return $this->m_searchResultHandler->handleResults($resp);
+        $searchArray = $this->m_baseSearcher->addExpression($resp);
+        return $this->m_searchResultHandler->handleResults($searchArray);
     } 
 
 }

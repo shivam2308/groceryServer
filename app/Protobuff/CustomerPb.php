@@ -21,6 +21,30 @@ class CustomerPb extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.PrivilegeTypeEnum privilege = 2;</code>
      */
     protected $privilege = 0;
+    /**
+     * Generated from protobuf field <code>.NamePb name = 3;</code>
+     */
+    protected $name = null;
+    /**
+     * Generated from protobuf field <code>.AddressPb address = 4;</code>
+     */
+    protected $address = null;
+    /**
+     * Generated from protobuf field <code>.ContactDetailPb contact = 5;</code>
+     */
+    protected $contact = null;
+    /**
+     * Generated from protobuf field <code>.GenderEnum gender = 6;</code>
+     */
+    protected $gender = 0;
+    /**
+     * Generated from protobuf field <code>.ImagePb profileImage = 7;</code>
+     */
+    protected $profileImage = null;
+    /**
+     * Generated from protobuf field <code>.TimePb time = 8;</code>
+     */
+    protected $time = null;
 
     /**
      * Constructor.
@@ -30,6 +54,12 @@ class CustomerPb extends \Google\Protobuf\Internal\Message
      *
      *     @type \App\Protobuff\EntityPb $dbInfo
      *     @type int $privilege
+     *     @type \App\Protobuff\NamePb $name
+     *     @type \App\Protobuff\AddressPb $address
+     *     @type \App\Protobuff\ContactDetailPb $contact
+     *     @type int $gender
+     *     @type \App\Protobuff\ImagePb $profileImage
+     *     @type \App\Protobuff\TimePb $time
      * }
      */
     public function __construct($data = NULL) {
@@ -87,6 +117,188 @@ class CustomerPb extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkEnum($var, \App\Protobuff\PrivilegeTypeEnum::class);
         $this->privilege = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.NamePb name = 3;</code>
+     * @return \App\Protobuff\NamePb
+     */
+    public function getName()
+    {
+        return isset($this->name) ? $this->name : null;
+    }
+
+    public function hasName()
+    {
+        return isset($this->name);
+    }
+
+    public function clearName()
+    {
+        unset($this->name);
+    }
+
+    /**
+     * Generated from protobuf field <code>.NamePb name = 3;</code>
+     * @param \App\Protobuff\NamePb $var
+     * @return $this
+     */
+    public function setName($var)
+    {
+        GPBUtil::checkMessage($var, \App\Protobuff\NamePb::class);
+        $this->name = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.AddressPb address = 4;</code>
+     * @return \App\Protobuff\AddressPb
+     */
+    public function getAddress()
+    {
+        return isset($this->address) ? $this->address : null;
+    }
+
+    public function hasAddress()
+    {
+        return isset($this->address);
+    }
+
+    public function clearAddress()
+    {
+        unset($this->address);
+    }
+
+    /**
+     * Generated from protobuf field <code>.AddressPb address = 4;</code>
+     * @param \App\Protobuff\AddressPb $var
+     * @return $this
+     */
+    public function setAddress($var)
+    {
+        GPBUtil::checkMessage($var, \App\Protobuff\AddressPb::class);
+        $this->address = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.ContactDetailPb contact = 5;</code>
+     * @return \App\Protobuff\ContactDetailPb
+     */
+    public function getContact()
+    {
+        return isset($this->contact) ? $this->contact : null;
+    }
+
+    public function hasContact()
+    {
+        return isset($this->contact);
+    }
+
+    public function clearContact()
+    {
+        unset($this->contact);
+    }
+
+    /**
+     * Generated from protobuf field <code>.ContactDetailPb contact = 5;</code>
+     * @param \App\Protobuff\ContactDetailPb $var
+     * @return $this
+     */
+    public function setContact($var)
+    {
+        GPBUtil::checkMessage($var, \App\Protobuff\ContactDetailPb::class);
+        $this->contact = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.GenderEnum gender = 6;</code>
+     * @return int
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * Generated from protobuf field <code>.GenderEnum gender = 6;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setGender($var)
+    {
+        GPBUtil::checkEnum($var, \App\Protobuff\GenderEnum::class);
+        $this->gender = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.ImagePb profileImage = 7;</code>
+     * @return \App\Protobuff\ImagePb
+     */
+    public function getProfileImage()
+    {
+        return isset($this->profileImage) ? $this->profileImage : null;
+    }
+
+    public function hasProfileImage()
+    {
+        return isset($this->profileImage);
+    }
+
+    public function clearProfileImage()
+    {
+        unset($this->profileImage);
+    }
+
+    /**
+     * Generated from protobuf field <code>.ImagePb profileImage = 7;</code>
+     * @param \App\Protobuff\ImagePb $var
+     * @return $this
+     */
+    public function setProfileImage($var)
+    {
+        GPBUtil::checkMessage($var, \App\Protobuff\ImagePb::class);
+        $this->profileImage = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.TimePb time = 8;</code>
+     * @return \App\Protobuff\TimePb
+     */
+    public function getTime()
+    {
+        return isset($this->time) ? $this->time : null;
+    }
+
+    public function hasTime()
+    {
+        return isset($this->time);
+    }
+
+    public function clearTime()
+    {
+        unset($this->time);
+    }
+
+    /**
+     * Generated from protobuf field <code>.TimePb time = 8;</code>
+     * @param \App\Protobuff\TimePb $var
+     * @return $this
+     */
+    public function setTime($var)
+    {
+        GPBUtil::checkMessage($var, \App\Protobuff\TimePb::class);
+        $this->time = $var;
 
         return $this;
     }

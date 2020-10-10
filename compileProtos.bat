@@ -13,6 +13,6 @@ protoc --proto_path=. --php_out=../.. ./namePb.proto
 protoc --proto_path=. --php_out=../.. ./summaryPb.proto
 protoc --proto_path=. --php_out=../.. ./customerPb.proto
 protoc --proto_path=. --php_out=../.. ./itemPb.proto
-
+protoc --proto_path=. --php_out=../.. ./deliveryManPb.proto
 cd ..
 cd ..

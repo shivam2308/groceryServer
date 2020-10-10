@@ -29,6 +29,7 @@ class AService{
     }
 
     public function createEntity($array){
+        //var_dump(($array));
         return $this->m_aCreate->create($array,$this->m_tableName);
     }
 

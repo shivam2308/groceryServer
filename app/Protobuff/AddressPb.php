@@ -26,13 +26,13 @@ class AddressPb extends \Google\Protobuf\Internal\Message
      */
     protected $landMark = '';
     /**
-     * Generated from protobuf field <code>string city = 4;</code>
+     * Generated from protobuf field <code>.CityEnum city = 4;</code>
      */
-    protected $city = '';
+    protected $city = 0;
     /**
-     * Generated from protobuf field <code>string state = 5;</code>
+     * Generated from protobuf field <code>.StateEnum state = 5;</code>
      */
-    protected $state = '';
+    protected $state = 0;
     /**
      * Generated from protobuf field <code>int32 pincode = 6;</code>
      */
@@ -47,8 +47,8 @@ class AddressPb extends \Google\Protobuf\Internal\Message
      *     @type string $homeNo
      *     @type string $street
      *     @type string $landMark
-     *     @type string $city
-     *     @type string $state
+     *     @type int $city
+     *     @type int $state
      *     @type int $pincode
      * }
      */
@@ -124,8 +124,8 @@ class AddressPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string city = 4;</code>
-     * @return string
+     * Generated from protobuf field <code>.CityEnum city = 4;</code>
+     * @return int
      */
     public function getCity()
     {
@@ -133,21 +133,21 @@ class AddressPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string city = 4;</code>
-     * @param string $var
+     * Generated from protobuf field <code>.CityEnum city = 4;</code>
+     * @param int $var
      * @return $this
      */
     public function setCity($var)
     {
-        GPBUtil::checkString($var, True);
+        GPBUtil::checkEnum($var, \App\Protobuff\CityEnum::class);
         $this->city = $var;
 
         return $this;
     }
 
     /**
-     * Generated from protobuf field <code>string state = 5;</code>
-     * @return string
+     * Generated from protobuf field <code>.StateEnum state = 5;</code>
+     * @return int
      */
     public function getState()
     {
@@ -155,13 +155,13 @@ class AddressPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string state = 5;</code>
-     * @param string $var
+     * Generated from protobuf field <code>.StateEnum state = 5;</code>
+     * @param int $var
      * @return $this
      */
     public function setState($var)
     {
-        GPBUtil::checkString($var, True);
+        GPBUtil::checkEnum($var, \App\Protobuff\StateEnum::class);
         $this->state = $var;
 
         return $this;

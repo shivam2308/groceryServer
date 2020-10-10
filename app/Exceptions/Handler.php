@@ -3,7 +3,9 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Log as FacadesLog;
 use Throwable;
+use Log;
 
 class Handler extends ExceptionHandler
 {
@@ -51,5 +53,6 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         return parent::render($request, $exception);
+        // return Log::error('[' . $exception->getCode() . '] "' . $exception->getMessage() . '" on line ' . $exception->getTrace()[0]['line'] . ' of file ' . $exception->getTrace()[0]['file']);
     }
 }
