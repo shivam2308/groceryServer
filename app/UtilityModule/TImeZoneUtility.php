@@ -5,10 +5,11 @@ namespace App\UtilityModule;
 use Exception;
 use App\Protobuff\TimeZoneEnum;
 
-class TimeZoneUtility {
+class TimeZoneUtility
+{
 
-    public function getTimeZome($timeZoneEnum){
-        var_dump($timeZoneEnum);
+    public function getTimeZome($timeZoneEnum)
+    {
         switch ($timeZoneEnum) {
             case TimeZoneEnum::IST:
                 return 'Asia/Kolkata';
@@ -16,7 +17,4 @@ class TimeZoneUtility {
                 return new Exception('Unknown Timezone');
         }
     }
-
 }
-
-?>
