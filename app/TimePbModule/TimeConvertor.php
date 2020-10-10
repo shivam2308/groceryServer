@@ -26,4 +26,8 @@ class TimeConvertor implements IConvertor
         }
         return $timePb;
     }
+    public function refConvert($array)
+    {
+        return NULL;
+    }
 }

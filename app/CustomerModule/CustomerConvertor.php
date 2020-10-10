@@ -15,6 +15,7 @@ use App\CustomerModule\CustomerIndexers;
 use App\GenderPbModule\GenderIndexers;
 use App\Protobuff\GenderEnum;
 use App\Protobuff\CustomerPb;
+use App\Protobuff\CustomerPbRef;
 
 class CustomerConvertor implements IConvertor
 {
@@ -51,5 +52,14 @@ class CustomerConvertor implements IConvertor
             $customerPb->setGender(GenderEnum::value($array[GenderIndexers::getGENDER()]));
         }
         return $customerPb;
+    }
+
+    public function refConvert($array)
+    {
+        $customerRef = new CustomerPbRef();
+        $customerRef->setId($array[CustomerIndexers::getCUSTOMER_REF_ID()]);
+        $customerRef->setName($this->m_nameConvertor->convert($array));
+        $customerRef->setContact($this->m_contactConvertor->convert($array));
+        return $customerRef;
     }
 }

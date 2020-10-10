@@ -2,8 +2,8 @@
 
 namespace App\Interfaces;
 
-Interface IConvertor {
+interface IConvertor
+{
     public function convert($array);
- }
-
-?>
+    public function refConvert($array);
+}

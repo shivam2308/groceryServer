@@ -31,4 +31,8 @@ class AddressConvertor implements IConvertor
         $addressPb->setPincode($array[AddressIndexers::getPINCODE()]);
         return $addressPb;
     }
+    public function refConvert($array)
+    {
+        return NULL;
+    }
 }
