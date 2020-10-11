@@ -10,6 +10,7 @@ class ItemIndexers extends Enum{
     const PRICE = 'PRICE';
     CONST ITEMTYPE = 'ITEMTYPE';
     CONST AVAILABILITYSTATUS = 'AVAILABILITYSTATUS';
+    const ITEM_REF_ID = 'ITEM_REF_ID';
 
 
     public static function getQUANTITY(){
@@ -23,6 +24,10 @@ class ItemIndexers extends Enum{
     }
     public static function getAVAILABILITYSTATUS(){
         return Enums::value(ItemIndexers::fromValue(ItemIndexers::AVAILABILITYSTATUS));
+    }
+    public static function getITEM_REF_ID()
+    {
+        return Enums::value(ItemIndexers::fromValue(ItemIndexers::ITEM_REF_ID));
     }
 
 }

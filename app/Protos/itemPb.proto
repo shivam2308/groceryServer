@@ -32,6 +32,11 @@ message ItemPb {
     AvailabilityStatusEnum availabilityStatus = 7;
     TimePb time = 8;
 }
+message ItemPbRef {
+    string id = 1;
+    NamePb itemName =2;
+    int32 price = 3;
+}
 message ItemSearchRequestPb {
     
 }

@@ -65,6 +65,17 @@ class ItemUpdator implements IUpdator{
         }
         return $pbArray;
     }
+
+    public function refUpdate($pb)
+    {
+        $pbArray = array();
+        if (Strings::notEmpty($pb->getId())) {
+            $pbArray[ItemIndexers::getITEM_REF_ID()] = $pb->getId();
+        }
+        $pbArray = array_merge($pbArray, $this->m_nameUpdator->update($pb->getName()));
+        $pbArray[ItemIndexers::getPRICE()] = $pb->getPrice();
+        return $pbArray;
+    }
 }
 
 ?>

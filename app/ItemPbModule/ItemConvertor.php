@@ -36,5 +36,14 @@ class ItemConvertor implements IConvertor {
         $itemPb->setPrice($array[ItemIndexers::getPRICE()]);
         return $itemPb;
     }
+
+    public function refConvert($array)
+    {
+        $itemRef = new ItemPbRef();
+        $itemRef->setId($array[ItemIndexers::getITEM_REF_ID()]);
+        $itemRef->setItemName($this->m_nameConvertor->convert($array));
+        $itemRef->setPrice($array[ItemIndexers::getPRICE()]);
+        return $itemRef;
+    }
 }
 ?>
