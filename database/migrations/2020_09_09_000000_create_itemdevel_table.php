@@ -32,13 +32,13 @@ class CreateItemdevelTable extends Migration
             $table->string(ItemIndexers::getPRICE());
             $table->string(ItemIndexers::getITEMTYPE());
             $table->string(ItemIndexers::getAVAILABILITYSTATUS());
+            $table->string(ItemIndexers::getITEM_QYANTITY_TYPE());
             $table->string(TimeIndexers::getDATE());
             $table->string(TimeIndexers::getMONTH());
             $table->string(TimeIndexers::getYEAR());
             $table->bigInteger(TimeIndexers::getMILLISECONDS());
             $table->string(TimeIndexers::getFORMATTED_DATE());
             $table->string(TimeIndexers::getTIMEZONE());
-
         });
     }
 

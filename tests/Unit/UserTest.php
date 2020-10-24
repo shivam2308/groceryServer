@@ -23,6 +23,7 @@ use App\BaseCode\Strings;
 use App\BaseCode\JsonConvertor\JsonConvertor;
 use App\DeliveryManPbModule\DeliveryManPbDefaultProvider;
 use App\DeliveryManPbModule\DeliveryManService;
+use App\ItemPbModule\ItemCsvCreator;
 use App\LoginPbModule\LoginPbDefaultProvider;
 use App\LoginPbModule\LoginService;
 use Doctrine\Common\Cache\MemcacheCache;
@@ -49,7 +50,13 @@ class UserTest extends TestCase
         //$this->createCustomer();
 
         //$this->createDeliveryMan();
-        $this->createLogin();
+        //$this->createLogin();
+        //$this->createItems();
+    }
+    public function createItems()
+    {
+        $creator = new ItemCsvCreator();
+        $creator->createUiPb();
     }
     public function createLogin()
     {
@@ -64,23 +71,22 @@ class UserTest extends TestCase
         $pb->getCustomerRef()->getContact()->getMobile()->setMobileNo("9621019232");
         $pb->getTime()->setTimezone(TimeZoneEnum::IST);
         echo JsonConvertor::json($service->create($pb));
-
     }
 
     // public function testCache(){
     //     $memcache = new Memcached();
     //     $cache = new MemcacheCache();
     //     $cache->setMemcache($memcache);
-        
+
     //     $cache->set('key', 'value');
-        
+
     //     echo $cache->get('key') ;// prints "value"
-        
+
     // }
-        //$this->createCustomer();
-        //$this->createDeliveryMan();
-        //echo csrf_token();
-   // }
+    //$this->createCustomer();
+    //$this->createDeliveryMan();
+    //echo csrf_token();
+    // }
 
     public function createDeliveryMan()
     {
@@ -139,7 +145,8 @@ class UserTest extends TestCase
         echo $service->handle("{\"privilege\":\"NORMAL\"}", RequestMethodEnum::GET);
     }
 
-    public function createItem() {
+    public function createItem()
+    {
         $pb = new ItemPbDefaultProvider();
         $service = new ItemService();
         $itemPb = $pb->getDefaultPb();
@@ -153,6 +160,6 @@ class UserTest extends TestCase
         $itemPb->setQuantity(1);
         $itemPb->setAvailabilityStatus(AvailabilityStatusEnum::AVAILABLE);
         //$service->get('n3');
-        echo ($service->get('n3')->getItemUrl()->getUrl());
+        echo JsonConvertor::json($service->get('ry'));
     }
 }

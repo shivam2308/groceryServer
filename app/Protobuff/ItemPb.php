@@ -30,9 +30,9 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      */
     protected $quantity = '';
     /**
-     * Generated from protobuf field <code>int32 price = 5;</code>
+     * Generated from protobuf field <code>float price = 5;</code>
      */
-    protected $price = 0;
+    protected $price = 0.0;
     /**
      * Generated from protobuf field <code>.ItemTypeEnum itemType = 6;</code>
      */
@@ -42,7 +42,11 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      */
     protected $availabilityStatus = 0;
     /**
-     * Generated from protobuf field <code>.TimePb time = 8;</code>
+     * Generated from protobuf field <code>.ItemQuantityTypeEnum quantityType = 8;</code>
+     */
+    protected $quantityType = 0;
+    /**
+     * Generated from protobuf field <code>.TimePb time = 9;</code>
      */
     protected $time = null;
 
@@ -56,9 +60,10 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      *     @type \App\Protobuff\NamePb $itemName
      *     @type \App\Protobuff\ImagePb $itemUrl
      *     @type string $quantity
-     *     @type int $price
+     *     @type float $price
      *     @type int $itemType
      *     @type int $availabilityStatus
+     *     @type int $quantityType
      *     @type \App\Protobuff\TimePb $time
      * }
      */
@@ -73,17 +78,7 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      */
     public function getDbInfo()
     {
-        return isset($this->dbInfo) ? $this->dbInfo : null;
-    }
-
-    public function hasDbInfo()
-    {
-        return isset($this->dbInfo);
-    }
-
-    public function clearDbInfo()
-    {
-        unset($this->dbInfo);
+        return $this->dbInfo;
     }
 
     /**
@@ -105,17 +100,7 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      */
     public function getItemName()
     {
-        return isset($this->itemName) ? $this->itemName : null;
-    }
-
-    public function hasItemName()
-    {
-        return isset($this->itemName);
-    }
-
-    public function clearItemName()
-    {
-        unset($this->itemName);
+        return $this->itemName;
     }
 
     /**
@@ -137,17 +122,7 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      */
     public function getItemUrl()
     {
-        return isset($this->itemUrl) ? $this->itemUrl : null;
-    }
-
-    public function hasItemUrl()
-    {
-        return isset($this->itemUrl);
-    }
-
-    public function clearItemUrl()
-    {
-        unset($this->itemUrl);
+        return $this->itemUrl;
     }
 
     /**
@@ -186,8 +161,8 @@ class ItemPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int32 price = 5;</code>
-     * @return int
+     * Generated from protobuf field <code>float price = 5;</code>
+     * @return float
      */
     public function getPrice()
     {
@@ -195,13 +170,13 @@ class ItemPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int32 price = 5;</code>
-     * @param int $var
+     * Generated from protobuf field <code>float price = 5;</code>
+     * @param float $var
      * @return $this
      */
     public function setPrice($var)
     {
-        GPBUtil::checkInt32($var);
+        GPBUtil::checkFloat($var);
         $this->price = $var;
 
         return $this;
@@ -252,26 +227,38 @@ class ItemPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.TimePb time = 8;</code>
+     * Generated from protobuf field <code>.ItemQuantityTypeEnum quantityType = 8;</code>
+     * @return int
+     */
+    public function getQuantityType()
+    {
+        return $this->quantityType;
+    }
+
+    /**
+     * Generated from protobuf field <code>.ItemQuantityTypeEnum quantityType = 8;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setQuantityType($var)
+    {
+        GPBUtil::checkEnum($var, \App\Protobuff\ItemQuantityTypeEnum::class);
+        $this->quantityType = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.TimePb time = 9;</code>
      * @return \App\Protobuff\TimePb
      */
     public function getTime()
     {
-        return isset($this->time) ? $this->time : null;
-    }
-
-    public function hasTime()
-    {
-        return isset($this->time);
-    }
-
-    public function clearTime()
-    {
-        unset($this->time);
+        return $this->time;
     }
 
     /**
-     * Generated from protobuf field <code>.TimePb time = 8;</code>
+     * Generated from protobuf field <code>.TimePb time = 9;</code>
      * @param \App\Protobuff\TimePb $var
      * @return $this
      */

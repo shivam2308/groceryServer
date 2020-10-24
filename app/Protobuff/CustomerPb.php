@@ -73,17 +73,7 @@ class CustomerPb extends \Google\Protobuf\Internal\Message
      */
     public function getDbInfo()
     {
-        return isset($this->dbInfo) ? $this->dbInfo : null;
-    }
-
-    public function hasDbInfo()
-    {
-        return isset($this->dbInfo);
-    }
-
-    public function clearDbInfo()
-    {
-        unset($this->dbInfo);
+        return $this->dbInfo;
     }
 
     /**
@@ -127,17 +117,7 @@ class CustomerPb extends \Google\Protobuf\Internal\Message
      */
     public function getName()
     {
-        return isset($this->name) ? $this->name : null;
-    }
-
-    public function hasName()
-    {
-        return isset($this->name);
-    }
-
-    public function clearName()
-    {
-        unset($this->name);
+        return $this->name;
     }
 
     /**
@@ -159,17 +139,7 @@ class CustomerPb extends \Google\Protobuf\Internal\Message
      */
     public function getAddress()
     {
-        return isset($this->address) ? $this->address : null;
-    }
-
-    public function hasAddress()
-    {
-        return isset($this->address);
-    }
-
-    public function clearAddress()
-    {
-        unset($this->address);
+        return $this->address;
     }
 
     /**
@@ -191,17 +161,7 @@ class CustomerPb extends \Google\Protobuf\Internal\Message
      */
     public function getContact()
     {
-        return isset($this->contact) ? $this->contact : null;
-    }
-
-    public function hasContact()
-    {
-        return isset($this->contact);
-    }
-
-    public function clearContact()
-    {
-        unset($this->contact);
+        return $this->contact;
     }
 
     /**
@@ -245,17 +205,7 @@ class CustomerPb extends \Google\Protobuf\Internal\Message
      */
     public function getProfileImage()
     {
-        return isset($this->profileImage) ? $this->profileImage : null;
-    }
-
-    public function hasProfileImage()
-    {
-        return isset($this->profileImage);
-    }
-
-    public function clearProfileImage()
-    {
-        unset($this->profileImage);
+        return $this->profileImage;
     }
 
     /**
@@ -277,17 +227,7 @@ class CustomerPb extends \Google\Protobuf\Internal\Message
      */
     public function getTime()
     {
-        return isset($this->time) ? $this->time : null;
-    }
-
-    public function hasTime()
-    {
-        return isset($this->time);
-    }
-
-    public function clearTime()
-    {
-        unset($this->time);
+        return $this->time;
     }
 
     /**

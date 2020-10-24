@@ -92,17 +92,7 @@ class EntityPb extends \Google\Protobuf\Internal\Message
      */
     public function getLocale()
     {
-        return isset($this->locale) ? $this->locale : null;
-    }
-
-    public function hasLocale()
-    {
-        return isset($this->locale);
-    }
-
-    public function clearLocale()
-    {
-        unset($this->locale);
+        return $this->locale;
     }
 
     /**
