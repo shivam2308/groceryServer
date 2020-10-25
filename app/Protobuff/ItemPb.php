@@ -26,13 +26,13 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      */
     protected $itemUrl = null;
     /**
-     * Generated from protobuf field <code>string quantity = 4;</code>
+     * Generated from protobuf field <code>int32 quantity = 4;</code>
      */
-    protected $quantity = '';
+    protected $quantity = 0;
     /**
-     * Generated from protobuf field <code>int32 price = 5;</code>
+     * Generated from protobuf field <code>float price = 5;</code>
      */
-    protected $price = 0;
+    protected $price = 0.0;
     /**
      * Generated from protobuf field <code>.ItemTypeEnum itemType = 6;</code>
      */
@@ -55,8 +55,8 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      *     @type \App\Protobuff\EntityPb $dbInfo
      *     @type \App\Protobuff\NamePb $itemName
      *     @type \App\Protobuff\ImagePb $itemUrl
-     *     @type string $quantity
-     *     @type int $price
+     *     @type int $quantity
+     *     @type float $price
      *     @type int $itemType
      *     @type int $availabilityStatus
      *     @type \App\Protobuff\TimePb $time
@@ -164,8 +164,8 @@ class ItemPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string quantity = 4;</code>
-     * @return string
+     * Generated from protobuf field <code>int32 quantity = 4;</code>
+     * @return int
      */
     public function getQuantity()
     {
@@ -173,21 +173,21 @@ class ItemPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string quantity = 4;</code>
-     * @param string $var
+     * Generated from protobuf field <code>int32 quantity = 4;</code>
+     * @param int $var
      * @return $this
      */
     public function setQuantity($var)
     {
-        GPBUtil::checkString($var, True);
+        GPBUtil::checkInt32($var);
         $this->quantity = $var;
 
         return $this;
     }
 
     /**
-     * Generated from protobuf field <code>int32 price = 5;</code>
-     * @return int
+     * Generated from protobuf field <code>float price = 5;</code>
+     * @return float
      */
     public function getPrice()
     {
@@ -195,13 +195,13 @@ class ItemPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int32 price = 5;</code>
-     * @param int $var
+     * Generated from protobuf field <code>float price = 5;</code>
+     * @param float $var
      * @return $this
      */
     public function setPrice($var)
     {
-        GPBUtil::checkInt32($var);
+        GPBUtil::checkFloat($var);
         $this->price = $var;
 
         return $this;

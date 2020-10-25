@@ -32,6 +32,11 @@ use App\Protobuff\AvailabilityStatusEnum;
 use App\ItemPbModule\ItemPbDefaultProvider;
 use App\ItemPbModule\ItemService;
 
+use App\Protobuff\BuyPb;
+use App\Protobuff\DeliveryStatusEnum;
+use App\BuyPbModule\BuyPbDefaultProvider;
+use App\BuyPbModule\BuyService;
+
 class UserTest extends TestCase
 {
     /**
@@ -45,11 +50,12 @@ class UserTest extends TestCase
         //$this->pbJsonConvert();
         //$this->myurldecode();
         //$this->testCache();
-        $this->createItem();
+        //$this->createItem();
+        $this->createBuy();
         //$this->createCustomer();
 
         //$this->createDeliveryMan();
-        $this->createLogin();
+        //$this->createLogin();
     }
     public function createLogin()
     {
@@ -145,7 +151,7 @@ class UserTest extends TestCase
         $itemPb = $pb->getDefaultPb();
         $itemPb->getTime()->setTimezone(TimeZoneEnum::IST);
         $itemPb->getItemName()->setFirstName('potato');
-        $itemPb->getItemName()->setLastName('mishra');
+        $itemPb->getItemName()->setLastName('mishra123');
         $itemPb->getItemName()->setCanonicalName('Allu');
         $itemPb->getItemUrl()->setUrl('https://potato.com');
         $itemPb->setItemType(ItemTypeEnum::VEGETABLES);
@@ -154,5 +160,18 @@ class UserTest extends TestCase
         $itemPb->setAvailabilityStatus(AvailabilityStatusEnum::AVAILABLE);
         //$service->get('n3');
         echo ($service->get('n3')->getItemUrl()->getUrl());
+    }
+
+    public function createBuy() {
+        $pb = new BuyPbDefaultProvider();
+        $service = new BuyService();
+        $buyPb = $pb->getDefaultPb();
+        $buyPb->setOrderId('firstbuy123');
+        $buyPb->setQuantity(1);
+        $buyPb->setPrice(30.0);
+        $buyPb->setDeliveryStatus(DeliveryStatusEnum::DELIVERED);
+        //$service->get('n3');
+        //echo ($service->get('n3')->getItemUrl()->getUrl());
+        $service->create($buyPb);
     }
 }

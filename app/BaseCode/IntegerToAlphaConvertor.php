@@ -25,7 +25,7 @@ class IntegerToAlphaConvertor {
         elseif($data > 61){
           $dividend = ($data + 1);
           $alpha = '';
-          $modulo;
+          $modulo = 0;
           while ($dividend > 0){
             $modulo = ($dividend - 1) % 62;
             $alpha = $alphabet[$modulo] . $alpha;

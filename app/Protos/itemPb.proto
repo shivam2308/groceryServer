@@ -26,8 +26,8 @@ message ItemPb {
     EntityPb dbInfo = 1;
     NamePb itemName = 2;
     ImagePb itemUrl = 3;
-    string quantity = 4;
-    int32 price = 5;
+    int32 quantity = 4;
+    float price = 5;
     ItemTypeEnum itemType = 6;
     AvailabilityStatusEnum availabilityStatus = 7;
     TimePb time = 8;
@@ -35,7 +35,7 @@ message ItemPb {
 message ItemPbRef {
     string id = 1;
     NamePb itemName =2;
-    int32 price = 3;
+    float price = 3;
 }
 message ItemSearchRequestPb {
     

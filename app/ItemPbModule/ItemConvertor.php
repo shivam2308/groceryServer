@@ -3,13 +3,13 @@
 namespace App\ItemPbModule;
 
 use App\Interfaces\IConvertor;
-use App\BaseCode\Strings;
 use App\ItemPbModule\ItemIndexers;
 use App\Protobuff\ItemPb;
 use App\EntityPbModule\EntityConvertor;
 use App\NamePbModule\NameConvertor;
 use App\ImagePbModule\ImageConvertor;
 use App\TimePbModule\TimeConvertor;
+use App\Protobuff\ItemPbRef;
 
 
 class ItemConvertor implements IConvertor {

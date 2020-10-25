@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+option php_namespace = "App\\Protobuff";
+option php_metadata_namespace = "App\\GPBMetadata";
+
+import "entityPb.proto";
+import "summaryPb.proto";
+import "itemPb.proto";
+import "customerPb.proto";
+
+
+enum DeliveryStatusEnum {
+    UNKNOWN_DELIVERY_STATUS = 0;
+    DELIVERED = 1;
+    PENDING = 2;
+    CLOSED = 3;
+}
+
+
+message BuyPb {
+    EntityPb dbInfo = 1;
+    string orderId = 2;
+    CustomerPbRef customerRef = 3;
+    ItemPbRef itemRef = 4;
+    int32 quantity = 5;
+    float price = 6;
+    DeliveryStatusEnum deliveryStatus = 7;
+}
+
+message BuyPbRef {
+    string id = 1;
+    string orderId =2;
+    float price = 3;
+}
+
+message BuySearchRequestPb {
+    
+}
+message BuySearchResponsePb {
+    SummaryPb summary = 1;
+    repeated BuyPb results = 2;
+}
+
+
+
