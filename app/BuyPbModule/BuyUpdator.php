@@ -29,11 +29,11 @@ class BuyUpdator implements IUpdator {
         if(Strings::notEmpty($pb->getDbInfo()->getId())){
             $pbArray = array_merge($pbArray,$this->m_entityUpdator->update($pb->getDbInfo()));
         }
-        if(Strings::notEmpty($pb->getOrder_id())){
-            $pbArray[BuyIndexers::getORDER_ID()] = $pb->getOrder_id();
+        if(Strings::notEmpty($pb->getOrderId())){
+            $pbArray[BuyIndexers::getORDER_ID()] = $pb->getOrderId();
         }
-        $pbArray = array_merge($pbArray, $this->m_customerUpdator->update($pb->getCustomerRef()));
-        $pbArray = array_merge($pbArray,$this->m_itemUpdator->update($pb->getItemRef()));
+        $pbArray = array_merge($pbArray, $this->m_customerUpdator->refUpdate($pb->getCustomerRef()));
+        $pbArray = array_merge($pbArray,$this->m_itemUpdator->refUpdate($pb->getItemRef()));
         if(($pb->getQuantity()) < 0){
             throw new Exception("Buy Quantity cannot be empty");
         }else{

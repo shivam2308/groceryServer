@@ -13,8 +13,18 @@ enum ItemTypeEnum {
     UNKNOWN_ITEM_TYPE = 0;
     VEGETABLES = 1;
     FRUITS = 2;
-    MILK = 3;
-    BEVERAGES = 4;
+    KIRANA = 3;
+    DAIRY =4;
+}
+
+
+enum ItemQuantityTypeEnum {
+    UNKNOWN_ITEM_QUANTITY_TYPE = 0;
+    KILO_GRAMS = 1;
+    GRAMS = 2;
+    PIECE = 3;
+    LITRE =4;
+
 }
 enum AvailabilityStatusEnum {
     UNKNOWN_AVAILABILITY_STATUS = 0;
@@ -30,7 +40,8 @@ message ItemPb {
     float price = 5;
     ItemTypeEnum itemType = 6;
     AvailabilityStatusEnum availabilityStatus = 7;
-    TimePb time = 8;
+    ItemQuantityTypeEnum quantityType = 8;
+    TimePb time = 9;
 }
 message ItemPbRef {
     string id = 1;

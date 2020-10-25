@@ -7,37 +7,37 @@ namespace App\Protobuff;
 use UnexpectedValueException;
 
 /**
- * Protobuf type <code>ItemTypeEnum</code>
+ * Protobuf type <code>ItemQuantityTypeEnum</code>
  */
-class ItemTypeEnum
+class ItemQuantityTypeEnum
 {
     /**
-     * Generated from protobuf enum <code>UNKNOWN_ITEM_TYPE = 0;</code>
+     * Generated from protobuf enum <code>UNKNOWN_ITEM_QUANTITY_TYPE = 0;</code>
      */
-    const UNKNOWN_ITEM_TYPE = 0;
+    const UNKNOWN_ITEM_QUANTITY_TYPE = 0;
     /**
-     * Generated from protobuf enum <code>VEGETABLES = 1;</code>
+     * Generated from protobuf enum <code>KILO_GRAMS = 1;</code>
      */
-    const VEGETABLES = 1;
+    const KILO_GRAMS = 1;
     /**
-     * Generated from protobuf enum <code>FRUITS = 2;</code>
+     * Generated from protobuf enum <code>GRAMS = 2;</code>
      */
-    const FRUITS = 2;
+    const GRAMS = 2;
     /**
-     * Generated from protobuf enum <code>KIRANA = 3;</code>
+     * Generated from protobuf enum <code>PIECE = 3;</code>
      */
-    const KIRANA = 3;
+    const PIECE = 3;
     /**
-     * Generated from protobuf enum <code>DAIRY = 4;</code>
+     * Generated from protobuf enum <code>LITRE = 4;</code>
      */
-    const DAIRY = 4;
+    const LITRE = 4;
 
     private static $valueToName = [
-        self::UNKNOWN_ITEM_TYPE => 'UNKNOWN_ITEM_TYPE',
-        self::VEGETABLES => 'VEGETABLES',
-        self::FRUITS => 'FRUITS',
-        self::KIRANA => 'KIRANA',
-        self::DAIRY => 'DAIRY',
+        self::UNKNOWN_ITEM_QUANTITY_TYPE => 'UNKNOWN_ITEM_QUANTITY_TYPE',
+        self::KILO_GRAMS => 'KILO_GRAMS',
+        self::GRAMS => 'GRAMS',
+        self::PIECE => 'PIECE',
+        self::LITRE => 'LITRE',
     ];
 
     public static function name($value)

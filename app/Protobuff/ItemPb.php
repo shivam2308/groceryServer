@@ -42,7 +42,11 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      */
     protected $availabilityStatus = 0;
     /**
-     * Generated from protobuf field <code>.TimePb time = 8;</code>
+     * Generated from protobuf field <code>.ItemQuantityTypeEnum quantityType = 8;</code>
+     */
+    protected $quantityType = 0;
+    /**
+     * Generated from protobuf field <code>.TimePb time = 9;</code>
      */
     protected $time = null;
 
@@ -59,6 +63,7 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      *     @type float $price
      *     @type int $itemType
      *     @type int $availabilityStatus
+     *     @type int $quantityType
      *     @type \App\Protobuff\TimePb $time
      * }
      */
@@ -252,7 +257,29 @@ class ItemPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.TimePb time = 8;</code>
+     * Generated from protobuf field <code>.ItemQuantityTypeEnum quantityType = 8;</code>
+     * @return int
+     */
+    public function getQuantityType()
+    {
+        return $this->quantityType;
+    }
+
+    /**
+     * Generated from protobuf field <code>.ItemQuantityTypeEnum quantityType = 8;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setQuantityType($var)
+    {
+        GPBUtil::checkEnum($var, \App\Protobuff\ItemQuantityTypeEnum::class);
+        $this->quantityType = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.TimePb time = 9;</code>
      * @return \App\Protobuff\TimePb
      */
     public function getTime()
@@ -271,7 +298,7 @@ class ItemPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.TimePb time = 8;</code>
+     * Generated from protobuf field <code>.TimePb time = 9;</code>
      * @param \App\Protobuff\TimePb $var
      * @return $this
      */
