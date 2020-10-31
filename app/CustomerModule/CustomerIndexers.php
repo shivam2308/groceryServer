@@ -9,6 +9,7 @@ class CustomerIndexers extends Enum
 {
     const PRIVILEGE = 'PRIVILEGE';
     const CUSTOMER_REF_ID = 'CUSTOMER_REF_ID';
+    const CUSTOMER_REF = 'CUSTOMER_REF';
 
     public static function getPRIVILEGE()
     {
@@ -18,5 +19,9 @@ class CustomerIndexers extends Enum
     public static function getCUSTOMER_REF_ID()
     {
         return Enums::value(CustomerIndexers::fromValue(CustomerIndexers::CUSTOMER_REF_ID));
+    }
+    public static function getCUSTOMER_REF()
+    {
+        return Enums::value(CustomerIndexers::fromValue(CustomerIndexers::CUSTOMER_REF));
     }
 }

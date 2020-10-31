@@ -6,6 +6,7 @@ use App\Interfaces\IUpdator;
 use App\EntityPbModule\EntityUpdator;
 use App\NamePbModule\NameUpdator;
 use App\AddressPbModule\AddressUpdator;
+use App\BaseCode\BaseModule\BaseRefConvertorAndUpdator;
 use App\ContactDetailPbModule\ContactDetailUpdator;
 use App\ImagePbModule\ImageUpdator;
 use App\TimePbModule\TimeUpdator;
@@ -23,6 +24,7 @@ class CustomerUpdator implements IUpdator
     private $m_contactDeatilsUpdator;
     private $m_imageUpdator;
     private $m_timeUpdator;
+    private $m_refUpdator;
 
     public function __construct()
     {
@@ -32,6 +34,7 @@ class CustomerUpdator implements IUpdator
         $this->m_contactDeatilsUpdator = new ContactDetailUpdator();
         $this->m_imageUpdator = new ImageUpdator();
         $this->m_timeUpdator = new TimeUpdator();
+        $this->m_refUpdator = new BaseRefConvertorAndUpdator();
     }
 
     public function update($pb)
@@ -61,10 +64,8 @@ class CustomerUpdator implements IUpdator
     {
         $array = array();
         if (Strings::notEmpty($pb->getId())) {
-            $array[CustomerIndexers::getCUSTOMER_REF_ID()] = $pb->getId();
+            $array[CustomerIndexers::getCUSTOMER_REF()] = $this->m_refUpdator->update($pb);
         }
-        $array = array_merge($array, $this->m_nameUpdator->update($pb->getName()));
-        $array = array_merge($array, $this->m_contactDeatilsUpdator->update($pb->getContact()));
         return $array;
     }
 }

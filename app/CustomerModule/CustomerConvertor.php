@@ -6,6 +6,7 @@ use App\Interfaces\IConvertor;
 use App\EntityPbModule\EntityConvertor;
 use App\NamePbModule\NameConvertor;
 use App\AddressPbModule\AddressConvertor;
+use App\BaseCode\BaseModule\BaseRefConvertorAndUpdator;
 use App\BaseCode\Strings;
 use App\ContactDetailPbModule\ContactDetailConvertor;
 use App\ImagePbModule\ImageConvertor;
@@ -26,6 +27,7 @@ class CustomerConvertor implements IConvertor
     private $m_contactConvertor;
     private $m_imageConvertor;
     private $m_timeConvertor;
+    private $m_refConvertor;
 
 
     public function __construct()
@@ -36,6 +38,7 @@ class CustomerConvertor implements IConvertor
         $this->m_contactConvertor = new ContactDetailConvertor();
         $this->m_imageConvertor = new ImageConvertor();
         $this->m_timeConvertor = new TimeConvertor();
+        $this->m_refConvertor = new BaseRefConvertorAndUpdator();
     }
 
     public function convert($array)
@@ -57,9 +60,6 @@ class CustomerConvertor implements IConvertor
     public function refConvert($array)
     {
         $customerRef = new CustomerPbRef();
-        $customerRef->setId($array[CustomerIndexers::getCUSTOMER_REF_ID()]);
-        $customerRef->setName($this->m_nameConvertor->convert($array));
-        $customerRef->setContact($this->m_contactConvertor->convert($array));
-        return $customerRef;
+        return $this->m_refConvertor->convert($array[CustomerIndexers::getCUSTOMER_REF()], $customerRef);
     }
 }

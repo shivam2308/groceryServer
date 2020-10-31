@@ -46,11 +46,11 @@ class UserTest extends TestCase
         //$this->pbJsonConvert();
         //$this->myurldecode();
         //$this->testCache();
-        $this->createItem();
+        //$this->createItem();
         //$this->createCustomer();
 
         //$this->createDeliveryMan();
-        //$this->createLogin();
+        $this->createLogin();
         //$this->createItems();
     }
     public function createItems()
@@ -70,7 +70,7 @@ class UserTest extends TestCase
         $pb->getCustomerRef()->getContact()->getEmail()->setDomainPart("gmail.com");
         $pb->getCustomerRef()->getContact()->getMobile()->setMobileNo("9621019232");
         $pb->getTime()->setTimezone(TimeZoneEnum::IST);
-        echo JsonConvertor::json($service->create($pb));
+        echo JsonConvertor::json($service->get("mK"));
     }
 
     // public function testCache(){
