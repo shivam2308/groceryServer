@@ -26,9 +26,9 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      */
     protected $itemUrl = null;
     /**
-     * Generated from protobuf field <code>string quantity = 4;</code>
+     * Generated from protobuf field <code>int32 quantity = 4;</code>
      */
-    protected $quantity = '';
+    protected $quantity = 0;
     /**
      * Generated from protobuf field <code>float price = 5;</code>
      */
@@ -59,7 +59,7 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      *     @type \App\Protobuff\EntityPb $dbInfo
      *     @type \App\Protobuff\NamePb $itemName
      *     @type \App\Protobuff\ImagePb $itemUrl
-     *     @type string $quantity
+     *     @type int $quantity
      *     @type float $price
      *     @type int $itemType
      *     @type int $availabilityStatus
@@ -78,7 +78,17 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      */
     public function getDbInfo()
     {
-        return $this->dbInfo;
+        return isset($this->dbInfo) ? $this->dbInfo : null;
+    }
+
+    public function hasDbInfo()
+    {
+        return isset($this->dbInfo);
+    }
+
+    public function clearDbInfo()
+    {
+        unset($this->dbInfo);
     }
 
     /**
@@ -100,7 +110,17 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      */
     public function getItemName()
     {
-        return $this->itemName;
+        return isset($this->itemName) ? $this->itemName : null;
+    }
+
+    public function hasItemName()
+    {
+        return isset($this->itemName);
+    }
+
+    public function clearItemName()
+    {
+        unset($this->itemName);
     }
 
     /**
@@ -122,7 +142,17 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      */
     public function getItemUrl()
     {
-        return $this->itemUrl;
+        return isset($this->itemUrl) ? $this->itemUrl : null;
+    }
+
+    public function hasItemUrl()
+    {
+        return isset($this->itemUrl);
+    }
+
+    public function clearItemUrl()
+    {
+        unset($this->itemUrl);
     }
 
     /**
@@ -139,8 +169,8 @@ class ItemPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string quantity = 4;</code>
-     * @return string
+     * Generated from protobuf field <code>int32 quantity = 4;</code>
+     * @return int
      */
     public function getQuantity()
     {
@@ -148,13 +178,13 @@ class ItemPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string quantity = 4;</code>
-     * @param string $var
+     * Generated from protobuf field <code>int32 quantity = 4;</code>
+     * @param int $var
      * @return $this
      */
     public function setQuantity($var)
     {
-        GPBUtil::checkString($var, True);
+        GPBUtil::checkInt32($var);
         $this->quantity = $var;
 
         return $this;
@@ -254,7 +284,17 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      */
     public function getTime()
     {
-        return $this->time;
+        return isset($this->time) ? $this->time : null;
+    }
+
+    public function hasTime()
+    {
+        return isset($this->time);
+    }
+
+    public function clearTime()
+    {
+        unset($this->time);
     }
 
     /**

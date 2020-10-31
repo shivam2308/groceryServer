@@ -70,7 +70,17 @@ class CustomerPbRef extends \Google\Protobuf\Internal\Message
      */
     public function getName()
     {
-        return $this->name;
+        return isset($this->name) ? $this->name : null;
+    }
+
+    public function hasName()
+    {
+        return isset($this->name);
+    }
+
+    public function clearName()
+    {
+        unset($this->name);
     }
 
     /**
@@ -92,7 +102,17 @@ class CustomerPbRef extends \Google\Protobuf\Internal\Message
      */
     public function getContact()
     {
-        return $this->contact;
+        return isset($this->contact) ? $this->contact : null;
+    }
+
+    public function hasContact()
+    {
+        return isset($this->contact);
+    }
+
+    public function clearContact()
+    {
+        unset($this->contact);
     }
 
     /**

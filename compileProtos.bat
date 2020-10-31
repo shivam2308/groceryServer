@@ -15,5 +15,6 @@ protoc --proto_path=. --php_out=../.. ./customerPb.proto
 protoc --proto_path=. --php_out=../.. ./itemPb.proto
 protoc --proto_path=. --php_out=../.. ./deliveryManPb.proto
 protoc --proto_path=. --php_out=../.. ./loginPb.proto
+protoc --proto_path=. --php_out=../.. ./buyPb.proto
 cd ..
 cd ..

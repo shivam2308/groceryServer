@@ -3,7 +3,6 @@
 namespace App\ItemPbModule;
 
 use App\Interfaces\IConvertor;
-use App\BaseCode\Strings;
 use App\ItemPbModule\ItemIndexers;
 use App\Protobuff\ItemPb;
 use App\EntityPbModule\EntityConvertor;
@@ -13,6 +12,8 @@ use App\Protobuff\AvailabilityStatusEnum;
 use App\Protobuff\ItemQuantityTypeEnum;
 use App\Protobuff\ItemTypeEnum;
 use App\TimePbModule\TimeConvertor;
+use App\Protobuff\ItemPbRef;
+use App\BaseCode\Strings;
 
 
 class ItemConvertor implements IConvertor
@@ -54,5 +55,10 @@ class ItemConvertor implements IConvertor
 
     public function refConvert($array)
     {
+        $itemRef = new ItemPbRef();
+        $itemRef->setId($array[ItemIndexers::getITEM_REF_ID()]);
+        $itemRef->setItemName($this->m_nameConvertor->convert($array));
+        $itemRef->setPrice($array[ItemIndexers::getPRICE()]);
+        return $itemRef;
     }
 }

@@ -76,6 +76,13 @@ class ItemUpdator implements IUpdator
     public function refUpdate($pb)
     {
         $pbArray = array();
+        if (Strings::notEmpty($pb->getId())) {
+            $pbArray[ItemIndexers::getITEM_REF_ID()] = $pb->getId();
+        }
+        $pbArray[ItemIndexers::getITEM_FIRSTNAME()] = $pb->getItemName()->getFirstName();
+        $pbArray[ItemIndexers::getITEM_LASTNAME()] = $pb->getItemName()->getLastName();
+        $pbArray[ItemIndexers::getITEM_CANONICALNAME()] = $pb->getItemName()->getCanonicalName();
+        $pbArray[ItemIndexers::getPRICE()] = $pb->getPrice();
         return $pbArray;
     }
 }
