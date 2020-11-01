@@ -14,6 +14,7 @@ use App\Protobuff\ItemTypeEnum;
 use App\TimePbModule\TimeConvertor;
 use App\Protobuff\ItemPbRef;
 use App\BaseCode\Strings;
+use App\BaseCode\BaseModule\BaseRefConvertorAndUpdator;
 
 
 class ItemConvertor implements IConvertor
@@ -23,6 +24,7 @@ class ItemConvertor implements IConvertor
     private $m_nameConvertor;
     private $m_imageConvertor;
     private $m_timeConvertor;
+    private $m_refConvertor;
 
     public function __construct()
     {
@@ -30,6 +32,7 @@ class ItemConvertor implements IConvertor
         $this->m_nameConvertor = new NameConvertor();
         $this->m_imageConvertor = new ImageConvertor();
         $this->m_timeConvertor = new TimeConvertor();
+        $this->m_refConvertor = new BaseRefConvertorAndUpdator();
     }
 
     public function convert($array)
@@ -56,9 +59,6 @@ class ItemConvertor implements IConvertor
     public function refConvert($array)
     {
         $itemRef = new ItemPbRef();
-        $itemRef->setId($array[ItemIndexers::getITEM_REF_ID()]);
-        $itemRef->setItemName($this->m_nameConvertor->convert($array));
-        $itemRef->setPrice($array[ItemIndexers::getPRICE()]);
-        return $itemRef;
+        return $this->m_refConvertor->convert($array[ItemIndexers::getITEM_REF()], $itemRef);
     }
 }

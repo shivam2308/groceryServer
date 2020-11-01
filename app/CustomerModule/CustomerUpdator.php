@@ -64,6 +64,7 @@ class CustomerUpdator implements IUpdator
     {
         $array = array();
         if (Strings::notEmpty($pb->getId())) {
+            $array[CustomerIndexers::getCUSTOMER_REF_ID()] = $pb->getId();
             $array[CustomerIndexers::getCUSTOMER_REF()] = $this->m_refUpdator->update($pb);
         }
         return $array;

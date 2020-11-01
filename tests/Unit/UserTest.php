@@ -52,14 +52,11 @@ class UserTest extends TestCase
         //$this->myurldecode();
         //$this->testCache();
         //$this->createItem();
-<<<<<<< HEAD
-=======
         $this->createBuy();
->>>>>>> masterVicky
         //$this->createCustomer();
 
         //$this->createDeliveryMan();
-        $this->createLogin();
+        //$this->createLogin();
         //$this->createItems();
     }
     public function createItems()
@@ -176,12 +173,29 @@ class UserTest extends TestCase
         $pb = new BuyPbDefaultProvider();
         $service = new BuyService();
         $buyPb = $pb->getDefaultPb();
-        $buyPb->setOrderId('firstbuy123');
-        $buyPb->setQuantity(1);
-        $buyPb->setPrice(30.0);
-        $buyPb->setDeliveryStatus(DeliveryStatusEnum::DELIVERED);
-        //$service->get('n3');
+        //$buyPb->setOrderId('firstbuy123');
+        $buyPb->getCustomerRef()->setId('cus123');
+        $buyPb->getCustomerRef()->getName()->setFirstName('f1');
+        $buyPb->getCustomerRef()->getName()->setLastName('f1');
+        $buyPb->getCustomerRef()->getName()->setCanonicalName('c1');
+        $buyPb->getItemRef()->setId('item123');
+        $buyPb->getItemRef()->getItemName()->setCanonicalName('item can name');
+        $buyPb->getItemRef()->setPrice(35.0);
+        $buyPb->setQuantity(2);
+        //$buyPb->setPrice(30.0);
+        //$buyPb->setDeliveryStatus(DeliveryStatusEnum::DELIVERED);
+        $buyPb->getTime()->setTimezone(TimeZoneEnum::IST);
+        //echo JsonConvertor::json ($service->get('mU'));
         //echo ($service->get('n3')->getItemUrl()->getUrl());
         $service->create($buyPb);
     }
 }
+
+
+
+
+
+
+
+
+

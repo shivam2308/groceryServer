@@ -12,9 +12,7 @@ class ItemIndexers extends Enum
     CONST ITEMTYPE = 'ITEMTYPE';
     CONST AVAILABILITYSTATUS = 'AVAILABILITYSTATUS';
     const ITEM_REF_ID = 'ITEM_REF_ID';
-    const ITEM_FIRSTNAME = 'ITEM_FIRSTNAME';
-    const ITEM_LASTNAME = 'ITEM_LASTNAME';
-    const ITEM_CANONICALNAME = 'ITEM_CANONICALNAME';
+    const ITEM_REF = 'ITEM_REF';
     const ITEM_QYANTITY_TYPE = 'ITEM_QYANTITY_TYPE';
 
 
@@ -38,17 +36,9 @@ class ItemIndexers extends Enum
     {
         return Enums::value(ItemIndexers::fromValue(ItemIndexers::ITEM_REF_ID));
     }
-    public static function getITEM_FIRSTNAME()
+    public static function getITEM_REF()
     {
-        return Enums::value(ItemIndexers::fromValue(ItemIndexers::ITEM_FIRSTNAME));
-    }
-    public static function getITEM_LASTNAME()
-    {
-        return Enums::value(ItemIndexers::fromValue(ItemIndexers::ITEM_LASTNAME));
-    }
-    public static function getITEM_CANONICALNAME()
-    {
-        return Enums::value(ItemIndexers::fromValue(ItemIndexers::ITEM_CANONICALNAME));
+        return Enums::value(ItemIndexers::fromValue(ItemIndexers::ITEM_REF));
     }
     public static function getITEM_QYANTITY_TYPE()
     {
