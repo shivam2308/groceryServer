@@ -27,7 +27,7 @@ message CustomerPb {
     AddressPb address =4;
     ContactDetailPb contact = 5;
     GenderEnum gender =6;
-    ImagePb profileImage = 7;
+    ImageRefPb profileImage = 7;
     TimePb time = 8;
 }
 

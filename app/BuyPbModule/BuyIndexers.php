@@ -11,6 +11,7 @@ class BuyIndexers extends Enum{
     CONST PRICE = 'PRICE';
     CONST DELIVERY_STATUS = 'DELIVERY_STATUS';
     const BUY_REF_ID = 'BUY_REF_ID';
+    const BUY_REF = 'BUY_REF';
 
 
     public static function getORDER_ID(){
@@ -28,6 +29,10 @@ class BuyIndexers extends Enum{
     public static function getBUY_REF_ID()
     {
         return Enums::value(BuyIndexers::fromValue(BuyIndexers::BUY_REF_ID));
+    }
+    public static function getBUY_REF()
+    {
+        return Enums::value(BuyIndexers::fromValue(BuyIndexers::BUY_REF));
     }
 }
 

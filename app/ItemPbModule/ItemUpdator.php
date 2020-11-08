@@ -13,6 +13,7 @@ use App\TimePbModule\TimeUpdator;
 use App\Protobuff\AvailabilityStatusEnum;
 use App\Protobuff\ItemQuantityTypeEnum;
 use App\Protobuff\ItemTypeEnum;
+use App\BaseCode\BaseModule\BaseRefConvertorAndUpdator;
 
 class ItemUpdator implements IUpdator
 {
@@ -21,6 +22,7 @@ class ItemUpdator implements IUpdator
     private $m_nameUpdator;
     private $m_imageUpdator;
     private $m_timeUpdator;
+    private $m_refUpdator;
 
     public function __construct()
     {
@@ -28,6 +30,7 @@ class ItemUpdator implements IUpdator
         $this->m_nameUpdator = new NameUpdator();
         $this->m_imageUpdator = new ImageUpdator();
         $this->m_timeUpdator = new TimeUpdator();
+        $this->m_refUpdator = new BaseRefConvertorAndUpdator();
     }
 
     public function update($pb)
@@ -38,8 +41,8 @@ class ItemUpdator implements IUpdator
         }
         $pbArray = array_merge($pbArray, $this->m_timeUpdator->update($pb->getTime()));
         $pbArray = array_merge($pbArray, $this->m_nameUpdator->update($pb->getItemName()));
-        if (Strings::notEmpty($pb->getItemUrl()->getUrl())) {
-            $pbArray = array_merge($pbArray, $this->m_imageUpdator->update($pb->getItemUrl()));
+        if (Strings::notEmpty($pb->getItemImage()->getId())) {
+            $pbArray = array_merge($pbArray, $this->m_imageUpdator->refupdate($pb->getItemImage()));
         }
         if (($pb->getQuantity()) < 0) {
             throw new Exception("Item Quantity cannot be empty");
@@ -78,11 +81,8 @@ class ItemUpdator implements IUpdator
         $pbArray = array();
         if (Strings::notEmpty($pb->getId())) {
             $pbArray[ItemIndexers::getITEM_REF_ID()] = $pb->getId();
+            $pbArray[ItemIndexers::getITEM_REF()] = $this->m_refUpdator->update($pb);
         }
-        $pbArray[ItemIndexers::getITEM_FIRSTNAME()] = $pb->getItemName()->getFirstName();
-        $pbArray[ItemIndexers::getITEM_LASTNAME()] = $pb->getItemName()->getLastName();
-        $pbArray[ItemIndexers::getITEM_CANONICALNAME()] = $pb->getItemName()->getCanonicalName();
-        $pbArray[ItemIndexers::getPRICE()] = $pb->getPrice();
         return $pbArray;
     }
 }

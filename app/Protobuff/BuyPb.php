@@ -45,6 +45,10 @@ class BuyPb extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.DeliveryStatusEnum deliveryStatus = 8;</code>
      */
     protected $deliveryStatus = 0;
+    /**
+     * Generated from protobuf field <code>.TimePb time = 9;</code>
+     */
+    protected $time = null;
 
     /**
      * Constructor.
@@ -60,6 +64,7 @@ class BuyPb extends \Google\Protobuf\Internal\Message
      *     @type int $quantity
      *     @type float $price
      *     @type int $deliveryStatus
+     *     @type \App\Protobuff\TimePb $time
      * }
      */
     public function __construct($data = NULL) {
@@ -239,6 +244,28 @@ class BuyPb extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkEnum($var, \App\Protobuff\DeliveryStatusEnum::class);
         $this->deliveryStatus = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.TimePb time = 9;</code>
+     * @return \App\Protobuff\TimePb
+     */
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    /**
+     * Generated from protobuf field <code>.TimePb time = 9;</code>
+     * @param \App\Protobuff\TimePb $var
+     * @return $this
+     */
+    public function setTime($var)
+    {
+        GPBUtil::checkMessage($var, \App\Protobuff\TimePb::class);
+        $this->time = $var;
 
         return $this;
     }

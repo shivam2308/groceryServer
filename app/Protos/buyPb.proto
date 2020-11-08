@@ -8,6 +8,8 @@ import "summaryPb.proto";
 import "itemPb.proto";
 import "customerPb.proto";
 import "deliveryManPb.proto";
+import "timePb.proto";
+
 
 
 enum DeliveryStatusEnum {
@@ -27,6 +29,7 @@ message BuyPb {
     int32 quantity = 6;
     float price = 7;
     DeliveryStatusEnum deliveryStatus = 8;
+    TimePb time = 9;
 }
 
 message BuyPbRef {

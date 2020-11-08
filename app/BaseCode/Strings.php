@@ -27,6 +27,7 @@ class Strings
     {
         return strcmp($str1, $str2);
     }
+
     public static function notEqual($str1, $str2)
     {
         return !Strings::areEqual($str1, $str2);
@@ -36,5 +37,10 @@ class Strings
     {
         return response(JsonConvertor::json($response), 200)
             ->header('Content-Type', 'application/json');
+    }
+
+    public static function addElementToArray($array, $key, $value)
+    {
+        $array[$key] = $value;
     }
 }

@@ -2,11 +2,13 @@
 
 namespace App\DeliveryManPbModule;
 
+
 use App\Interfaces\IConvertor;
 use App\EntityPbModule\EntityConvertor;
 use App\NamePbModule\NameConvertor;
 use App\ContactDetailPbModule\ContactDetailConvertor;
 use App\ImagePbModule\ImageConvertor;
+use App\Protobuff\DeliveryManRefPb;
 use App\TimePbModule\TimeConvertor;
 use App\Protobuff\DeliveryManPb;
 
@@ -17,6 +19,7 @@ class DeliveryManConvertor implements IConvertor{
     private $m_contactConvertor;
     private $m_imageConvertor;
     private $m_timeConvertor;
+    private $m_refConvertor;
 
 
     public function __construct(){
@@ -38,6 +41,11 @@ class DeliveryManConvertor implements IConvertor{
         return $deliveryManPb;
     }
 
+    public function refConvert($array)
+    {
+        $deliveryManRef = new DeliveryManRefPb();
+        return $this->m_refConvertor->convert($array[DeliveryManIndexers::getDELIVERY_MAN_REF()], $deliveryManRef);
+    }
 }
 
 ?>

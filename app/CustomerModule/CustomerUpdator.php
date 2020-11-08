@@ -55,7 +55,7 @@ class CustomerUpdator implements IUpdator
         } else {
             $array[CustomerIndexers::getPRIVILEGE()] = PrivilegeTypeEnum::name($pb->getPrivilege());
         }
-        $array = array_merge($array, $this->m_imageUpdator->update($pb->getProfileImage()));
+        $array = array_merge($array, $this->m_imageUpdator->refupdate($pb->getProfileImage()));
         $array = array_merge($array, $this->m_timeUpdator->update($pb->getTime()));
         return $array;
     }
