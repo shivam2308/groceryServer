@@ -78,17 +78,7 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      */
     public function getDbInfo()
     {
-        return isset($this->dbInfo) ? $this->dbInfo : null;
-    }
-
-    public function hasDbInfo()
-    {
-        return isset($this->dbInfo);
-    }
-
-    public function clearDbInfo()
-    {
-        unset($this->dbInfo);
+        return $this->dbInfo;
     }
 
     /**
@@ -110,17 +100,7 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      */
     public function getItemName()
     {
-        return isset($this->itemName) ? $this->itemName : null;
-    }
-
-    public function hasItemName()
-    {
-        return isset($this->itemName);
-    }
-
-    public function clearItemName()
-    {
-        unset($this->itemName);
+        return $this->itemName;
     }
 
     /**
@@ -142,17 +122,7 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      */
     public function getItemUrl()
     {
-        return isset($this->itemUrl) ? $this->itemUrl : null;
-    }
-
-    public function hasItemUrl()
-    {
-        return isset($this->itemUrl);
-    }
-
-    public function clearItemUrl()
-    {
-        unset($this->itemUrl);
+        return $this->itemUrl;
     }
 
     /**
@@ -284,17 +254,7 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      */
     public function getTime()
     {
-        return isset($this->time) ? $this->time : null;
-    }
-
-    public function hasTime()
-    {
-        return isset($this->time);
-    }
-
-    public function clearTime()
-    {
-        unset($this->time);
+        return $this->time;
     }
 
     /**

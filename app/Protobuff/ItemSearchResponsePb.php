@@ -43,17 +43,7 @@ class ItemSearchResponsePb extends \Google\Protobuf\Internal\Message
      */
     public function getSummary()
     {
-        return isset($this->summary) ? $this->summary : null;
-    }
-
-    public function hasSummary()
-    {
-        return isset($this->summary);
-    }
-
-    public function clearSummary()
-    {
-        unset($this->summary);
+        return $this->summary;
     }
 
     /**

@@ -43,17 +43,7 @@ class ContactDetailPb extends \Google\Protobuf\Internal\Message
      */
     public function getEmail()
     {
-        return isset($this->email) ? $this->email : null;
-    }
-
-    public function hasEmail()
-    {
-        return isset($this->email);
-    }
-
-    public function clearEmail()
-    {
-        unset($this->email);
+        return $this->email;
     }
 
     /**
@@ -75,17 +65,7 @@ class ContactDetailPb extends \Google\Protobuf\Internal\Message
      */
     public function getMobile()
     {
-        return isset($this->mobile) ? $this->mobile : null;
-    }
-
-    public function hasMobile()
-    {
-        return isset($this->mobile);
-    }
-
-    public function clearMobile()
-    {
-        unset($this->mobile);
+        return $this->mobile;
     }
 
     /**

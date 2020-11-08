@@ -14,9 +14,25 @@ use Google\Protobuf\Internal\GPBUtil;
 class ImagePb extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string url = 1;</code>
+     * Generated from protobuf field <code>.EntityPb dbInfo = 1;</code>
+     */
+    protected $dbInfo = null;
+    /**
+     * Generated from protobuf field <code>string id = 2;</code>
+     */
+    protected $id = '';
+    /**
+     * Generated from protobuf field <code>string url = 3;</code>
      */
     protected $url = '';
+    /**
+     * Generated from protobuf field <code>.ImageTypeEnum imageType = 4;</code>
+     */
+    protected $imageType = 0;
+    /**
+     * Generated from protobuf field <code>.ImageExtensionTypeEnum extension = 5;</code>
+     */
+    protected $extension = 0;
 
     /**
      * Constructor.
@@ -24,7 +40,11 @@ class ImagePb extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
+     *     @type \App\Protobuff\EntityPb $dbInfo
+     *     @type string $id
      *     @type string $url
+     *     @type int $imageType
+     *     @type int $extension
      * }
      */
     public function __construct($data = NULL) {
@@ -33,7 +53,51 @@ class ImagePb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string url = 1;</code>
+     * Generated from protobuf field <code>.EntityPb dbInfo = 1;</code>
+     * @return \App\Protobuff\EntityPb
+     */
+    public function getDbInfo()
+    {
+        return $this->dbInfo;
+    }
+
+    /**
+     * Generated from protobuf field <code>.EntityPb dbInfo = 1;</code>
+     * @param \App\Protobuff\EntityPb $var
+     * @return $this
+     */
+    public function setDbInfo($var)
+    {
+        GPBUtil::checkMessage($var, \App\Protobuff\EntityPb::class);
+        $this->dbInfo = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string id = 2;</code>
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string id = 2;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string url = 3;</code>
      * @return string
      */
     public function getUrl()
@@ -42,7 +106,7 @@ class ImagePb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string url = 1;</code>
+     * Generated from protobuf field <code>string url = 3;</code>
      * @param string $var
      * @return $this
      */
@@ -50,6 +114,50 @@ class ImagePb extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->url = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.ImageTypeEnum imageType = 4;</code>
+     * @return int
+     */
+    public function getImageType()
+    {
+        return $this->imageType;
+    }
+
+    /**
+     * Generated from protobuf field <code>.ImageTypeEnum imageType = 4;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setImageType($var)
+    {
+        GPBUtil::checkEnum($var, \App\Protobuff\ImageTypeEnum::class);
+        $this->imageType = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.ImageExtensionTypeEnum extension = 5;</code>
+     * @return int
+     */
+    public function getExtension()
+    {
+        return $this->extension;
+    }
+
+    /**
+     * Generated from protobuf field <code>.ImageExtensionTypeEnum extension = 5;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setExtension($var)
+    {
+        GPBUtil::checkEnum($var, \App\Protobuff\ImageExtensionTypeEnum::class);
+        $this->extension = $var;
 
         return $this;
     }

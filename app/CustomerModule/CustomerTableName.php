@@ -1,14 +1,14 @@
 <?php
 
-namespace App\LoginPbModule;
+namespace App\CustomerModule;
 
 use App\Interfaces\ITableName;
 
-class LoginTableName implements ITableName
+class CustomerTableName implements ITableName
 {
 
     public static function getTableName()
     {
-        return "LOGIN";
+        return "CUSTOMER";
     }
 }

@@ -46,4 +46,9 @@ class DeliveryManUpdator implements IUpdator
         $array = array_merge($array, $this->m_timeUpdator->update($pb->getTime()));
         return $array;
     }
+
+    public function refUpdate($pb)
+    {
+
+    }
 }

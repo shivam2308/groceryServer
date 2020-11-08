@@ -52,10 +52,7 @@ class UserTest extends TestCase
         //$this->myurldecode();
         //$this->testCache();
         //$this->createItem();
-<<<<<<< HEAD
-=======
         $this->createBuy();
->>>>>>> masterVicky
         //$this->createCustomer();
 
         //$this->createDeliveryMan();

@@ -48,17 +48,7 @@ class LoginPb extends \Google\Protobuf\Internal\Message
      */
     public function getDbInfo()
     {
-        return isset($this->dbInfo) ? $this->dbInfo : null;
-    }
-
-    public function hasDbInfo()
-    {
-        return isset($this->dbInfo);
-    }
-
-    public function clearDbInfo()
-    {
-        unset($this->dbInfo);
+        return $this->dbInfo;
     }
 
     /**
@@ -80,17 +70,7 @@ class LoginPb extends \Google\Protobuf\Internal\Message
      */
     public function getCustomerRef()
     {
-        return isset($this->customerRef) ? $this->customerRef : null;
-    }
-
-    public function hasCustomerRef()
-    {
-        return isset($this->customerRef);
-    }
-
-    public function clearCustomerRef()
-    {
-        unset($this->customerRef);
+        return $this->customerRef;
     }
 
     /**
@@ -112,17 +92,7 @@ class LoginPb extends \Google\Protobuf\Internal\Message
      */
     public function getTime()
     {
-        return isset($this->time) ? $this->time : null;
-    }
-
-    public function hasTime()
-    {
-        return isset($this->time);
-    }
-
-    public function clearTime()
-    {
-        unset($this->time);
+        return $this->time;
     }
 
     /**
