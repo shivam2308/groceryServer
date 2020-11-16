@@ -34,4 +34,9 @@ class LoginPbDefaultProvider implements IDefaultPbProvider
         $pb->setTime(new TimePb());
         return $pb;
     }
+
+    public function getDefaultRefPb()
+    {
+        // TODO: Implement getDefaultRefPb() method.
+    }
 }

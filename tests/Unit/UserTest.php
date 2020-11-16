@@ -2,6 +2,8 @@
 
 namespace Tests\Unit;
 
+use App\RegistrationModule\RegistrationDefaultPbProvider;
+use App\RegistrationModule\RegistrationService;
 use PHPUnit\Framework\TestCase;
 use App\Database\DatabaseExecutor;
 use App\BaseCode\IntegerToAlphaConvertor;
@@ -52,12 +54,13 @@ class UserTest extends TestCase
         //$this->myurldecode();
         //$this->testCache();
         //$this->createItem();
-        $this->createBuy();
+       // $this->createBuy();
         //$this->createCustomer();
 
         //$this->createDeliveryMan();
         //$this->createLogin();
         //$this->createItems();
+        $this->createRegistration();
     }
     public function createItems()
     {
@@ -188,6 +191,31 @@ class UserTest extends TestCase
         //echo JsonConvertor::json ($service->get('mU'));
         //echo ($service->get('n3')->getItemUrl()->getUrl());
         $service->create($buyPb);
+    }
+
+    private function createRegistration()
+    {
+        $service = new RegistrationService();
+        $registrationPbprovider = new RegistrationDefaultPbProvider();
+        $registrationPb = $registrationPbprovider->getDefaultPb();
+        $customerPbprovider = new CustomerPbDefaultProvider();
+        $customerPb = $customerPbprovider->getDefaultPb();
+        $customerPb->getName()->setFirstName("Shubham");
+        $customerPb->getName()->setLastName("Tiwari");
+        $customerPb->setPrivilege(PrivilegeTypeEnum::ADMIN);
+        $customerPb->getContact()->getEmail()->setLocalPart("shubhamtiwaricr07");
+        $customerPb->getContact()->getEmail()->setDomainPart("gmail.com");
+        $customerPb->getContact()->getMobile()->setMobileNo("9621019232");
+        $customerPb->getAddress()->setHomeNo("12345");
+        $customerPb->getAddress()->setStreet("colony");
+        $customerPb->getAddress()->setLandMark("Water Tank");
+        $customerPb->getAddress()->setCity(CityEnum::LUCKNOW);
+        $customerPb->getAddress()->setState(StateEnum::UTTAR_PRADESH);
+        $customerPb->getAddress()->setPincode(226020);
+        $customerPb->setGender(GenderEnum::MALE);
+        $customerPb->getTime()->setTimezone(TimeZoneEnum::IST);
+        $registrationPb->setCustomer($customerPb);
+        echo JsonConvertor::json($service->create($registrationPb));
     }
 }
 

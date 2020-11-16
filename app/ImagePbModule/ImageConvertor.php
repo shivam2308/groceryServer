@@ -3,6 +3,7 @@
 namespace App\ImagePbModule;
 
 use App\BaseCode\BaseModule\BaseRefConvertorAndUpdator;
+use App\BaseCode\Strings;
 use App\CustomerModule\CustomerIndexers;
 use App\EntityPbModule\EntityConvertor;
 use App\Interfaces\IConvertor;
@@ -33,9 +34,14 @@ class ImageConvertor implements IConvertor
         $imagePb->setExtension(ImageExtensionTypeEnum::value($array[ImageIndexers::getIMAGE_EXTENSION()]));
         return $imagePb;
     }
+
     public function refConvert($array)
     {
         $imageRef = new ImageRefPb();
-        return $this->m_refConvertor->convert($array[ImageIndexers::getIMAGE_REF()], $imageRef);
+        if (Strings::notEmpty($array[ImageIndexers::getIMAGE_REF()])) {
+            return $this->m_refConvertor->convert($array[ImageIndexers::getIMAGE_REF()], $imageRef);
+        } else {
+            return $imageRef;
+        }
     }
 }

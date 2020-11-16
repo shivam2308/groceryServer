@@ -4,24 +4,22 @@
 namespace App\BaseCode;
 
 
-use App\Interfaces\IHandler;
-
 class TableIndexCreateHandler
 {
     public function createIndexes($table,$array){
         foreach ($array as $key => $value){
-            switch (Enums::key(BaseIndexer::fromKey($key))){
+            switch (Enums::key(BaseIndexer::fromKey($value))){
                 case BaseIndexer::STRING:
-                    $table->string($value)->nullable();
+                    $table->string($key)->nullable();
                     break;
                 case BaseIndexer::INT:
-                    $table->integer($value);
+                    $table->integer($key);
                     break;
                 case BaseIndexer::BIG_INT:
-                    $table->bigInteger($value);
+                    $table->bigInteger($key);
                     break;
                 case BaseIndexer::FLOAT:
-                    $table->float($value);
+                    $table->float($key);
                     break;
             }
         }

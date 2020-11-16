@@ -7,11 +7,16 @@ use App\Protobuff\CustomerSearchRequestPb;
 use App\Protobuff\PrivilegeTypeEnum;
 
 class CustomerSearchRequestPbDefaultProvider implements IDefaultPbProvider{
-    
+
     public function getDefaultPb(){
         $pb = new CustomerSearchRequestPb();
         $pb->setPrivilege(PrivilegeTypeEnum::UNKNOWN_PREVILAGE);
         return $pb;
+    }
+
+    public function getDefaultRefPb()
+    {
+        // TODO: Implement getDefaultRefPb() method.
     }
 }
 

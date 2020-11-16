@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\ServerConfig\ServerListner;
 use App\CustomerModule\CustomerRequestHandler;
 use App\Protobuff\RequestMethodEnum;
+use App\RegistrationModule\RegistrationRequestHandler;
 use App\BaseCode\Strings;
 use Illuminate\Http\Request;
 
@@ -36,4 +37,24 @@ Route::post('/customer', function (Request $request) {
 Route::put('/customer', function (Request $request) {
     $handler = new CustomerRequestHandler();
     return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::PUT);
+});
+
+Route::get('/login/{id}', function ($id) {
+    $handler = new \App\LoginPbModule\LoginRequestHandler();
+    return $handler->handle(urldecode($id), RequestMethodEnum::GET);
+});
+
+Route::post('/login', function (Request $request) {
+    $handler = new \App\LoginPbModule\LoginRequestHandler();
+    return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::POST);
+});
+
+Route::put('/login', function (Request $request) {
+    $handler = \App\LoginPbModule\LoginRequestHandler();
+    return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::PUT);
+});
+
+Route::post('/registration', function (Request $request) {
+    $handler = new RegistrationRequestHandler();
+    return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::POST);
 });
