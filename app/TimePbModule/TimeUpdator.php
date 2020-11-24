@@ -2,12 +2,10 @@
 
 namespace App\TimePbModule;
 
-use Exception;
 use App\Interfaces\IUpdator;
 use App\BaseCode\Strings;
 use App\Protobuff\TimeZoneEnum;
 use App\UtilityModule\TimeUtility;
-use App\TimePbModule\TimeIndexers;
 
 class TimeUpdator implements IUpdator
 {
@@ -23,7 +21,8 @@ class TimeUpdator implements IUpdator
     {
         $pbArray = array();
         if ($pb->getTimezone() == TimeZoneEnum::UNKNOWN_TIME_ZONE) {
-            throw new Exception('Time zone cannot be UNKNOWN');
+            $pbArray[TimeIndexers::getTIMEZONE()] = TimeZoneEnum::name(TimeZoneEnum::IST);
+            $pb->setTimezone(TimeZoneEnum::IST);
         } else {
             $pbArray[TimeIndexers::getTIMEZONE()] = TimeZoneEnum::name($pb->getTimezone());
         }

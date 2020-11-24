@@ -13,15 +13,20 @@ import "timePb.proto";
 
 message DeliveryManPb {
     EntityPb dbInfo = 1;
-    NamePb name =2;
+    NamePb name = 2;
     ContactDetailPb contact = 3;
-    ImagePb profileImage = 4;
+    ImageRefPb profileImage = 4;
     string adharNo = 5;
     TimePb time = 6;
 }
 
+message DeliveryManRefPb{
+    string id = 1;
+    NamePb name = 2;
+}
+
 message DeliveryManSearchRequestPb {
-    
+
 }
 
 message DeliveryManSearchResponsePb {

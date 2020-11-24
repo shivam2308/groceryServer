@@ -13,4 +13,9 @@ class LoginSearchRequestPbDefaultProvider implements IDefaultPbProvider
         $pb = new LoginSearchRequestPb();
         return $pb;
     }
+
+    public function getDefaultRefPb()
+    {
+        // TODO: Implement getDefaultRefPb() method.
+    }
 }

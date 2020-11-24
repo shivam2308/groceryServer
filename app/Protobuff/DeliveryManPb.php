@@ -26,7 +26,7 @@ class DeliveryManPb extends \Google\Protobuf\Internal\Message
      */
     protected $contact = null;
     /**
-     * Generated from protobuf field <code>.ImagePb profileImage = 4;</code>
+     * Generated from protobuf field <code>.ImageRefPb profileImage = 4;</code>
      */
     protected $profileImage = null;
     /**
@@ -47,7 +47,7 @@ class DeliveryManPb extends \Google\Protobuf\Internal\Message
      *     @type \App\Protobuff\EntityPb $dbInfo
      *     @type \App\Protobuff\NamePb $name
      *     @type \App\Protobuff\ContactDetailPb $contact
-     *     @type \App\Protobuff\ImagePb $profileImage
+     *     @type \App\Protobuff\ImageRefPb $profileImage
      *     @type string $adharNo
      *     @type \App\Protobuff\TimePb $time
      * }
@@ -154,8 +154,8 @@ class DeliveryManPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.ImagePb profileImage = 4;</code>
-     * @return \App\Protobuff\ImagePb
+     * Generated from protobuf field <code>.ImageRefPb profileImage = 4;</code>
+     * @return \App\Protobuff\ImageRefPb
      */
     public function getProfileImage()
     {
@@ -173,13 +173,13 @@ class DeliveryManPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.ImagePb profileImage = 4;</code>
-     * @param \App\Protobuff\ImagePb $var
+     * Generated from protobuf field <code>.ImageRefPb profileImage = 4;</code>
+     * @param \App\Protobuff\ImageRefPb $var
      * @return $this
      */
     public function setProfileImage($var)
     {
-        GPBUtil::checkMessage($var, \App\Protobuff\ImagePb::class);
+        GPBUtil::checkMessage($var, \App\Protobuff\ImageRefPb::class);
         $this->profileImage = $var;
 
         return $this;

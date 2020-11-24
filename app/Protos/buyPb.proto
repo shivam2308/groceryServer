@@ -7,7 +7,9 @@ import "entityPb.proto";
 import "summaryPb.proto";
 import "itemPb.proto";
 import "customerPb.proto";
+import "deliveryManPb.proto";
 import "timePb.proto";
+
 
 
 enum DeliveryStatusEnum {
@@ -23,10 +25,11 @@ message BuyPb {
     string orderId = 2;
     CustomerPbRef customerRef = 3;
     ItemPbRef itemRef = 4;
-    int32 quantity = 5;
-    float price = 6;
-    DeliveryStatusEnum deliveryStatus = 7;
-    TimePb time = 8;
+    DeliveryManRefPb deliveryManRef = 5;
+    int32 quantity = 6;
+    float price = 7;
+    DeliveryStatusEnum deliveryStatus = 8;
+    TimePb time = 9;
 }
 
 message BuyPbRef {
@@ -36,7 +39,7 @@ message BuyPbRef {
 }
 
 message BuySearchRequestPb {
-    
+
 }
 message BuySearchResponsePb {
     SummaryPb summary = 1;

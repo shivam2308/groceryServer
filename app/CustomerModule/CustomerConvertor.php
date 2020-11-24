@@ -49,7 +49,7 @@ class CustomerConvertor implements IConvertor
         $customerPb->setName($this->m_nameConvertor->convert($array));
         $customerPb->setAddress($this->m_addressConvertor->convert($array));
         $customerPb->setContact($this->m_contactConvertor->convert($array));
-        $customerPb->setProfileImage($this->m_imageConvertor->convert($array));
+        $customerPb->setProfileImage($this->m_imageConvertor->refConvert($array));
         $customerPb->setTime($this->m_timeConvertor->convert($array));
         if (Strings::notEmpty($array[GenderIndexers::getGENDER()])) {
             $customerPb->setGender(GenderEnum::value($array[GenderIndexers::getGENDER()]));

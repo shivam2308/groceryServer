@@ -35,7 +35,7 @@ enum AvailabilityStatusEnum {
 message ItemPb {
     EntityPb dbInfo = 1;
     NamePb itemName = 2;
-    ImagePb itemUrl = 3;
+    ImageRefPb itemImage = 3;
     int32 quantity = 4;
     float price = 5;
     ItemTypeEnum itemType = 6;
@@ -49,7 +49,7 @@ message ItemPbRef {
     float price = 3;
 }
 message ItemSearchRequestPb {
-    
+
 }
 message ItemSearchResponsePb {
     SummaryPb summary = 1;

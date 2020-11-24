@@ -1,7 +1,8 @@
-<?php 
+<?php
 
 namespace App\BuyPbModule;
 
+use App\DeliveryManPbModule\DeliveryManConvertor;
 use App\Interfaces\IConvertor;
 use App\BuyPbModule\BuyIndexers;
 use App\Protobuff\BuyPb;
@@ -21,6 +22,7 @@ class BuyConvertor implements IConvertor {
     private $m_itemRefConvertor;
     private $m_refConvertor;
     private $m_timeConvertor;
+    private $m_deliveryManConvert;
 
     public function __construct(){
         $this->m_entityConvertor = new EntityConvertor();
@@ -28,6 +30,7 @@ class BuyConvertor implements IConvertor {
         $this->m_itemRefConvertor = new ItemConvertor();
         $this->m_refConvertor = new BaseRefConvertorAndUpdator();
         $this->m_timeConvertor = new TimeConvertor();
+        $this->m_deliveryManConvert = new DeliveryManConvertor();
     }
 
     public function convert($array){
@@ -40,6 +43,7 @@ class BuyConvertor implements IConvertor {
         $buyPb->setPrice($array[BuyIndexers::getPRICE()]);
         $buyPb->setDeliveryStatus(DeliveryStatusEnum::value($array[BuyIndexers::getDELIVERY_STATUS()]));
         $buyPb->setTime($this->m_timeConvertor->convert($array));
+        $buyPb->setDeliveryManRef($this->m_deliveryManConvert->refConvert($array));
         return $buyPb;
     }
 

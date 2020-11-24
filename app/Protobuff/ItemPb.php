@@ -22,9 +22,9 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      */
     protected $itemName = null;
     /**
-     * Generated from protobuf field <code>.ImagePb itemUrl = 3;</code>
+     * Generated from protobuf field <code>.ImageRefPb itemImage = 3;</code>
      */
-    protected $itemUrl = null;
+    protected $itemImage = null;
     /**
      * Generated from protobuf field <code>int32 quantity = 4;</code>
      */
@@ -58,7 +58,7 @@ class ItemPb extends \Google\Protobuf\Internal\Message
      *
      *     @type \App\Protobuff\EntityPb $dbInfo
      *     @type \App\Protobuff\NamePb $itemName
-     *     @type \App\Protobuff\ImagePb $itemUrl
+     *     @type \App\Protobuff\ImageRefPb $itemImage
      *     @type int $quantity
      *     @type float $price
      *     @type int $itemType
@@ -137,33 +137,33 @@ class ItemPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.ImagePb itemUrl = 3;</code>
-     * @return \App\Protobuff\ImagePb
+     * Generated from protobuf field <code>.ImageRefPb itemImage = 3;</code>
+     * @return \App\Protobuff\ImageRefPb
      */
-    public function getItemUrl()
+    public function getItemImage()
     {
-        return isset($this->itemUrl) ? $this->itemUrl : null;
+        return isset($this->itemImage) ? $this->itemImage : null;
     }
 
-    public function hasItemUrl()
+    public function hasItemImage()
     {
-        return isset($this->itemUrl);
+        return isset($this->itemImage);
     }
 
-    public function clearItemUrl()
+    public function clearItemImage()
     {
-        unset($this->itemUrl);
+        unset($this->itemImage);
     }
 
     /**
-     * Generated from protobuf field <code>.ImagePb itemUrl = 3;</code>
-     * @param \App\Protobuff\ImagePb $var
+     * Generated from protobuf field <code>.ImageRefPb itemImage = 3;</code>
+     * @param \App\Protobuff\ImageRefPb $var
      * @return $this
      */
-    public function setItemUrl($var)
+    public function setItemImage($var)
     {
-        GPBUtil::checkMessage($var, \App\Protobuff\ImagePb::class);
-        $this->itemUrl = $var;
+        GPBUtil::checkMessage($var, \App\Protobuff\ImageRefPb::class);
+        $this->itemImage = $var;
 
         return $this;
     }

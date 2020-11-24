@@ -30,19 +30,23 @@ class BuyPb extends \Google\Protobuf\Internal\Message
      */
     protected $itemRef = null;
     /**
-     * Generated from protobuf field <code>int32 quantity = 5;</code>
+     * Generated from protobuf field <code>.DeliveryManRefPb deliveryManRef = 5;</code>
+     */
+    protected $deliveryManRef = null;
+    /**
+     * Generated from protobuf field <code>int32 quantity = 6;</code>
      */
     protected $quantity = 0;
     /**
-     * Generated from protobuf field <code>float price = 6;</code>
+     * Generated from protobuf field <code>float price = 7;</code>
      */
     protected $price = 0.0;
     /**
-     * Generated from protobuf field <code>.DeliveryStatusEnum deliveryStatus = 7;</code>
+     * Generated from protobuf field <code>.DeliveryStatusEnum deliveryStatus = 8;</code>
      */
     protected $deliveryStatus = 0;
     /**
-     * Generated from protobuf field <code>.TimePb time = 8;</code>
+     * Generated from protobuf field <code>.TimePb time = 9;</code>
      */
     protected $time = null;
 
@@ -56,6 +60,7 @@ class BuyPb extends \Google\Protobuf\Internal\Message
      *     @type string $orderId
      *     @type \App\Protobuff\CustomerPbRef $customerRef
      *     @type \App\Protobuff\ItemPbRef $itemRef
+     *     @type \App\Protobuff\DeliveryManRefPb $deliveryManRef
      *     @type int $quantity
      *     @type float $price
      *     @type int $deliveryStatus
@@ -186,7 +191,39 @@ class BuyPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int32 quantity = 5;</code>
+     * Generated from protobuf field <code>.DeliveryManRefPb deliveryManRef = 5;</code>
+     * @return \App\Protobuff\DeliveryManRefPb
+     */
+    public function getDeliveryManRef()
+    {
+        return isset($this->deliveryManRef) ? $this->deliveryManRef : null;
+    }
+
+    public function hasDeliveryManRef()
+    {
+        return isset($this->deliveryManRef);
+    }
+
+    public function clearDeliveryManRef()
+    {
+        unset($this->deliveryManRef);
+    }
+
+    /**
+     * Generated from protobuf field <code>.DeliveryManRefPb deliveryManRef = 5;</code>
+     * @param \App\Protobuff\DeliveryManRefPb $var
+     * @return $this
+     */
+    public function setDeliveryManRef($var)
+    {
+        GPBUtil::checkMessage($var, \App\Protobuff\DeliveryManRefPb::class);
+        $this->deliveryManRef = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 quantity = 6;</code>
      * @return int
      */
     public function getQuantity()
@@ -195,7 +232,7 @@ class BuyPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int32 quantity = 5;</code>
+     * Generated from protobuf field <code>int32 quantity = 6;</code>
      * @param int $var
      * @return $this
      */
@@ -208,7 +245,7 @@ class BuyPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>float price = 6;</code>
+     * Generated from protobuf field <code>float price = 7;</code>
      * @return float
      */
     public function getPrice()
@@ -217,7 +254,7 @@ class BuyPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>float price = 6;</code>
+     * Generated from protobuf field <code>float price = 7;</code>
      * @param float $var
      * @return $this
      */
@@ -230,7 +267,7 @@ class BuyPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.DeliveryStatusEnum deliveryStatus = 7;</code>
+     * Generated from protobuf field <code>.DeliveryStatusEnum deliveryStatus = 8;</code>
      * @return int
      */
     public function getDeliveryStatus()
@@ -239,7 +276,7 @@ class BuyPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.DeliveryStatusEnum deliveryStatus = 7;</code>
+     * Generated from protobuf field <code>.DeliveryStatusEnum deliveryStatus = 8;</code>
      * @param int $var
      * @return $this
      */
@@ -252,7 +289,7 @@ class BuyPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.TimePb time = 8;</code>
+     * Generated from protobuf field <code>.TimePb time = 9;</code>
      * @return \App\Protobuff\TimePb
      */
     public function getTime()
@@ -271,7 +308,7 @@ class BuyPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.TimePb time = 8;</code>
+     * Generated from protobuf field <code>.TimePb time = 9;</code>
      * @param \App\Protobuff\TimePb $var
      * @return $this
      */

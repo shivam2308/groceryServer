@@ -2,6 +2,8 @@
 
 namespace Tests\Unit;
 
+use App\RegistrationModule\RegistrationDefaultPbProvider;
+use App\RegistrationModule\RegistrationService;
 use PHPUnit\Framework\TestCase;
 use App\Database\DatabaseExecutor;
 use App\BaseCode\IntegerToAlphaConvertor;
@@ -37,6 +39,8 @@ use App\Protobuff\BuyPb;
 use App\Protobuff\DeliveryStatusEnum;
 use App\BuyPbModule\BuyPbDefaultProvider;
 use App\BuyPbModule\BuyService;
+use App\PushNotificationPbModule\PushNotificationDefaultProvider;
+use App\PushNotificationPbModule\PushNotificationService;
 
 class UserTest extends TestCase
 {
@@ -52,12 +56,14 @@ class UserTest extends TestCase
         //$this->myurldecode();
         //$this->testCache();
         //$this->createItem();
-        $this->createBuy();
+       // $this->createBuy();
         //$this->createCustomer();
 
         //$this->createDeliveryMan();
         //$this->createLogin();
         //$this->createItems();
+        //$this->createRegistration();
+        $this->createPushNotification();
     }
     public function createItems()
     {
@@ -189,6 +195,47 @@ class UserTest extends TestCase
         //echo ($service->get('n3')->getItemUrl()->getUrl());
         $service->create($buyPb);
     }
+
+    private function createRegistration()
+    {
+        $service = new RegistrationService();
+        $registrationPbprovider = new RegistrationDefaultPbProvider();
+        $registrationPb = $registrationPbprovider->getDefaultPb();
+        $customerPbprovider = new CustomerPbDefaultProvider();
+        $customerPb = $customerPbprovider->getDefaultPb();
+        $customerPb->getName()->setFirstName("Shubham");
+        $customerPb->getName()->setLastName("Tiwari");
+        $customerPb->setPrivilege(PrivilegeTypeEnum::ADMIN);
+        $customerPb->getContact()->getEmail()->setLocalPart("shubhamtiwaricr07");
+        $customerPb->getContact()->getEmail()->setDomainPart("gmail.com");
+        $customerPb->getContact()->getMobile()->setMobileNo("9621019232");
+        $customerPb->getAddress()->setHomeNo("12345");
+        $customerPb->getAddress()->setStreet("colony");
+        $customerPb->getAddress()->setLandMark("Water Tank");
+        $customerPb->getAddress()->setCity(CityEnum::LUCKNOW);
+        $customerPb->getAddress()->setState(StateEnum::UTTAR_PRADESH);
+        $customerPb->getAddress()->setPincode(226020);
+        $customerPb->setGender(GenderEnum::MALE);
+        $customerPb->getTime()->setTimezone(TimeZoneEnum::IST);
+        $registrationPb->setCustomer($customerPb);
+        echo JsonConvertor::json($service->create($registrationPb));
+    }
+
+    public function createPushNotification() {
+        $pb = new PushNotificationDefaultProvider();
+        $service = new PushNotificationService();
+        $pushNotificationPb = $pb->getDefaultPb();
+        $pushNotificationPb->getCustomerRef()->setId('cus-not-123');
+        $pushNotificationPb->getCustomerRef()->getName()->setFirstName('push-not-f1');
+        $pushNotificationPb->getCustomerRef()->getName()->setLastName('push-not-f2');
+        $pushNotificationPb->getCustomerRef()->getName()->setCanonicalName('push-not-c1');
+        $pushNotificationPb->setToken('push@noti#123');
+        $pushNotificationPb->getTime()->setTimezone(TimeZoneEnum::IST);
+        //echo JsonConvertor::json ($service->get('mU'));
+        //echo ($service->get('n3')->getItemUrl()->getUrl());
+        $service->create($pushNotificationPb);
+    }
+
 }
 
 

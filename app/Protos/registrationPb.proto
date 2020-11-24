@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option php_namespace = "App\\Protobuff";
+option php_metadata_namespace = "App\\GPBMetadata";
+
+import "customerPb.proto";
+import "loginPb.proto";
+
+
+message RegistrationPb {
+    CustomerPb customer = 1;
+    LoginPb login = 2;
+}
+
+

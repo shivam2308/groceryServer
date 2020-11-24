@@ -41,8 +41,8 @@ class ItemUpdator implements IUpdator
         }
         $pbArray = array_merge($pbArray, $this->m_timeUpdator->update($pb->getTime()));
         $pbArray = array_merge($pbArray, $this->m_nameUpdator->update($pb->getItemName()));
-        if (Strings::notEmpty($pb->getItemUrl()->getUrl())) {
-            $pbArray = array_merge($pbArray, $this->m_imageUpdator->update($pb->getItemUrl()));
+        if (Strings::notEmpty($pb->getItemImage()->getId())) {
+            $pbArray = array_merge($pbArray, $this->m_imageUpdator->refupdate($pb->getItemImage()));
         }
         if (($pb->getQuantity()) < 0) {
             throw new Exception("Item Quantity cannot be empty");
