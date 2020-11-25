@@ -4,7 +4,10 @@ namespace Tests\Unit;
 
 use App\RegistrationModule\RegistrationDefaultPbProvider;
 use App\RegistrationModule\RegistrationService;
+use Kreait\Firebase\Messaging\CloudMessage;
+use Kreait\Firebase\Messaging\Notification;
 use PHPUnit\Framework\TestCase;
+use Kreait\Firebase\Factory;
 use App\Database\DatabaseExecutor;
 use App\BaseCode\IntegerToAlphaConvertor;
 use App\CustomerModule\CustomerService;
@@ -54,19 +57,22 @@ class UserTest extends TestCase
         //$this->myurldecode();
         //$this->testCache();
         //$this->createItem();
-       // $this->createBuy();
+        // $this->createBuy();
         //$this->createCustomer();
 
         //$this->createDeliveryMan();
         //$this->createLogin();
         //$this->createItems();
-        $this->createRegistration();
+        //$this->createRegistration();
+        $this->connectFirebase();
     }
+
     public function createItems()
     {
         $creator = new ItemCsvCreator();
         $creator->createUiPb();
     }
+
     public function createLogin()
     {
         $service = new LoginService();
@@ -140,6 +146,7 @@ class UserTest extends TestCase
     {
         echo urldecode("X");
     }
+
     public function pbJsonConvert()
     {
         $pb = new CustomerSearchRequestPb();
@@ -172,7 +179,8 @@ class UserTest extends TestCase
         echo JsonConvertor::json($service->get('ry'));
     }
 
-    public function createBuy() {
+    public function createBuy()
+    {
         $pb = new BuyPbDefaultProvider();
         $service = new BuyService();
         $buyPb = $pb->getDefaultPb();
@@ -216,6 +224,17 @@ class UserTest extends TestCase
         $customerPb->getTime()->setTimezone(TimeZoneEnum::IST);
         $registrationPb->setCustomer($customerPb);
         echo JsonConvertor::json($service->create($registrationPb));
+    }
+
+    private function connectFirebase()
+    {
+        $factory = (new Factory())->withServiceAccount('D:\ShivamProject\groceryServer\app\amazaargrocery-firebase-adminsdk-76ctx-1a7876aa27.json');
+        $storage = $factory->createMessaging();
+        $message = CloudMessage::withTarget('token', 'fzRLNIquSE20D0x9TUbxuX:APA91bEc6qsFrW1uD_-1QO8sASQQ084pog_ezvXgiFpyK1HTN0F9mslPtTWsu1USXkaZBuou8Yzc89IrKm6XQain3e7LI7sHWpjZ1iYpeOIQOiCjMjYBNVFRPNiU7s30pqh6krTXABlv')
+            ->withNotification(Notification::create('Title', 'Body'));
+        $bucket = $storage->send($message);
+        var_dump($bucket);
+
     }
 }
 
