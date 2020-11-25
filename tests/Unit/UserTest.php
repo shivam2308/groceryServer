@@ -227,7 +227,7 @@ class UserTest extends TestCase
         $pushNotificationPb = $pb->getDefaultPb();
         $pushNotificationPb->getCustomerRef()->setId('cus-not-123');
         $pushNotificationPb->getCustomerRef()->getName()->setFirstName('push-not-f1');
-        $pushNotificationPb->getCustomerRef()->getName()->setLastName('push-not-f2');
+        $pushNotificationPb->getCustomerRefgit ()->getName()->setLastName('push-not-f2');
         $pushNotificationPb->getCustomerRef()->getName()->setCanonicalName('push-not-c1');
         $pushNotificationPb->setToken('push@noti#123');
         $pushNotificationPb->getTime()->setTimezone(TimeZoneEnum::IST);
