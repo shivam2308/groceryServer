@@ -50,11 +50,31 @@ Route::post('/login', function (Request $request) {
 });
 
 Route::put('/login', function (Request $request) {
-    $handler = \App\LoginPbModule\LoginRequestHandler();
+    $handler = new \App\LoginPbModule\LoginRequestHandler();
+    return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::PUT);
+});
+
+Route::get('/pushNotification/{id}', function ($id) {
+    $handler = new \App\PushNotificationPbModule\PushNotificationRequestHandler();
+    return $handler->handle(urldecode($id), RequestMethodEnum::GET);
+});
+
+Route::post('/pushNotification', function (Request $request) {
+    $handler = new \App\PushNotificationPbModule\PushNotificationRequestHandler();
+    return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::POST);
+});
+
+Route::put('/pushNotification', function (Request $request) {
+    $handler =new \App\PushNotificationPbModule\PushNotificationRequestHandler();
     return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::PUT);
 });
 
 Route::post('/registration', function (Request $request) {
     $handler = new RegistrationRequestHandler();
+    return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::POST);
+});
+
+Route::post('/sendPushNotification', function (Request $request) {
+    $handler = new \App\SendPushNotification\SendPushNotificationRequestHandler();
     return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::POST);
 });

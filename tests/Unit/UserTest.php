@@ -42,6 +42,8 @@ use App\Protobuff\BuyPb;
 use App\Protobuff\DeliveryStatusEnum;
 use App\BuyPbModule\BuyPbDefaultProvider;
 use App\BuyPbModule\BuyService;
+use App\PushNotificationPbModule\PushNotificationDefaultProvider;
+use App\PushNotificationPbModule\PushNotificationService;
 
 class UserTest extends TestCase
 {
@@ -56,15 +58,16 @@ class UserTest extends TestCase
         //$this->pbJsonConvert();
         //$this->myurldecode();
         //$this->testCache();
-        //$this->createItem();
+       // $this->createItem();
         // $this->createBuy();
         //$this->createCustomer();
 
         //$this->createDeliveryMan();
         //$this->createLogin();
-        //$this->createItems();
+        $this->createItems();
         //$this->createRegistration();
-        $this->connectFirebase();
+        //$this->connectFirebase();
+       // $this->createPushNotification();
     }
 
     public function createItems()
@@ -236,6 +239,21 @@ class UserTest extends TestCase
         var_dump($bucket);
 
     }
+    public function createPushNotification() {
+        $pb = new PushNotificationDefaultProvider();
+        $service = new PushNotificationService();
+        $pushNotificationPb = $pb->getDefaultPb();
+        $pushNotificationPb->getCustomerRef()->setId('cus-not-123');
+        $pushNotificationPb->getCustomerRef()->getName()->setFirstName('push-not-f1');
+        $pushNotificationPb->getCustomerRefgit ()->getName()->setLastName('push-not-f2');
+        $pushNotificationPb->getCustomerRef()->getName()->setCanonicalName('push-not-c1');
+        $pushNotificationPb->setToken('push@noti#123');
+        $pushNotificationPb->getTime()->setTimezone(TimeZoneEnum::IST);
+        //echo JsonConvertor::json ($service->get('mU'));
+        //echo ($service->get('n3')->getItemUrl()->getUrl());
+        $service->create($pushNotificationPb);
+    }
+
 }
 
 
