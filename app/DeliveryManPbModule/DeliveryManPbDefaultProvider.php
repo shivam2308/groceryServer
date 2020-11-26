@@ -3,19 +3,19 @@
 namespace App\DeliveryManPbModule;
 
 use App\Interfaces\IDefaultPbProvider;
-use App\Protobuff\CustomerPb;
+use App\Protobuff\DeliveryManPb;
+use App\Protobuff\DeliveryManRefPb;
 use App\Protobuff\EntityPb;
+use App\Protobuff\ImageRefPb;
 use App\Protobuff\LocalePb;
 use App\Protobuff\NamePb;
-use App\Protobuff\AddressPb;
 use App\Protobuff\EmailPb;
 use App\Protobuff\MobilePb;
 use App\Protobuff\ImagePb;
-use App\Protobuff\GenderEnum;
 use App\Protobuff\TimePb;
 use App\Protobuff\ContactDetailPb;
-use App\Protobuff\PrivilegeTypeEnum;
-use App\Protobuff\DeliveryManPb;
+
+
 
 class DeliveryManPbDefaultProvider implements IDefaultPbProvider
 {
@@ -29,8 +29,14 @@ class DeliveryManPbDefaultProvider implements IDefaultPbProvider
         $pb->setContact(new ContactDetailPb());
         $pb->getContact()->setEmail(new EmailPb());
         $pb->getContact()->setMobile(new MobilePb());
-        $pb->setProfileImage(new ImagePb());
+        $pb->setProfileImage(new ImageRefPb());
         $pb->setTime(new TimePb());
         return $pb;
+    }
+    public function getDefaultRefPb()
+    {
+        $deliveryManRefPb = new DeliveryManRefPb();
+        $deliveryManRefPb->setName(new NamePb());
+        return $deliveryManRefPb;
     }
 }

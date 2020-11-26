@@ -3,17 +3,10 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\EntityPbModule\EntityIndexers;
-use App\CustomerModule\CustomerIndexers;
-use App\ItemPbModule\ItemIndexers;
-use App\BuyPbModule\BuyIndexers;
-use App\TimePbModule\TimeIndexers;
-use App\NamePbModule\NameIndexers;
-use App\ContactDetailPbModule\ContactDetailIndexers;
+
 
 class CreateBuydevelTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -23,23 +16,8 @@ class CreateBuydevelTable extends Migration
     {
         Schema::create('BUY_DEVEL', function (Blueprint $table) {
             $table->id();
-            $table->string(EntityIndexers::getDBID());
-            $table->string(EntityIndexers::getLIFETIME());
-            $table->string(EntityIndexers::getDEFAULT_TIMEZONE());
-            $table->string(BuyIndexers::getORDER_ID());
-            $table->string(CustomerIndexers::getCUSTOMER_REF_ID());
-            $table->string(CustomerIndexers::getCUSTOMER_REF());
-            $table->string(ItemIndexers::getITEM_REF_ID());
-            $table->string(ItemIndexers::getITEM_REF());
-            $table->integer(BuyIndexers::getQUANTITY());
-            $table->float(BuyIndexers::getPRICE());
-            $table->string(BuyIndexers::getDELIVERY_STATUS());
-            $table->string(TimeIndexers::getDATE());
-            $table->string(TimeIndexers::getMONTH());
-            $table->string(TimeIndexers::getYEAR());
-            $table->bigInteger(TimeIndexers::getMILLISECONDS());
-            $table->string(TimeIndexers::getFORMATTED_DATE());
-            $table->string(TimeIndexers::getTIMEZONE());
+            $tableCreateHandler = new \App\BaseCode\TableIndexCreateHandler();
+            $tableCreateHandler->createIndexes($table,\App\BuyPbModule\BuyTableName::getcolumnIndexes());
         });
     }
 

@@ -2,7 +2,7 @@
 
 namespace App\DeliveryManPbModule;
 
-
+use App\BaseCode\BaseModule\BaseRefConvertorAndUpdator;
 use App\Interfaces\IConvertor;
 use App\EntityPbModule\EntityConvertor;
 use App\NamePbModule\NameConvertor;
@@ -28,6 +28,8 @@ class DeliveryManConvertor implements IConvertor{
         $this->m_contactConvertor = new ContactDetailConvertor();
         $this->m_imageConvertor = new ImageConvertor();
         $this->m_timeConvertor = new TimeConvertor();
+        $this->m_refConvertor = new BaseRefConvertorAndUpdator();
+
     }
 
     public function convert($array){
@@ -35,7 +37,7 @@ class DeliveryManConvertor implements IConvertor{
         $deliveryManPb->setDbInfo($this->m_entityConvertor->convert($array));
         $deliveryManPb->setName($this->m_nameConvertor->convert($array));
         $deliveryManPb->setContact($this->m_contactConvertor->convert($array));
-        $deliveryManPb->setProfileImage($this->m_imageConvertor->convert($array));
+        $deliveryManPb->setProfileImage($this->m_imageConvertor->refConvert($array));
         $deliveryManPb->setTime($this->m_timeConvertor->convert($array));
         $deliveryManPb->setAdharNo($array[DeliveryManIndexers::getADHAR_NO()]);
         return $deliveryManPb;

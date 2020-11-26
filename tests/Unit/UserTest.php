@@ -32,6 +32,7 @@ use Doctrine\Common\Cache\MemcacheCache;
 use App\Protobuff\ItemPb;
 use App\Protobuff\ItemTypeEnum;
 use App\Protobuff\AvailabilityStatusEnum;
+use App\Protobuff\ItemQuantityTypeEnum;
 use App\ItemPbModule\ItemPbDefaultProvider;
 use App\ItemPbModule\ItemService;
 
@@ -55,15 +56,15 @@ class UserTest extends TestCase
         //$this->pbJsonConvert();
         //$this->myurldecode();
         //$this->testCache();
-        //$this->createItem();
-       // $this->createBuy();
+        $this->createItem();
+       //$this->createBuy();
         //$this->createCustomer();
 
         //$this->createDeliveryMan();
         //$this->createLogin();
         //$this->createItems();
         //$this->createRegistration();
-        $this->createPushNotification();
+        //$this->createPushNotification();
     }
     public function createItems()
     {
@@ -166,13 +167,14 @@ class UserTest extends TestCase
         $itemPb->getItemName()->setFirstName('potato');
         $itemPb->getItemName()->setLastName('mishra123');
         $itemPb->getItemName()->setCanonicalName('Allu');
-        $itemPb->getItemUrl()->setUrl('https://potato.com');
         $itemPb->setItemType(ItemTypeEnum::VEGETABLES);
         $itemPb->setPrice(30);
         $itemPb->setQuantity(1);
         $itemPb->setAvailabilityStatus(AvailabilityStatusEnum::AVAILABLE);
+        $itemPb->setItemQuantityType(ItemQuantityTypeEnum::KILO_GRAMS);
         //$service->get('n3');
-        echo JsonConvertor::json($service->get('ry'));
+        //echo JsonConvertor::json($service->get('ry'));
+        $service->create($itemPb);
     }
 
     public function createBuy() {
@@ -188,6 +190,7 @@ class UserTest extends TestCase
         $buyPb->getItemRef()->getItemName()->setCanonicalName('item can name');
         $buyPb->getItemRef()->setPrice(35.0);
         $buyPb->setQuantity(2);
+
         //$buyPb->setPrice(30.0);
         //$buyPb->setDeliveryStatus(DeliveryStatusEnum::DELIVERED);
         $buyPb->getTime()->setTimezone(TimeZoneEnum::IST);

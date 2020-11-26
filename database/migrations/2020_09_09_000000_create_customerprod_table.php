@@ -18,10 +18,8 @@ class CreateCustomerprodTable extends Migration
     {
         Schema::create('CUSTOMER_PROD', function (Blueprint $table) {
             $table->id();
-            $table->string(EntityIndexers::getDBID());
-            $table->string(EntityIndexers::getLIFETIME());
-            $table->string(EntityIndexers::getDEFAULT_TIMEZONE());
-            $table->string(CustomerIndexers::getPRIVILEGE());
+            $tableCreateHandler = new \App\BaseCode\TableIndexCreateHandler();
+            $tableCreateHandler->createIndexes($table,\App\CustomerModule\CustomerTableName::getcolumnIndexes());
         });
     }
 
