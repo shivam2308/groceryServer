@@ -23,7 +23,7 @@ class ItemCsvCreator extends BaseCsv
         $itemPb->setItemType(ItemTypeEnum::value($row[1]));
         $itemPb->setPrice((int)$row[2]);
         $itemPb->setQuantity((int)$row[3]);
-        $itemPb->setQuantityType(ItemQuantityTypeEnum::value($row[4]));
+        $itemPb->setItemQuantityType(ItemQuantityTypeEnum::value($row[4]));
         $itemPb->getTime()->setTimezone(TimeZoneEnum::IST);
         return $itemPb;
     }

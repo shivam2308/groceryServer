@@ -39,4 +39,14 @@ class CommonQueryHelper
     {
         return "OR";
     }
+
+    public function getGreaterEqual()
+    {
+        return ">=";
+    }
+    public function getLessEqual()
+    {
+        return "<=";
+    }
+
 }

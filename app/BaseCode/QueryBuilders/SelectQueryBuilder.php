@@ -2,6 +2,7 @@
 
 namespace App\BaseCode\QueryBuilders;
 
+use App\TimePbModule\TimeIndexers;
 use Exception;
 use App\BaseCode\QueryBuilders\IQueryBuilder;
 use App\BaseCode\QueryBuilders\CommonQueryHelper;
@@ -21,7 +22,20 @@ class SelectQueryBuilder implements IQueryBuilder{
         $query = $this->m_select.$this->m_helper->getSpace().$tableName.$this->m_helper->getSpace().$this->where.$this->m_helper->getSpace();
         $condition = "";
         foreach($array as $key => $value) {
-            if($condition==""){
+            if($key==TimeIndexers::START_MILLIS ){
+                if($condition==""){
+                    $condition = $this->m_helper->getSpace() . TimeIndexers::MILLISECONDS . $this->m_helper->getGreaterEqual() . $value ;
+                }else{
+                    $condition = $condition . $this->m_helper->getSpace() . $this->m_helper->getAND() . $this->m_helper->getSpace() . TimeIndexers::MILLISECONDS . $this->m_helper->getGreaterEqual() . $value ;
+                }
+            }elseif ($key==TimeIndexers::END_MILLIS){
+                if($condition==""){
+                    $condition = $this->m_helper->getSpace() . TimeIndexers::MILLISECONDS . $this->m_helper->getLessEqual() . $value ;
+                }else{
+                    $condition = $condition . $this->m_helper->getSpace() . $this->m_helper->getAND() . $this->m_helper->getSpace() . TimeIndexers::MILLISECONDS . $this->m_helper->getLessEqual() . $value ;
+                }
+            }
+            else if($condition==""){
                 $condition = $this->m_helper->getSpace() . $key . $this->m_helper->getEqual() . $this->m_helper->getStringInQuotes($value) ;
             }else{
                 $condition = $condition . $this->m_helper->getSpace() . $this->m_helper->getAND() . $this->m_helper->getSpace()  . $key . $this->m_helper->getEqual() . $this->m_helper->getStringInQuotes($value) ;

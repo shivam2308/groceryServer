@@ -3,6 +3,8 @@
 namespace App\ItemPbModule;
 
 use App\Interfaces\IDefaultPbProvider;
+use App\Protobuff\ImageRefPb;
+use App\Protobuff\ItemPbRef;
 use App\Protobuff\ItemPb;
 use App\Protobuff\EntityPb;
 use App\Protobuff\NamePb;
@@ -18,12 +20,18 @@ class ItemPbDefaultProvider implements IDefaultPbProvider{
         $pb->setDbInfo(new EntityPb());
         $pb->setTime(new TimePb());
         $pb->setItemName(new NamePb());
-        $pb->setItemUrl(new ImagePb());
+        $pb->setItemImage(new ImageRefPb());
         $pb->setItemType(ItemTypeEnum::UNKNOWN_ITEM_TYPE);
         $pb->setAvailabilityStatus(AvailabilityStatusEnum::UNKNOWN_AVAILABILITY_STATUS);
         return $pb;
     }
 
+    public function getDefaultRefPb()
+    {
+        $itemPbRef = new ItemPbRef();
+        $itemPbRef->setItemName(new NamePb());
+        return $itemPbRef;
+    }
 }
 
 ?>

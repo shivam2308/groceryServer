@@ -2,6 +2,7 @@
 
 namespace App\BaseCode\QueryBuilders;
 
+use App\BaseCode\JsonConvertor\JsonConvertor;
 use App\Protobuff\SummaryPb;
 
 
@@ -18,10 +19,11 @@ class SearchResultHandler{
     public function handleResults($array){
         $resp = $this->m_respPb;
         $resp->setSummary(new SummaryPb());
-        $resp->getSummary()->setResultCount(count($array));
+        $resp->getSummary()->setResultCount(count($array)-1);
         $respArray = array();
-        foreach ($array as $objPb) {
-            array_push($respArray,$this->m_convertor->convert(json_decode(json_encode($objPb),true)));
+        $length = sizeof($array);
+        for ($i = 0; $i < $length-1; $i++) {
+            array_push($respArray,$this->m_convertor->convert((array)json_decode(json_encode($array[$i],true))));
         }
         $resp->setResults($respArray);
         return $resp;

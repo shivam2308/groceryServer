@@ -16,3 +16,10 @@ message ContactDetailPb {
     EmailPb email = 1;
     MobilePb mobile = 2;
 }
+
+message EmailBuilderPb{
+    string to =1;
+    string reciverName =2;
+    string subject =3;
+    string body =4;
+}

@@ -26,6 +26,7 @@ class DeliveryManIndexers extends Enum
         return Enums::value(DeliveryManIndexers::fromValue(DeliveryManIndexers::DELIVERY_MAN_REF));
     }
 
+
 }
 
 ?>

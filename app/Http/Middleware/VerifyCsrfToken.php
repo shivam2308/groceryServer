@@ -14,6 +14,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         //
         'customer*',
-        'registration*'
+        'registration*',
+        'pushNotification*'
     ];
 }

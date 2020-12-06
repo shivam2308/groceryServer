@@ -14,7 +14,7 @@ class CustomerSearcher implements ISearcher{
         if($pb->getPrivilege() != PrivilegeTypeEnum::UNKNOWN_PREVILAGE){
             $searchArray[CustomerIndexers::getPRIVILEGE()] = PrivilegeTypeEnum::name($pb->getPrivilege());
         }else{
-            return new Exception("PrivilegeTypeEnum cannot be UNKNOWN_PREVILAGE");
+            throw new Exception("PrivilegeTypeEnum cannot be UNKNOWN_PREVILAGE");
         }
         return $searchArray;
     }

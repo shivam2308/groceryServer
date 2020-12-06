@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option php_namespace = "App\\Protobuff";
+option php_metadata_namespace = "App\\GPBMetadata";
+
+enum BooleanEnum{
+    DEFAULT=0;
+    TRUE=1;
+    FALSE=2;
+}
+
+
+
+

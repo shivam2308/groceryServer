@@ -21,24 +21,8 @@ class CreateItemdevelTable extends Migration
     {
         Schema::create('ITEM_DEVEL', function (Blueprint $table) {
             $table->id();
-            $table->string(EntityIndexers::getDBID());
-            $table->string(EntityIndexers::getLIFETIME());
-            $table->string(EntityIndexers::getDEFAULT_TIMEZONE());
-            $table->string(NameIndexers::getFIRSTNAME())->nullable();
-            $table->string(NameIndexers::getLASTNAME())->nullable();
-            $table->string(NameIndexers::getCANONICAL_NAME())->nullable();
-            $table->string(ImageIndexers::getURL())->nullable();
-            $table->string(ItemIndexers::getQUANTITY());
-            $table->string(ItemIndexers::getPRICE());
-            $table->string(ItemIndexers::getITEMTYPE());
-            $table->string(ItemIndexers::getAVAILABILITYSTATUS());
-            $table->string(ItemIndexers::getITEM_QYANTITY_TYPE());
-            $table->string(TimeIndexers::getDATE());
-            $table->string(TimeIndexers::getMONTH());
-            $table->string(TimeIndexers::getYEAR());
-            $table->bigInteger(TimeIndexers::getMILLISECONDS());
-            $table->string(TimeIndexers::getFORMATTED_DATE());
-            $table->string(TimeIndexers::getTIMEZONE());
+            $tableCreateHandler = new \App\BaseCode\TableIndexCreateHandler();
+            $tableCreateHandler->createIndexes($table,\App\ItemPbModule\ItemTableName::getcolumnIndexes());
         });
     }
 

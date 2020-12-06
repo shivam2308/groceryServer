@@ -2,8 +2,10 @@
 
 namespace Tests\Unit;
 
+use App\ItemPbModule\ItemSearchRequestPbDefaultProvider;
 use App\RegistrationModule\RegistrationDefaultPbProvider;
 use App\RegistrationModule\RegistrationService;
+use Exception;
 use Kreait\Firebase\Messaging\CloudMessage;
 use Kreait\Firebase\Messaging\Notification;
 use PHPUnit\Framework\TestCase;
@@ -35,6 +37,7 @@ use Doctrine\Common\Cache\MemcacheCache;
 use App\Protobuff\ItemPb;
 use App\Protobuff\ItemTypeEnum;
 use App\Protobuff\AvailabilityStatusEnum;
+use App\Protobuff\ItemQuantityTypeEnum;
 use App\ItemPbModule\ItemPbDefaultProvider;
 use App\ItemPbModule\ItemService;
 
@@ -44,6 +47,9 @@ use App\BuyPbModule\BuyPbDefaultProvider;
 use App\BuyPbModule\BuyService;
 use App\PushNotificationPbModule\PushNotificationDefaultProvider;
 use App\PushNotificationPbModule\PushNotificationService;
+use Swift_Mailer;
+use Swift_Message;
+use Swift_SmtpTransport;
 
 class UserTest extends TestCase
 {
@@ -60,11 +66,15 @@ class UserTest extends TestCase
         //$this->testCache();
        // $this->createItem();
         // $this->createBuy();
-        //$this->createCustomer();
 
+       // $this->createItem();
+       //$this->createBuy();
+        //$this->createCustomer();
+        //$this->searchItems();
+        $this->sendMail();
         //$this->createDeliveryMan();
         //$this->createLogin();
-        $this->createItems();
+       // $this->createItems();
         //$this->createRegistration();
         //$this->connectFirebase();
        // $this->createPushNotification();
@@ -173,13 +183,14 @@ class UserTest extends TestCase
         $itemPb->getItemName()->setFirstName('potato');
         $itemPb->getItemName()->setLastName('mishra123');
         $itemPb->getItemName()->setCanonicalName('Allu');
-        $itemPb->getItemUrl()->setUrl('https://potato.com');
         $itemPb->setItemType(ItemTypeEnum::VEGETABLES);
         $itemPb->setPrice(30);
         $itemPb->setQuantity(1);
         $itemPb->setAvailabilityStatus(AvailabilityStatusEnum::AVAILABLE);
+        $itemPb->setItemQuantityType(ItemQuantityTypeEnum::KILO_GRAMS);
         //$service->get('n3');
-        echo JsonConvertor::json($service->get('ry'));
+        //echo JsonConvertor::json($service->get('ry'));
+        $service->create($itemPb);
     }
 
     public function createBuy()
@@ -196,6 +207,7 @@ class UserTest extends TestCase
         $buyPb->getItemRef()->getItemName()->setCanonicalName('item can name');
         $buyPb->getItemRef()->setPrice(35.0);
         $buyPb->setQuantity(2);
+
         //$buyPb->setPrice(30.0);
         //$buyPb->setDeliveryStatus(DeliveryStatusEnum::DELIVERED);
         $buyPb->getTime()->setTimezone(TimeZoneEnum::IST);
@@ -253,6 +265,43 @@ class UserTest extends TestCase
         //echo ($service->get('n3')->getItemUrl()->getUrl());
         $service->create($pushNotificationPb);
     }
+
+    private function searchItems()
+    {
+        $service = new ItemService();
+        $provider = new  ItemSearchRequestPbDefaultProvider();
+        $builder = $provider->getDefaultPb();
+
+        $builder->setAvailabilityStatus(AvailabilityStatusEnum::AVAILABLE);
+        $builder->setItemType(ItemTypeEnum::DAIRY);
+
+        echo JsonConvertor::json($service->search($builder));
+    }
+
+    private function sendMail()
+    {
+         $transport = (new Swift_SmtpTransport('smtp.gmail.com', 587,'tls'))
+             ->setUsername('amazaar.noreply@gmail.com')
+             ->setPassword('amazaar@123')
+         ;
+
+ // Create the Mailer using your created Transport
+         $mailer = new Swift_Mailer($transport);
+
+ // Create a message
+         $message = (new Swift_Message('Wonderful Subject'))
+             ->setFrom(['noreply@amazaar.com' => 'Amazaar'])
+             ->setTo(['shivamcchaurasiya2308@gmail.com' => 'Shivam Chaurasiya'])
+             ->setBody('<strong>Hello</strong>')
+             ->setContentType('text/html')
+         ;
+
+ // Send the message
+         $result = $mailer->send($message);
+         var_dump($result);
+     }
+
+
 
 }
 

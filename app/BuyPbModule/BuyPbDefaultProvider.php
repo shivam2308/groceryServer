@@ -13,7 +13,8 @@ use App\Protobuff\EmailPb;
 use App\Protobuff\MobilePb;
 use App\Protobuff\TimePb;
 use App\Protobuff\ContactDetailPb;
-
+use App\Protobuff\BuyPbRef;
+use App\Protobuff\DeliveryManRefPb;
 
 class BuyPbDefaultProvider implements IDefaultPbProvider{
 
@@ -25,12 +26,19 @@ class BuyPbDefaultProvider implements IDefaultPbProvider{
         $pb->getCustomerRef()->setContact(new ContactDetailPb());
         $pb->getCustomerRef()->getContact()->setEmail(new EmailPb());
         $pb->getCustomerRef()->getContact()->setMobile(new MobilePb());
+        $pb->setDeliveryManRef(new DeliveryManRefPb());
+        $pb->getDeliveryManRef()->setName(new NamePb());
         $pb->setItemRef(new ItemPbRef());
         $pb->getItemRef()->setItemName(new NamePb());
-     
         $pb->setDeliveryStatus(DeliveryStatusEnum::UNKNOWN_DELIVERY_STATUS);
         $pb->setTime(new TimePb());
         return $pb;
+    }
+
+    public function getDefaultRefPb()
+    {
+        $buyPbRef = new BuyPbRef();
+        return $buyPbRef;
     }
 
 }

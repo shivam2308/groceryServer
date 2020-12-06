@@ -68,10 +68,10 @@ class ItemUpdator implements IUpdator
         } else {
             $pbArray[ItemIndexers::getITEMTYPE()] = ItemTypeEnum::name($pb->getItemType());
         }
-        if ($pb->getQuantityType() == ItemQuantityTypeEnum::UNKNOWN_ITEM_QUANTITY_TYPE) {
+        if ($pb->getItemQuantityType() == ItemQuantityTypeEnum::UNKNOWN_ITEM_QUANTITY_TYPE) {
             throw new Exception("Item Quantity Type cannot be Unknown");
         } else {
-            $pbArray[ItemIndexers::getITEM_QYANTITY_TYPE()] = ItemQuantityTypeEnum::name($pb->getQuantityType());
+            $pbArray[ItemIndexers::getITEM_QYANTITY_TYPE()] = ItemQuantityTypeEnum::name($pb->getItemQuantityType());
         }
         return $pbArray;
     }

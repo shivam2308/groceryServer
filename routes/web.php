@@ -54,6 +54,21 @@ Route::put('/login', function (Request $request) {
     return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::PUT);
 });
 
+Route::get('/item/{id}', function ($id) {
+    $handler = new \App\ItemPbModule\ItemRequestHandler();
+    return $handler->handle(urldecode($id), RequestMethodEnum::GET);
+});
+
+Route::post('/item', function (Request $request) {
+    $handler = new \App\ItemPbModule\ItemRequestHandler();
+    return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::POST);
+});
+
+Route::put('/item', function (Request $request) {
+    $handler = new \App\ItemPbModule\ItemRequestHandler();
+    return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::PUT);
+});
+
 Route::get('/pushNotification/{id}', function ($id) {
     $handler = new \App\PushNotificationPbModule\PushNotificationRequestHandler();
     return $handler->handle(urldecode($id), RequestMethodEnum::GET);

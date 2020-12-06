@@ -13,6 +13,18 @@ use Google\Protobuf\Internal\GPBUtil;
  */
 class ItemSearchRequestPb extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * Generated from protobuf field <code>.ItemTypeEnum itemType = 1;</code>
+     */
+    protected $itemType = 0;
+    /**
+     * Generated from protobuf field <code>.AvailabilityStatusEnum availabilityStatus = 2;</code>
+     */
+    protected $availabilityStatus = 0;
+    /**
+     * Generated from protobuf field <code>.TimeQueryRangePb timeQuery = 3;</code>
+     */
+    protected $timeQuery = null;
 
     /**
      * Constructor.
@@ -20,11 +32,80 @@ class ItemSearchRequestPb extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
+     *     @type int $itemType
+     *     @type int $availabilityStatus
+     *     @type \App\Protobuff\TimeQueryRangePb $timeQuery
      * }
      */
     public function __construct($data = NULL) {
         \App\GPBMetadata\ItemPb::initOnce();
         parent::__construct($data);
+    }
+
+    /**
+     * Generated from protobuf field <code>.ItemTypeEnum itemType = 1;</code>
+     * @return int
+     */
+    public function getItemType()
+    {
+        return $this->itemType;
+    }
+
+    /**
+     * Generated from protobuf field <code>.ItemTypeEnum itemType = 1;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setItemType($var)
+    {
+        GPBUtil::checkEnum($var, \App\Protobuff\ItemTypeEnum::class);
+        $this->itemType = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.AvailabilityStatusEnum availabilityStatus = 2;</code>
+     * @return int
+     */
+    public function getAvailabilityStatus()
+    {
+        return $this->availabilityStatus;
+    }
+
+    /**
+     * Generated from protobuf field <code>.AvailabilityStatusEnum availabilityStatus = 2;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setAvailabilityStatus($var)
+    {
+        GPBUtil::checkEnum($var, \App\Protobuff\AvailabilityStatusEnum::class);
+        $this->availabilityStatus = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.TimeQueryRangePb timeQuery = 3;</code>
+     * @return \App\Protobuff\TimeQueryRangePb
+     */
+    public function getTimeQuery()
+    {
+        return $this->timeQuery;
+    }
+
+    /**
+     * Generated from protobuf field <code>.TimeQueryRangePb timeQuery = 3;</code>
+     * @param \App\Protobuff\TimeQueryRangePb $var
+     * @return $this
+     */
+    public function setTimeQuery($var)
+    {
+        GPBUtil::checkMessage($var, \App\Protobuff\TimeQueryRangePb::class);
+        $this->timeQuery = $var;
+
+        return $this;
     }
 
 }

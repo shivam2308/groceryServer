@@ -49,7 +49,9 @@ message ItemPbRef {
     float price = 3;
 }
 message ItemSearchRequestPb {
-
+    ItemTypeEnum itemType = 1;
+    AvailabilityStatusEnum availabilityStatus = 2;
+    TimeQueryRangePb timeQuery = 3;
 }
 message ItemSearchResponsePb {
     SummaryPb summary = 1;

@@ -14,6 +14,10 @@ class TimeIndexers  extends Enum{
     const FORMATTED_DATE = 'FORMATTED_DATE';
     const TIMEZONE = 'TIMEZONE';
 
+    //use for search only
+    const START_MILLIS = 'START_MIIILIS';
+    const END_MILLIS = 'END_MILLIS';
+
     public static function getDATE(){
         return Enums::value(TimeIndexers::fromValue(TimeIndexers::DATE));
     }
@@ -36,7 +40,12 @@ class TimeIndexers  extends Enum{
 
     public static function getTIMEZONE(){
         return Enums::value(TimeIndexers::fromValue(TimeIndexers::TIMEZONE));
-        
+    }
+    public static function getSTART_MILLIS(){
+        return Enums::value(TimeIndexers::fromValue(TimeIndexers::START_MILLIS));
+    }
+    public static function getEND_MILLIS(){
+        return Enums::value(TimeIndexers::fromValue(TimeIndexers::END_MILLIS));
     }
 }
 

@@ -11,6 +11,7 @@ import "contactDetailPb.proto";
 import "genderPb.proto";
 import "imagePb.proto";
 import "timePb.proto";
+import "booleanPb.proto";
 
 
 enum PrivilegeTypeEnum {
@@ -29,6 +30,8 @@ message CustomerPb {
     GenderEnum gender =6;
     ImageRefPb profileImage = 7;
     TimePb time = 8;
+    BooleanEnum isNotifyOn = 9;
+    //string upiId=10;
 }
 
 message CustomerPbRef {
@@ -39,6 +42,8 @@ message CustomerPbRef {
 
 message CustomerSearchRequestPb {
     PrivilegeTypeEnum privilege =1;
+    string mobileNo = 2;
+    string email = 3;
 }
 
 message CustomerSearchResponsePb {
