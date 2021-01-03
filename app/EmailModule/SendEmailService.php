@@ -27,6 +27,5 @@ class SendEmailService
 
         // Send the message
         $result = $mailer->send($message);
-        var_dump($result);
     }
 }

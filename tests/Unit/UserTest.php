@@ -2,7 +2,11 @@
 
 namespace Tests\Unit;
 
+use App\BuyModule\CreateBuyRequestDefaultPbProvider;
+use App\BuyModule\CreateBuyRequestService;
 use App\ItemPbModule\ItemSearchRequestPbDefaultProvider;
+use App\OrderListPbModule\OrderListService;
+use App\Protobuff\OrderedListSearchReqPb;
 use App\RegistrationModule\RegistrationDefaultPbProvider;
 use App\RegistrationModule\RegistrationService;
 use Exception;
@@ -68,16 +72,18 @@ class UserTest extends TestCase
         // $this->createBuy();
 
        // $this->createItem();
-       //$this->createBuy();
+      // $this->createBuy();
         //$this->createCustomer();
         //$this->searchItems();
-        $this->sendMail();
+        //$this->sendMail();
         //$this->createDeliveryMan();
         //$this->createLogin();
        // $this->createItems();
         //$this->createRegistration();
         //$this->connectFirebase();
        // $this->createPushNotification();
+        //$this->createBuyItems();
+        $this->getOrderList();
     }
 
     public function createItems()
@@ -213,7 +219,7 @@ class UserTest extends TestCase
         $buyPb->getTime()->setTimezone(TimeZoneEnum::IST);
         //echo JsonConvertor::json ($service->get('mU'));
         //echo ($service->get('n3')->getItemUrl()->getUrl());
-        $service->create($buyPb);
+        echo JsonConvertor::json($service->get("jY"));
     }
 
     private function createRegistration()
@@ -301,6 +307,26 @@ class UserTest extends TestCase
          var_dump($result);
      }
 
+    private function createBuyItems()
+    {
+        $createService = new CreateBuyRequestService();
+        $createBuy = new CreateBuyRequestDefaultPbProvider();
+        $pb = $createBuy->getDefaultPb();
+        $pb->setCustomerId("tZ");
+        $arr = array();
+        $arr[0]="t9@3";
+        $arr[1]="t2@2";
+        $pb->setItemIdAndQuantity($arr);
+        $createService->create($pb);
+    }
+
+    private function getOrderList()
+    {
+        $service = new OrderListService();
+        $req = new OrderedListSearchReqPb();
+        $req->setCustomerId("to");
+        echo JsonConvertor::json($service->search($req));
+    }
 
 
 }

@@ -62,8 +62,9 @@ class BaseService extends AService
     }
     public function search($pb)
     {
-        $resp = $this->searchEntity($this->m_searcher->search($pb));
-        $searchArray = $this->m_baseSearcher->addExpression($resp);
-        return $this->m_searchResultHandler->handleResults($searchArray);
+        $searchArray=$this->m_searcher->search($pb);
+        $searchArray = $this->m_baseSearcher->addExpression($searchArray);
+        $resp = $this->searchEntity($searchArray);
+        return $this->m_searchResultHandler->handleResults($resp);
     }
 }

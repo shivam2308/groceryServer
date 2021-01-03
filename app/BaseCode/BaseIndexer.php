@@ -49,6 +49,6 @@ class BaseIndexer extends Enum
 
     public static function get_Key_FLOAT()
     {
-        return Enums::key(BaseIndexer::fromValue(BaseIndexer::BIG_INT));
+        return Enums::key(BaseIndexer::fromValue(BaseIndexer::FLOAT));
     }
 }
