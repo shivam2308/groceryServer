@@ -20,5 +20,6 @@ protoc --proto_path=. --php_out=../.. ./registrationPb.proto
 protoc --proto_path=. --php_out=../.. ./pushNotificationPb.proto
 protoc --proto_path=. --php_out=../.. ./booleanPb.proto
 protoc --proto_path=. --php_out=../.. ./paymentPb.proto
+protoc --proto_path=. --php_out=../.. ./orderedListPb.proto
 cd ..
 cd ..

@@ -2,18 +2,18 @@
 
 namespace App\BuyPbModule;
 
-use App\DeliveryManPbModule\DeliveryManUpdator;
-use Exception;
-use App\Interfaces\IUpdator;
-use App\BaseCode\Strings;
-use App\BuyPbModule\BuyIndexers;
-use App\BuyPbModule\BuyHelper;
-use App\EntityPbModule\EntityUpdator;
-use App\CustomerModule\CustomerUpdator;
-use App\ItemPbModule\ItemUpdator;
-use App\Protobuff\DeliveryStatusEnum;
 use App\BaseCode\BaseModule\BaseRefConvertorAndUpdator;
+use App\BaseCode\Strings;
+use App\CustomerModule\CustomerUpdator;
+use App\DeliveryManPbModule\DeliveryManUpdator;
+use App\EntityPbModule\EntityUpdator;
+use App\Interfaces\IUpdator;
+use App\ItemPbModule\ItemUpdator;
+use App\PaymentPbModule\PaymentUpdator;
+use App\Protobuff\BuyPb;
+use App\Protobuff\DeliveryStatusEnum;
 use App\TimePbModule\TimeUpdator;
+use Exception;
 
 
 class BuyUpdator implements IUpdator
@@ -26,6 +26,7 @@ class BuyUpdator implements IUpdator
     private $m_timeUpdator;
     private $m_createOrderId;
     private $m_devliveryManUpdator;
+    private $m_paymentUpdator;
 
     public function __construct()
     {
@@ -36,6 +37,7 @@ class BuyUpdator implements IUpdator
         $this->m_timeUpdator = new TimeUpdator();
         $this->m_createOrderId = new BuyHelper();
         $this->m_devliveryManUpdator = new DeliveryManUpdator();
+        $this->m_paymentUpdator = new PaymentUpdator();
     }
 
     public function update($pb)
@@ -70,8 +72,14 @@ class BuyUpdator implements IUpdator
             $pbArray[BuyIndexers::getDELIVERY_STATUS()] = DeliveryStatusEnum::name($pb->getDeliveryStatus());
         }
         $pbArray = array_merge($pbArray, $this->m_timeUpdator->update($pb->getTime()));
-        
+
         $pbArray = array_merge($pbArray, $this->m_devliveryManUpdator->refUpdate($pb->getDeliveryManRef()));
+        $pbArray = array_merge($pbArray, $this->m_paymentUpdator->refUpdate($pb->getPaymentRef()));
+        if (Strings::notEmpty($pb->getParentOrderId())) {
+            $pbArray[BuyIndexers::getPARENT_ORDER_ID()] = $pb->getParentOrderId();
+        } else {
+            $pbArray[BuyIndexers::getPARENT_ORDER_ID()] = $this->m_createOrderId->createParentOrderId($pb->getCustomerRef()->getId(), $pb->getPaymentRef()->getId());
+        }
         return $pbArray;
     }
 

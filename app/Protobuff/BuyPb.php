@@ -49,6 +49,14 @@ class BuyPb extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.TimePb time = 9;</code>
      */
     protected $time = null;
+    /**
+     * Generated from protobuf field <code>.PaymentPbRef paymentRef = 10;</code>
+     */
+    protected $paymentRef = null;
+    /**
+     * Generated from protobuf field <code>string parentOrderId = 11;</code>
+     */
+    protected $parentOrderId = '';
 
     /**
      * Constructor.
@@ -65,6 +73,8 @@ class BuyPb extends \Google\Protobuf\Internal\Message
      *     @type float $price
      *     @type int $deliveryStatus
      *     @type \App\Protobuff\TimePb $time
+     *     @type \App\Protobuff\PaymentPbRef $paymentRef
+     *     @type string $parentOrderId
      * }
      */
     public function __construct($data = NULL) {
@@ -316,6 +326,50 @@ class BuyPb extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \App\Protobuff\TimePb::class);
         $this->time = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.PaymentPbRef paymentRef = 10;</code>
+     * @return \App\Protobuff\PaymentPbRef
+     */
+    public function getPaymentRef()
+    {
+        return $this->paymentRef;
+    }
+
+    /**
+     * Generated from protobuf field <code>.PaymentPbRef paymentRef = 10;</code>
+     * @param \App\Protobuff\PaymentPbRef $var
+     * @return $this
+     */
+    public function setPaymentRef($var)
+    {
+        GPBUtil::checkMessage($var, \App\Protobuff\PaymentPbRef::class);
+        $this->paymentRef = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string parentOrderId = 11;</code>
+     * @return string
+     */
+    public function getParentOrderId()
+    {
+        return $this->parentOrderId;
+    }
+
+    /**
+     * Generated from protobuf field <code>string parentOrderId = 11;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setParentOrderId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->parentOrderId = $var;
 
         return $this;
     }

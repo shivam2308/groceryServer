@@ -1,11 +1,11 @@
 <?php
 
+use App\OrderListPbModule\OrderedListRequestHandler;
 use Illuminate\Support\Facades\Route;
 use App\ServerConfig\ServerListner;
 use App\CustomerModule\CustomerRequestHandler;
 use App\Protobuff\RequestMethodEnum;
 use App\RegistrationModule\RegistrationRequestHandler;
-use App\BaseCode\Strings;
 use Illuminate\Http\Request;
 
 /*
@@ -20,8 +20,8 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    $serverListner  = new ServerListner();
-    return csrf_token();
+    $serverListner = new ServerListner();
+    return $serverListner->getEnvironment();
 });
 
 Route::get('/customer/{id}', function ($id) {
@@ -80,7 +80,7 @@ Route::post('/pushNotification', function (Request $request) {
 });
 
 Route::put('/pushNotification', function (Request $request) {
-    $handler =new \App\PushNotificationPbModule\PushNotificationRequestHandler();
+    $handler = new \App\PushNotificationPbModule\PushNotificationRequestHandler();
     return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::PUT);
 });
 
@@ -89,7 +89,47 @@ Route::post('/registration', function (Request $request) {
     return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::POST);
 });
 
+Route::post('/createBuy', function (Request $request) {
+    $handler = new \App\BuyModule\CreateBuyRequestHandler();
+    return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::POST);
+});
+
 Route::post('/sendPushNotification', function (Request $request) {
     $handler = new \App\SendPushNotification\SendPushNotificationRequestHandler();
     return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::POST);
 });
+Route::get('/payment/{id}', function ($id) {
+    $handler = new \App\PaymentPbModule\PaymentRequestHandler();
+    return $handler->handle(urldecode($id), RequestMethodEnum::GET);
+});
+
+Route::post('/payment', function (Request $request) {
+    $handler = new \App\PaymentPbModule\PaymentRequestHandler();
+    return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::POST);
+});
+
+Route::put('/payment', function (Request $request) {
+    $handler = new \App\PaymentPbModule\PaymentRequestHandler();
+    return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::PUT);
+});
+
+Route::get('/buy/{id}', function ($id) {
+    $handler = new \App\BuyPbModule\BuyRequestHandler();
+    return $handler->handle(urldecode($id), RequestMethodEnum::GET);
+});
+
+Route::post('/buy', function (Request $request) {
+    $handler = new \App\BuyPbModule\BuyRequestHandler();
+    return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::POST);
+});
+
+Route::put('/buy', function (Request $request) {
+    $handler = new \App\BuyPbModule\BuyRequestHandler();
+    return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::PUT);
+});
+
+Route::get('/orderList/{id}', function ($id) {
+    $handler = new OrderedListRequestHandler();
+    return $handler->handle(urldecode($id), RequestMethodEnum::GET);
+});
+

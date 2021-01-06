@@ -11,6 +11,7 @@ use App\Protobuff\ItemPbRef;
 use App\Protobuff\DeliveryStatusEnum;
 use App\Protobuff\EmailPb;
 use App\Protobuff\MobilePb;
+use App\Protobuff\PaymentPbRef;
 use App\Protobuff\TimePb;
 use App\Protobuff\ContactDetailPb;
 use App\Protobuff\BuyPbRef;
@@ -32,6 +33,7 @@ class BuyPbDefaultProvider implements IDefaultPbProvider{
         $pb->getItemRef()->setItemName(new NamePb());
         $pb->setDeliveryStatus(DeliveryStatusEnum::UNKNOWN_DELIVERY_STATUS);
         $pb->setTime(new TimePb());
+        $pb->setPaymentRef(new PaymentPbRef());
         return $pb;
     }
 

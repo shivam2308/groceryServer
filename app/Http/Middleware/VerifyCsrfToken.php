@@ -15,6 +15,9 @@ class VerifyCsrfToken extends Middleware
         //
         'customer*',
         'registration*',
-        'pushNotification*'
+        'pushNotification*',
+        'buy*',
+        'payment*',
+        'createBuy*'
     ];
 }

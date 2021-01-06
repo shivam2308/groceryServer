@@ -2,20 +2,21 @@
 
 namespace App\BuyPbModule;
 
-use App\DeliveryManPbModule\DeliveryManConvertor;
-use App\Interfaces\IConvertor;
-use App\BuyPbModule\BuyIndexers;
-use App\Protobuff\BuyPb;
-use App\EntityPbModule\EntityConvertor;
-use App\TimePbModule\TimeConvertor;
+use App\BaseCode\BaseModule\BaseRefConvertorAndUpdator;
 use App\CustomerModule\CustomerConvertor;
+use App\DeliveryManPbModule\DeliveryManConvertor;
+use App\EntityPbModule\EntityConvertor;
+use App\Interfaces\IConvertor;
 use App\ItemPbModule\ItemConvertor;
+use App\PaymentPbModule\PaymentConvertor;
+use App\Protobuff\BuyPb;
 use App\Protobuff\BuyPbRef;
 use App\Protobuff\DeliveryStatusEnum;
-use App\BaseCode\BaseModule\BaseRefConvertorAndUpdator;
+use App\TimePbModule\TimeConvertor;
 
 
-class BuyConvertor implements IConvertor {
+class BuyConvertor implements IConvertor
+{
 
     private $m_entityConvertor;
     private $m_customerRefConvertor;
@@ -23,17 +24,21 @@ class BuyConvertor implements IConvertor {
     private $m_refConvertor;
     private $m_timeConvertor;
     private $m_deliveryManConvert;
+    private $m_paymentConvertor;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->m_entityConvertor = new EntityConvertor();
         $this->m_customerRefConvertor = new CustomerConvertor();
         $this->m_itemRefConvertor = new ItemConvertor();
         $this->m_refConvertor = new BaseRefConvertorAndUpdator();
         $this->m_timeConvertor = new TimeConvertor();
         $this->m_deliveryManConvert = new DeliveryManConvertor();
+        $this->m_paymentConvertor = new PaymentConvertor();
     }
 
-    public function convert($array){
+    public function convert($array)
+    {
         $buyPb = new BuyPb();
         $buyPb->setDbInfo($this->m_entityConvertor->convert($array));
         $buyPb->setOrderId($array[BuyIndexers::getORDER_ID()]);
@@ -44,6 +49,8 @@ class BuyConvertor implements IConvertor {
         $buyPb->setDeliveryStatus(DeliveryStatusEnum::value($array[BuyIndexers::getDELIVERY_STATUS()]));
         $buyPb->setTime($this->m_timeConvertor->convert($array));
         $buyPb->setDeliveryManRef($this->m_deliveryManConvert->refConvert($array));
+        $buyPb->setPaymentRef($this->m_paymentConvertor->refConvert($array));
+        $buyPb->setParentOrderId($array[BuyIndexers::getPARENT_ORDER_ID()]);
         return $buyPb;
     }
 
@@ -53,4 +60,5 @@ class BuyConvertor implements IConvertor {
         return $this->m_refConvertor->convert($array[BuyIndexers::getBUY_REF()], $buyRef);
     }
 }
+
 ?>

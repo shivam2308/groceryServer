@@ -19,10 +19,10 @@ class SearchResultHandler{
     public function handleResults($array){
         $resp = $this->m_respPb;
         $resp->setSummary(new SummaryPb());
-        $resp->getSummary()->setResultCount(count($array)-1);
+        $resp->getSummary()->setResultCount(count($array));
         $respArray = array();
         $length = sizeof($array);
-        for ($i = 0; $i < $length-1; $i++) {
+        for ($i = 0; $i < $length; $i++) {
             array_push($respArray,$this->m_convertor->convert((array)json_decode(json_encode($array[$i],true))));
         }
         $resp->setResults($respArray);

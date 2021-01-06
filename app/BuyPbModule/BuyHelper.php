@@ -1,4 +1,5 @@
 <?php
+
 namespace App\BuyPbModule;
 
 use App\UtilityModule\TimeUtility;
@@ -6,7 +7,8 @@ use App\BaseCode\IntegerToAlphaConvertor;
 use App\CustomerModule\CustomerUpdator;
 use App\ItemPbModule\ItemUpdator;
 
-class BuyHelper {
+class BuyHelper
+{
 
     private $timeUtility;
     private $m_alphaToIntegerConvertor;
@@ -17,13 +19,21 @@ class BuyHelper {
         $this->m_alphaToIntegerConvertor = new IntegerToAlphaConvertor();
     }
 
-    public function createOrderId($customerId, $itemId){
+    public function createOrderId($customerId, $itemId)
+    {
 
         $custId = $this->m_alphaToIntegerConvertor->toNum($customerId);
         $itemId = $this->m_alphaToIntegerConvertor->toNum($itemId);
         $currentmilli = $this->timeUtility->getMilliseconds();
         $orderId = $custId . "@" . $itemId . "#" . $currentmilli;
         return $orderId;
+    }
+
+    public function createParentOrderId(string $customerId, string $paymentId)
+    {
+        $custId = $this->m_alphaToIntegerConvertor->toNum($customerId);
+        $pId = $this->m_alphaToIntegerConvertor->toNum($paymentId);
+        return $custId . "@" . $pId;
     }
 
 }

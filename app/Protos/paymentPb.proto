@@ -6,6 +6,7 @@ option php_metadata_namespace = "App\\GPBMetadata";
 import "customerPb.proto";
 import "timePb.proto";
 import "entityPb.proto";
+import "summaryPb.proto";
 
 message PaymentPb {
     EntityPb dbInfo = 1;
@@ -15,21 +16,40 @@ message PaymentPb {
     string txnRef = 5;
     CustomerPbRef customerRef = 6;
     PaymentModeEnum mode = 7;
-    TimePb time = 8;
+    float amount = 8;
+    TimePb time = 9;
 
+}
+
+message PaymentPbRef{
+    string id =1;
+    PaymentStatusEnum status =2 ;
+    PaymentModeEnum mode = 3;
+    float amount = 4;
 }
 
 enum PaymentStatusEnum{
     UNKNOWN_PAYMENT_STATUS=0;
     SUCCESS=1;
-    FAILED=2;
-    WAITING=3;
+    FAILURE=2;
+    SUBMITTED=3;
 }
 
 enum PaymentModeEnum {
     UNKNOWN_MODE = 0;
     GOOGLE_PAY = 1;
     CASH_ON_DELIVERY = 2;
+}
+
+
+message PaymentSearchRequestPb {
+    string customerRef =1;
+    PaymentStatusEnum status = 2;
+    PaymentModeEnum mode = 3;
+}
+message PaymentSearchResponsePb {
+    SummaryPb summary = 1;
+    repeated PaymentPb results = 2;
 }
 
 

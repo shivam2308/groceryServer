@@ -3,6 +3,7 @@
 namespace App\DeliveryManPbModule;
 
 use App\BaseCode\BaseModule\BaseRefConvertorAndUpdator;
+use App\BaseCode\Strings;
 use App\Interfaces\IConvertor;
 use App\EntityPbModule\EntityConvertor;
 use App\NamePbModule\NameConvertor;
@@ -45,8 +46,12 @@ class DeliveryManConvertor implements IConvertor{
 
     public function refConvert($array)
     {
-        $deliveryManRef = new DeliveryManRefPb();
-        return $this->m_refConvertor->convert($array[DeliveryManIndexers::getDELIVERY_MAN_REF()], $deliveryManRef);
+        if (Strings::notEmpty($array[DeliveryManIndexers::getDELIVERY_MAN_REF_ID()])) {
+            $deliveryManRef = new DeliveryManRefPb();
+            return $this->m_refConvertor->convert($array[DeliveryManIndexers::getDELIVERY_MAN_REF()], $deliveryManRef);
+        }else{
+            return null;
+        }
     }
 }
 

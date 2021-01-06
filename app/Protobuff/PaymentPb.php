@@ -42,7 +42,11 @@ class PaymentPb extends \Google\Protobuf\Internal\Message
      */
     protected $mode = 0;
     /**
-     * Generated from protobuf field <code>.TimePb time = 8;</code>
+     * Generated from protobuf field <code>float amount = 8;</code>
+     */
+    protected $amount = 0.0;
+    /**
+     * Generated from protobuf field <code>.TimePb time = 9;</code>
      */
     protected $time = null;
 
@@ -59,6 +63,7 @@ class PaymentPb extends \Google\Protobuf\Internal\Message
      *     @type string $txnRef
      *     @type \App\Protobuff\CustomerPbRef $customerRef
      *     @type int $mode
+     *     @type float $amount
      *     @type \App\Protobuff\TimePb $time
      * }
      */
@@ -242,7 +247,29 @@ class PaymentPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.TimePb time = 8;</code>
+     * Generated from protobuf field <code>float amount = 8;</code>
+     * @return float
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * Generated from protobuf field <code>float amount = 8;</code>
+     * @param float $var
+     * @return $this
+     */
+    public function setAmount($var)
+    {
+        GPBUtil::checkFloat($var);
+        $this->amount = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.TimePb time = 9;</code>
      * @return \App\Protobuff\TimePb
      */
     public function getTime()
@@ -261,7 +288,7 @@ class PaymentPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.TimePb time = 8;</code>
+     * Generated from protobuf field <code>.TimePb time = 9;</code>
      * @param \App\Protobuff\TimePb $var
      * @return $this
      */

@@ -12,6 +12,7 @@ class SelectQueryBuilder implements IQueryBuilder{
     Private $m_helper;
     Private $m_select = "SELECT * FROM";
     Private $where = "WHERE";
+    Private $orderedby= "ORDER BY";
 
 
     function __construct(){
@@ -41,7 +42,7 @@ class SelectQueryBuilder implements IQueryBuilder{
                 $condition = $condition . $this->m_helper->getSpace() . $this->m_helper->getAND() . $this->m_helper->getSpace()  . $key . $this->m_helper->getEqual() . $this->m_helper->getStringInQuotes($value) ;
             }
          }
-         return $query . $this->m_helper->getSpace() . $condition ;
+         return $query . $this->m_helper->getSpace() . $condition . $this->m_helper->getSpace() . $this->orderedby . $this->m_helper->getSpace() . TimeIndexers::MILLISECONDS . $this->m_helper->getSpace() . "DESC";
     }
 }
 
