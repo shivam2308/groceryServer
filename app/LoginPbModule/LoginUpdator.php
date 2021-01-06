@@ -2,6 +2,7 @@
 
 namespace App\LoginPbModule;
 
+use App\GPBMetadata\LoginPb;
 use App\Interfaces\IUpdator;
 use App\EntityPbModule\EntityUpdator;
 use App\CustomerModule\CustomerUpdator;
@@ -33,6 +34,7 @@ class LoginUpdator implements IUpdator
             $array = array_merge($array, $this->m_customerUpdator->refUpdate($pb->getCustomerRef()));
         }
         $array = array_merge($array, $this->m_timeUpdator->update($pb->getTime()));
+        $array[LoginIndexers::getMOBILENO()] = $pb->getCustomerRef()->getContact()->getMobile()->getMobileNo();
         return $array;
     }
 

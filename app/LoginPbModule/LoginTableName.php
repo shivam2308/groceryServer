@@ -31,6 +31,7 @@ class LoginTableName implements ITableName
         $indexes[TimeIndexers::getMILLISECONDS()] = BaseIndexer::get_Value_BIG_INT();
         $indexes[TimeIndexers::getFORMATTED_DATE()] = BaseIndexer::get_Value_STRING();
         $indexes[TimeIndexers::getTIMEZONE()] = BaseIndexer::get_Value_STRING();
+        $indexes[LoginIndexers::getMOBILENO()] = BaseIndexer::get_Value_STRING();
         return $indexes;
     }
 }

@@ -53,7 +53,17 @@ class PushNotificationPb extends \Google\Protobuf\Internal\Message
      */
     public function getDbInfo()
     {
-        return $this->dbInfo;
+        return isset($this->dbInfo) ? $this->dbInfo : null;
+    }
+
+    public function hasDbInfo()
+    {
+        return isset($this->dbInfo);
+    }
+
+    public function clearDbInfo()
+    {
+        unset($this->dbInfo);
     }
 
     /**
@@ -75,7 +85,17 @@ class PushNotificationPb extends \Google\Protobuf\Internal\Message
      */
     public function getCustomerRef()
     {
-        return $this->customerRef;
+        return isset($this->customerRef) ? $this->customerRef : null;
+    }
+
+    public function hasCustomerRef()
+    {
+        return isset($this->customerRef);
+    }
+
+    public function clearCustomerRef()
+    {
+        unset($this->customerRef);
     }
 
     /**
@@ -119,7 +139,17 @@ class PushNotificationPb extends \Google\Protobuf\Internal\Message
      */
     public function getTime()
     {
-        return $this->time;
+        return isset($this->time) ? $this->time : null;
+    }
+
+    public function hasTime()
+    {
+        return isset($this->time);
+    }
+
+    public function clearTime()
+    {
+        unset($this->time);
     }
 
     /**

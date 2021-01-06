@@ -25,6 +25,10 @@ class LoginPb extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.TimePb time = 3;</code>
      */
     protected $time = null;
+    /**
+     * Generated from protobuf field <code>string mobileNo = 4;</code>
+     */
+    protected $mobileNo = '';
 
     /**
      * Constructor.
@@ -35,6 +39,7 @@ class LoginPb extends \Google\Protobuf\Internal\Message
      *     @type \App\Protobuff\EntityPb $dbInfo
      *     @type \App\Protobuff\CustomerPbRef $customerRef
      *     @type \App\Protobuff\TimePb $time
+     *     @type string $mobileNo
      * }
      */
     public function __construct($data = NULL) {
@@ -48,7 +53,17 @@ class LoginPb extends \Google\Protobuf\Internal\Message
      */
     public function getDbInfo()
     {
-        return $this->dbInfo;
+        return isset($this->dbInfo) ? $this->dbInfo : null;
+    }
+
+    public function hasDbInfo()
+    {
+        return isset($this->dbInfo);
+    }
+
+    public function clearDbInfo()
+    {
+        unset($this->dbInfo);
     }
 
     /**
@@ -70,7 +85,17 @@ class LoginPb extends \Google\Protobuf\Internal\Message
      */
     public function getCustomerRef()
     {
-        return $this->customerRef;
+        return isset($this->customerRef) ? $this->customerRef : null;
+    }
+
+    public function hasCustomerRef()
+    {
+        return isset($this->customerRef);
+    }
+
+    public function clearCustomerRef()
+    {
+        unset($this->customerRef);
     }
 
     /**
@@ -92,7 +117,17 @@ class LoginPb extends \Google\Protobuf\Internal\Message
      */
     public function getTime()
     {
-        return $this->time;
+        return isset($this->time) ? $this->time : null;
+    }
+
+    public function hasTime()
+    {
+        return isset($this->time);
+    }
+
+    public function clearTime()
+    {
+        unset($this->time);
     }
 
     /**
@@ -104,6 +139,28 @@ class LoginPb extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \App\Protobuff\TimePb::class);
         $this->time = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string mobileNo = 4;</code>
+     * @return string
+     */
+    public function getMobileNo()
+    {
+        return $this->mobileNo;
+    }
+
+    /**
+     * Generated from protobuf field <code>string mobileNo = 4;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setMobileNo($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->mobileNo = $var;
 
         return $this;
     }

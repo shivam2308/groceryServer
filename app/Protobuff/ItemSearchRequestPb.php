@@ -92,7 +92,17 @@ class ItemSearchRequestPb extends \Google\Protobuf\Internal\Message
      */
     public function getTimeQuery()
     {
-        return $this->timeQuery;
+        return isset($this->timeQuery) ? $this->timeQuery : null;
+    }
+
+    public function hasTimeQuery()
+    {
+        return isset($this->timeQuery);
+    }
+
+    public function clearTimeQuery()
+    {
+        unset($this->timeQuery);
     }
 
     /**
