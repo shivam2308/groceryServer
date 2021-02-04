@@ -18,6 +18,7 @@ enum PrivilegeTypeEnum {
     UNKNOWN_PREVILAGE=0;
     NORMAL=1;
     ADMIN =2;
+    DELIVERY_MAN=3;
 }
 
 
@@ -31,7 +32,7 @@ message CustomerPb {
     ImageRefPb profileImage = 7;
     TimePb time = 8;
     BooleanEnum isNotifyOn = 9;
-    //string upiId=10;
+    string adharNo=10;
 }
 
 message CustomerPbRef {

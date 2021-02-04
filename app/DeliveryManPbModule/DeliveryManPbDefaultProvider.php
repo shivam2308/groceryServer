@@ -37,6 +37,9 @@ class DeliveryManPbDefaultProvider implements IDefaultPbProvider
     {
         $deliveryManRefPb = new DeliveryManRefPb();
         $deliveryManRefPb->setName(new NamePb());
+        $deliveryManRefPb->setContact(new ContactDetailPb());
+        $deliveryManRefPb->getContact()->setEmail(new EmailPb());
+        $deliveryManRefPb->getContact()->setMobile(new MobilePb());
         return $deliveryManRefPb;
     }
 }

@@ -8,7 +8,7 @@ use App\BaseCode\Enums;
 class ImageIndexers extends Enum
 {
     const URL = 'URL';
-    const ID = 'ID';
+    const ID = 'REF_ID';
     const IMAGE_TYPE = 'IMAGE_TYPE';
     const IMAGE_EXTENSION = 'IMAGE_EXTENSION';
     const IMAGE_ID = 'IMAGE_ID';

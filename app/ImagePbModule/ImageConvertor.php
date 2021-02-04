@@ -27,7 +27,7 @@ class ImageConvertor implements IConvertor
     public function convert($array)
     {
         $imagePb = new ImagePb();
-        $imagePb->setDbInfo($this->m_entityConvertor . $this->convert($array));
+        $imagePb->setDbInfo($this->m_entityConvertor->convert($array));
         $imagePb->setId($array[ImageIndexers::getID()]);
         $imagePb->setUrl($array[ImageIndexers::getURL()]);
         $imagePb->setImageType(ImageTypeEnum::value($array[ImageIndexers::getIMAGE_TYPE()]));

@@ -2,8 +2,10 @@
 
 namespace Tests\Unit;
 
+use App\BaseCode\EncryptorAndDecryptor;
 use App\BuyModule\CreateBuyRequestDefaultPbProvider;
 use App\BuyModule\CreateBuyRequestService;
+use App\ConfirmOrderDeliveryModule\ConfirmOrderDeliveryService;
 use App\ItemPbModule\ItemSearchRequestPbDefaultProvider;
 use App\OrderListPbModule\OrderListService;
 use App\Protobuff\OrderedListSearchReqPb;
@@ -68,22 +70,29 @@ class UserTest extends TestCase
         //$this->pbJsonConvert();
         //$this->myurldecode();
         //$this->testCache();
-       // $this->createItem();
+        // $this->createItem();
         // $this->createBuy();
 
-       // $this->createItem();
-      // $this->createBuy();
+        // $this->createItem();
+        // $this->createBuy();
         //$this->createCustomer();
         //$this->searchItems();
         //$this->sendMail();
         //$this->createDeliveryMan();
         //$this->createLogin();
-       // $this->createItems();
+        // $this->createItems();
         //$this->createRegistration();
         //$this->connectFirebase();
-       // $this->createPushNotification();
+        // $this->createPushNotification();
         //$this->createBuyItems();
-        $this->getOrderList();
+        //$this->getOrderList();
+       // $this->decryptEncodedString("jh&393@465&gJ|gZ|gE|gM|&393@335#1608702799940|393@334#1608702798256|393@333#1608702796591|393@332#1608702794970|&1610291795123");
+        $this->confirmOrder("eBpkl7fjleZzLa8ufAx9hgmfdm/34tEPdVIJcvO8Vkz82Pw8ee2YfM/jIc38L2KrfIJqt+6tJxi2Bl/1BUQa1tRfSirsyfG+3wg1caqtMlxYYsM9jVyXACcyo1TxTejFyDvBZyjjd/fww+95fiQja0XkWstvRoELGcTNj0PWDTI=:bjBKMmpIYTBCWExiRXpIMw==");
+    }
+
+    public function decryptEncodedString($data)
+    {
+        echo EncryptorAndDecryptor::encrypt($data);
     }
 
     public function createItems()
@@ -257,13 +266,15 @@ class UserTest extends TestCase
         var_dump($bucket);
 
     }
-    public function createPushNotification() {
+
+    public function createPushNotification()
+    {
         $pb = new PushNotificationDefaultProvider();
         $service = new PushNotificationService();
         $pushNotificationPb = $pb->getDefaultPb();
         $pushNotificationPb->getCustomerRef()->setId('cus-not-123');
         $pushNotificationPb->getCustomerRef()->getName()->setFirstName('push-not-f1');
-        $pushNotificationPb->getCustomerRefgit ()->getName()->setLastName('push-not-f2');
+        $pushNotificationPb->getCustomerRefgit()->getName()->setLastName('push-not-f2');
         $pushNotificationPb->getCustomerRef()->getName()->setCanonicalName('push-not-c1');
         $pushNotificationPb->setToken('push@noti#123');
         $pushNotificationPb->getTime()->setTimezone(TimeZoneEnum::IST);
@@ -286,26 +297,24 @@ class UserTest extends TestCase
 
     private function sendMail()
     {
-         $transport = (new Swift_SmtpTransport('smtp.gmail.com', 587,'tls'))
-             ->setUsername('amazaar.noreply@gmail.com')
-             ->setPassword('amazaar@123')
-         ;
+        $transport = (new Swift_SmtpTransport('smtp.gmail.com', 587, 'tls'))
+            ->setUsername('amazaar.noreply@gmail.com')
+            ->setPassword('amazaar@123');
 
- // Create the Mailer using your created Transport
-         $mailer = new Swift_Mailer($transport);
+        // Create the Mailer using your created Transport
+        $mailer = new Swift_Mailer($transport);
 
- // Create a message
-         $message = (new Swift_Message('Wonderful Subject'))
-             ->setFrom(['noreply@amazaar.com' => 'Amazaar'])
-             ->setTo(['shivamcchaurasiya2308@gmail.com' => 'Shivam Chaurasiya'])
-             ->setBody('<strong>Hello</strong>')
-             ->setContentType('text/html')
-         ;
+        // Create a message
+        $message = (new Swift_Message('Wonderful Subject'))
+            ->setFrom(['noreply@amazaar.com' => 'Amazaar'])
+            ->setTo(['shivamcchaurasiya2308@gmail.com' => 'Shivam Chaurasiya'])
+            ->setBody('<strong>Hello</strong>')
+            ->setContentType('text/html');
 
- // Send the message
-         $result = $mailer->send($message);
-         var_dump($result);
-     }
+        // Send the message
+        $result = $mailer->send($message);
+        var_dump($result);
+    }
 
     private function createBuyItems()
     {
@@ -314,8 +323,8 @@ class UserTest extends TestCase
         $pb = $createBuy->getDefaultPb();
         $pb->setCustomerId("tZ");
         $arr = array();
-        $arr[0]="t9@3";
-        $arr[1]="t2@2";
+        $arr[0] = "t9@3";
+        $arr[1] = "t2@2";
         $pb->setItemIdAndQuantity($arr);
         $createService->create($pb);
     }
@@ -326,6 +335,12 @@ class UserTest extends TestCase
         $req = new OrderedListSearchReqPb();
         $req->setCustomerId("to");
         echo JsonConvertor::json($service->search($req));
+    }
+
+    private function confirmOrder(string $string)
+    {
+        $service = new ConfirmOrderDeliveryService();
+        echo JsonConvertor::json($service->get($string));
     }
 
 

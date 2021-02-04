@@ -132,4 +132,36 @@ Route::get('/orderList/{id}', function ($id) {
     $handler = new OrderedListRequestHandler();
     return $handler->handle(urldecode($id), RequestMethodEnum::GET);
 });
+Route::post('/confirmOrder', function (Request $request) {
+    $handler = new \App\ConfirmOrderDeliveryModule\ConfirmOrderDeliveryRequestHandler();
+    return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::POST);
+});
+Route::post('/createImage', function (Request $request) {
+    $handler = new \App\CreateImageModule\CreateImageRequestHandler();
+    return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::POST);
+});
+Route::get('/image/{id}', function ($id) {
+    $handler = new \App\ImagePbModule\ImageRequestHandler();
+    return $handler->handle(urldecode($id), RequestMethodEnum::GET);
+});
+
+Route::post('/image', function (Request $request) {
+    $handler = new \App\ImagePbModule\ImageRequestHandler();
+    return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::POST);
+});
+
+Route::put('/image', function (Request $request) {
+    $handler = new \App\ImagePbModule\ImageRequestHandler();
+    return $handler->handle(json_encode(json_decode($request->getContent(), true)), RequestMethodEnum::PUT);
+});
+
+Route::get('/assignDeliveryMan/{id}', function ($id) {
+    $handler = new \App\AssignDeliveryManModule\AssignDeliveryMenRequestHandler();
+    return $handler->handle(urldecode($id), RequestMethodEnum::GET);
+});
+
+Route::get('/closeAndOutForDelivery/{id}', function ($id) {
+    $handler = new \App\CloseAndOutForDeliveryModule\CloseAndOutForDeliveryRequestHandler();
+    return $handler->handle(urldecode($id), RequestMethodEnum::GET);
+});
 

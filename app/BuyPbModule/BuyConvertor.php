@@ -25,6 +25,7 @@ class BuyConvertor implements IConvertor
     private $m_timeConvertor;
     private $m_deliveryManConvert;
     private $m_paymentConvertor;
+    private $buyPbDefaultProvider;
 
     public function __construct()
     {
@@ -35,11 +36,12 @@ class BuyConvertor implements IConvertor
         $this->m_timeConvertor = new TimeConvertor();
         $this->m_deliveryManConvert = new DeliveryManConvertor();
         $this->m_paymentConvertor = new PaymentConvertor();
+        $this->buyPbDefaultProvider = new BuyPbDefaultProvider();
     }
 
     public function convert($array)
     {
-        $buyPb = new BuyPb();
+        $buyPb = $this->buyPbDefaultProvider->getDefaultPb();
         $buyPb->setDbInfo($this->m_entityConvertor->convert($array));
         $buyPb->setOrderId($array[BuyIndexers::getORDER_ID()]);
         $buyPb->setCustomerRef($this->m_customerRefConvertor->refConvert($array));
@@ -51,6 +53,13 @@ class BuyConvertor implements IConvertor
         $buyPb->setDeliveryManRef($this->m_deliveryManConvert->refConvert($array));
         $buyPb->setPaymentRef($this->m_paymentConvertor->refConvert($array));
         $buyPb->setParentOrderId($array[BuyIndexers::getPARENT_ORDER_ID()]);
+        if (DeliveryStatusEnum::value($array[BuyIndexers::getDELIVERY_STATUS()]) == DeliveryStatusEnum::DELIVERED) {
+            $buyPb->getDeliverytime()->setDate($array[BuyIndexers::getDELIVERY_DATE()]);
+            $buyPb->getDeliverytime()->setMonth($array[BuyIndexers::getDELIVERY_MONTH()]);
+            $buyPb->getDeliverytime()->setYear($array[BuyIndexers::getDELIVERY_YEAR()]);
+            $buyPb->getDeliverytime()->setMilliseconds($array[BuyIndexers::getDELIVERY_MILLISECONDS()]);
+            $buyPb->getDeliverytime()->setFormattedDate($array[BuyIndexers::getDELIVERY_FORMATTED_DATE()]);
+        }
         return $buyPb;
     }
 

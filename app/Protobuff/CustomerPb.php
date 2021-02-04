@@ -46,11 +46,13 @@ class CustomerPb extends \Google\Protobuf\Internal\Message
      */
     protected $time = null;
     /**
-     *string upiId=10;
-     *
      * Generated from protobuf field <code>.BooleanEnum isNotifyOn = 9;</code>
      */
     protected $isNotifyOn = 0;
+    /**
+     * Generated from protobuf field <code>string adharNo = 10;</code>
+     */
+    protected $adharNo = '';
 
     /**
      * Constructor.
@@ -67,7 +69,7 @@ class CustomerPb extends \Google\Protobuf\Internal\Message
      *     @type \App\Protobuff\ImageRefPb $profileImage
      *     @type \App\Protobuff\TimePb $time
      *     @type int $isNotifyOn
-     *          string upiId=10;
+     *     @type string $adharNo
      * }
      */
     public function __construct($data = NULL) {
@@ -252,8 +254,6 @@ class CustomerPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *string upiId=10;
-     *
      * Generated from protobuf field <code>.BooleanEnum isNotifyOn = 9;</code>
      * @return int
      */
@@ -263,8 +263,6 @@ class CustomerPb extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *string upiId=10;
-     *
      * Generated from protobuf field <code>.BooleanEnum isNotifyOn = 9;</code>
      * @param int $var
      * @return $this
@@ -273,6 +271,28 @@ class CustomerPb extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkEnum($var, \App\Protobuff\BooleanEnum::class);
         $this->isNotifyOn = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string adharNo = 10;</code>
+     * @return string
+     */
+    public function getAdharNo()
+    {
+        return $this->adharNo;
+    }
+
+    /**
+     * Generated from protobuf field <code>string adharNo = 10;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setAdharNo($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->adharNo = $var;
 
         return $this;
     }

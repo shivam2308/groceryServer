@@ -41,12 +41,12 @@ class ImageUpdator implements IUpdator
         if ($pb->getImageType() == ImageTypeEnum::UNKNOWN_IMAGE_TYPE) {
             throw new Exception("Image Type cannot be UNKNOWN_IMAGE_TYPE");
         } else {
-            $array[ImageIndexers::getIMAGE_TYPE()] = ImageTypeEnum::name($pb->getImageType());
+            $pbArray[ImageIndexers::getIMAGE_TYPE()] = ImageTypeEnum::name($pb->getImageType());
         }
         if ($pb->getExtension() == ImageExtensionTypeEnum::UNKNOWN_EXTENSION_TYPE) {
             throw new Exception("Image Type cannot be UNKNOWN_EXTENSION_TYPE");
         } else {
-            $array[ImageIndexers::getIMAGE_EXTENSION()] = ImageExtensionTypeEnum::name($pb->getExtension());
+            $pbArray[ImageIndexers::getIMAGE_EXTENSION()] = ImageExtensionTypeEnum::name($pb->getExtension());
         }
         return $pbArray;
     }

@@ -57,6 +57,10 @@ class BuyPb extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string parentOrderId = 11;</code>
      */
     protected $parentOrderId = '';
+    /**
+     * Generated from protobuf field <code>.OrderdeliveryPb deliverytime = 12;</code>
+     */
+    protected $deliverytime = null;
 
     /**
      * Constructor.
@@ -75,6 +79,7 @@ class BuyPb extends \Google\Protobuf\Internal\Message
      *     @type \App\Protobuff\TimePb $time
      *     @type \App\Protobuff\PaymentPbRef $paymentRef
      *     @type string $parentOrderId
+     *     @type \App\Protobuff\OrderdeliveryPb $deliverytime
      * }
      */
     public function __construct($data = NULL) {
@@ -320,6 +325,28 @@ class BuyPb extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->parentOrderId = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.OrderdeliveryPb deliverytime = 12;</code>
+     * @return \App\Protobuff\OrderdeliveryPb
+     */
+    public function getDeliverytime()
+    {
+        return $this->deliverytime;
+    }
+
+    /**
+     * Generated from protobuf field <code>.OrderdeliveryPb deliverytime = 12;</code>
+     * @param \App\Protobuff\OrderdeliveryPb $var
+     * @return $this
+     */
+    public function setDeliverytime($var)
+    {
+        GPBUtil::checkMessage($var, \App\Protobuff\OrderdeliveryPb::class);
+        $this->deliverytime = $var;
 
         return $this;
     }

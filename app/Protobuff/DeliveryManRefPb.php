@@ -21,6 +21,10 @@ class DeliveryManRefPb extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.NamePb name = 2;</code>
      */
     protected $name = null;
+    /**
+     * Generated from protobuf field <code>.ContactDetailPb contact = 3;</code>
+     */
+    protected $contact = null;
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class DeliveryManRefPb extends \Google\Protobuf\Internal\Message
      *
      *     @type string $id
      *     @type \App\Protobuff\NamePb $name
+     *     @type \App\Protobuff\ContactDetailPb $contact
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +82,28 @@ class DeliveryManRefPb extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \App\Protobuff\NamePb::class);
         $this->name = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.ContactDetailPb contact = 3;</code>
+     * @return \App\Protobuff\ContactDetailPb
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
+
+    /**
+     * Generated from protobuf field <code>.ContactDetailPb contact = 3;</code>
+     * @param \App\Protobuff\ContactDetailPb $var
+     * @return $this
+     */
+    public function setContact($var)
+    {
+        GPBUtil::checkMessage($var, \App\Protobuff\ContactDetailPb::class);
+        $this->contact = $var;
 
         return $this;
     }

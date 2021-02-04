@@ -15,4 +15,9 @@ class ImageSearchRequestPbDefaultProvider implements IDefaultPbProvider
         $pb = new ImageSearchRequestPb();
         return $pb;
     }
+
+    public function getDefaultRefPb()
+    {
+        // TODO: Implement getDefaultRefPb() method.
+    }
 }

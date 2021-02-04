@@ -23,11 +23,16 @@ class PrivilegeTypeEnum
      * Generated from protobuf enum <code>ADMIN = 2;</code>
      */
     const ADMIN = 2;
+    /**
+     * Generated from protobuf enum <code>DELIVERY_MAN = 3;</code>
+     */
+    const DELIVERY_MAN = 3;
 
     private static $valueToName = [
         self::UNKNOWN_PREVILAGE => 'UNKNOWN_PREVILAGE',
         self::NORMAL => 'NORMAL',
         self::ADMIN => 'ADMIN',
+        self::DELIVERY_MAN => 'DELIVERY_MAN',
     ];
 
     public static function name($value)

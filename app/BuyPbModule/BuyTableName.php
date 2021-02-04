@@ -7,7 +7,6 @@ use App\EntityPbModule\EntityIndexers;
 use App\CustomerModule\CustomerIndexers;
 use App\DeliveryManPbModule\DeliveryManIndexers;
 use App\ItemPbModule\ItemIndexers;
-use App\BuyPbModule\BuyIndexers;
 use App\PaymentPbModule\PaymentIndexers;
 use App\TimePbModule\TimeIndexers;
 use App\BaseCode\BaseIndexer;
@@ -43,6 +42,11 @@ class BuyTableName implements ITableName
         $indexes[PaymentIndexers::getPAYMENT_REF_ID()] = BaseIndexer::get_Value_STRING();
         $indexes[PaymentIndexers::getPAYMENT_REF()] = BaseIndexer::get_Value_STRING();
         $indexes[BuyIndexers::getPARENT_ORDER_ID()] = BaseIndexer::get_Value_STRING();
+        $indexes[BuyIndexers::getDELIVERY_DATE()] = BaseIndexer::get_Value_STRING();
+        $indexes[BuyIndexers::getDELIVERY_MONTH()] = BaseIndexer::get_Value_STRING();
+        $indexes[BuyIndexers::getDELIVERY_YEAR()] = BaseIndexer::get_Value_STRING();
+        $indexes[BuyIndexers::getDELIVERY_MILLISECONDS()] = BaseIndexer::get_Value_BIG_INT();
+        $indexes[BuyIndexers::getDELIVERY_FORMATTED_DATE()] = BaseIndexer::get_Value_STRING();
         return $indexes;
     }
 

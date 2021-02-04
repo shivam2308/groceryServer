@@ -13,6 +13,7 @@ use App\PaymentPbModule\PaymentUpdator;
 use App\Protobuff\BuyPb;
 use App\Protobuff\DeliveryStatusEnum;
 use App\TimePbModule\TimeUpdator;
+use App\UtilityModule\TimeUtility;
 use Exception;
 
 
@@ -27,6 +28,7 @@ class BuyUpdator implements IUpdator
     private $m_createOrderId;
     private $m_devliveryManUpdator;
     private $m_paymentUpdator;
+    private $m_timeUtility;
 
     public function __construct()
     {
@@ -38,6 +40,7 @@ class BuyUpdator implements IUpdator
         $this->m_createOrderId = new BuyHelper();
         $this->m_devliveryManUpdator = new DeliveryManUpdator();
         $this->m_paymentUpdator = new PaymentUpdator();
+        $this->m_timeUtility = new TimeUtility();
     }
 
     public function update($pb)
@@ -79,6 +82,23 @@ class BuyUpdator implements IUpdator
             $pbArray[BuyIndexers::getPARENT_ORDER_ID()] = $pb->getParentOrderId();
         } else {
             $pbArray[BuyIndexers::getPARENT_ORDER_ID()] = $this->m_createOrderId->createParentOrderId($pb->getCustomerRef()->getId(), $pb->getPaymentRef()->getId());
+        }
+        if (Strings::notEmpty($pb->getDeliverytime()->getFormattedDate())) {
+            $pbArray[BuyIndexers::getDELIVERY_DATE()] = $pb->getDeliverytime()->getDate();
+            $pbArray[BuyIndexers::getDELIVERY_MONTH()] = $pb->getDeliverytime()->getMonth();
+            $pbArray[BuyIndexers::getDELIVERY_YEAR()] = $pb->getDeliverytime()->getYear();
+            $pbArray[BuyIndexers::getDELIVERY_MILLISECONDS()] = $pb->getDeliverytime()->getMilliseconds();
+            $pbArray[BuyIndexers::getDELIVERY_FORMATTED_DATE()] = $pb->getDeliverytime()->getFormattedDate();
+        } elseif ($pb->getDeliveryStatus() == DeliveryStatusEnum::DELIVERED) {
+            if ($pb->getDeliverytime()->getMilliseconds() != 0) {
+                $pbArray[BuyIndexers::getDELIVERY_MILLISECONDS()] = $pb->getDeliverytime()->getMilliseconds();
+                $pbArray[BuyIndexers::getDELIVERY_DATE()] = $this->m_timeUtility->getDate($pb->getDeliverytime()->getMilliseconds(), $pb->getDbInfo()->getLocale()->getDefaultTimeZone());
+                $pbArray[BuyIndexers::getDELIVERY_MONTH()] = $this->m_timeUtility->getMonth($pb->getDeliverytime()->getMilliseconds(), $pb->getDbInfo()->getLocale()->getDefaultTimeZone());
+                $pbArray[BuyIndexers::getDELIVERY_YEAR()] = $this->m_timeUtility->getYear($pb->getDeliverytime()->getMilliseconds(), $pb->getDbInfo()->getLocale()->getDefaultTimeZone());
+                $pbArray[BuyIndexers::getDELIVERY_FORMATTED_DATE()] = $this->m_timeUtility->getFormattedDate($pb->getDeliverytime()->getMilliseconds(), $pb->getDbInfo()->getLocale()->getDefaultTimeZone());
+            } else {
+                throw new Exception("Without milliseconds You cannot set status Deliverd");
+            }
         }
         return $pbArray;
     }

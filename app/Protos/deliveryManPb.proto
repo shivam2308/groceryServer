@@ -23,6 +23,7 @@ message DeliveryManPb {
 message DeliveryManRefPb{
     string id = 1;
     NamePb name = 2;
+    ContactDetailPb contact = 3;
 }
 
 message DeliveryManSearchRequestPb {

@@ -12,13 +12,17 @@ class EnvironmentTypeEnumProvider implements IEnumProvider{
             case EnvironmentType::DEVEL:
                 # code...
                 break;
-            
+
             default:
                 # code...
                 break;
         }
     }
 
+    public function getValue($enum)
+    {
+        // TODO: Implement getValue() method.
+    }
 }
 
 ?>

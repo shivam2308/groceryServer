@@ -27,12 +27,17 @@ class DeliveryStatusEnum
      * Generated from protobuf enum <code>CLOSED = 3;</code>
      */
     const CLOSED = 3;
+    /**
+     * Generated from protobuf enum <code>OUT_FOR_DELIVERY = 4;</code>
+     */
+    const OUT_FOR_DELIVERY = 4;
 
     private static $valueToName = [
         self::UNKNOWN_DELIVERY_STATUS => 'UNKNOWN_DELIVERY_STATUS',
         self::DELIVERED => 'DELIVERED',
         self::PENDING => 'PENDING',
         self::CLOSED => 'CLOSED',
+        self::OUT_FOR_DELIVERY => 'OUT_FOR_DELIVERY',
     ];
 
     public static function name($value)

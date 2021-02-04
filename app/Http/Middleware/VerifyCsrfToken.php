@@ -18,6 +18,9 @@ class VerifyCsrfToken extends Middleware
         'pushNotification*',
         'buy*',
         'payment*',
-        'createBuy*'
+        'createBuy*',
+        'confirmOrder*',
+        'createImage*',
+        'image*'
     ];
 }

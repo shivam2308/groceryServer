@@ -18,13 +18,13 @@ enum DeliveryStatusEnum {
     DELIVERED = 1;
     PENDING = 2;
     CLOSED = 3;
-    OUT_FOR_DELIVERY=4;
+    OUT_FOR_DELIVERY = 4;
 }
 
 enum IsOrderedPlacedEnum {
-    UNKNOWN_ORDER=0;
-    ORDER_FAILED=1;
-    ORDER_SUCCESS=2;
+    UNKNOWN_ORDER = 0;
+    ORDER_FAILED = 1;
+    ORDER_SUCCESS = 2;
 
 }
 
@@ -40,11 +40,21 @@ message BuyPb {
     TimePb time = 9;
     PaymentPbRef paymentRef = 10;
     string parentOrderId = 11;
+    OrderdeliveryPb deliverytime = 12;
 }
+
+message OrderdeliveryPb{
+    string date = 1;
+    string month = 2;
+    string year = 3;
+    int64 milliseconds = 4;
+    string formattedDate = 5;
+}
+
 
 message BuyPbRef {
     string id = 1;
-    string orderId =2;
+    string orderId = 2;
     float price = 3;
 }
 
@@ -58,10 +68,10 @@ message BuySearchResponsePb {
 }
 
 message CreateBuyRequestPb{
-    string customerId =1;
-    repeated string itemIdAndQuantity=2;
+    string customerId = 1;
+    repeated string itemIdAndQuantity = 2;
     string paymentRefId = 3;
-    IsOrderedPlacedEnum isOrderPlaced =4;
+    IsOrderedPlacedEnum isOrderPlaced = 4;
 }
 
 
