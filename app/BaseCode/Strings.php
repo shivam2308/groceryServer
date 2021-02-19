@@ -2,6 +2,8 @@
 
 namespace App\BaseCode;
 
+use App\Protobuff\EmailPb;
+use App\Protobuff\NamePb;
 use Symfony\Component\HttpFoundation\Response;
 use App\BaseCode\JsonConvertor\JsonConvertor;
 
@@ -42,5 +44,15 @@ class Strings
     public static function addElementToArray($array, $key, $value)
     {
         $array[$key] = $value;
+    }
+
+    public static function getEmail($emailPb)
+    {
+        return $emailPb->getLocalPart() . "@" . $emailPb->getDomainPart();
+    }
+
+    public static function getName($namePb)
+    {
+        return $namePb->getFirstName() . " " . $namePb->getLastName();
     }
 }

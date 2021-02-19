@@ -15,6 +15,7 @@ class FirebaseModule
 {
     private ServiceAccount $serviceAccount;
     private \Kreait\Firebase\Messaging $firebaseCloudMessaging;
+    private $serverKey = "AAAAuWJy2vc:APA91bEptg1i3y-gMLbFgyxafYNGWV1Q7fmLJheK1cmmt9dLvavBQef_eRqtUXMkzTbgiTzbVI3KDzpq2mtAI0058CyCrh_ky82FMQz6zjKyejLlcbkgz7tWkwodrtVAUapcDWdk5RNA";
 
     public function __construct()
     {
@@ -22,6 +23,39 @@ class FirebaseModule
         $this->firebaseCloudMessaging = (new Factory)
             ->withServiceAccount($this->serviceAccount)
             ->createMessaging();
+    }
+
+    public function send_notification($registatoin_ids, $notification) {
+        $url = 'https://fcm.googleapis.com/fcm/send';
+        $message = array(
+            'to' => $registatoin_ids,
+            'data' => array(
+                "message" => "Hello",
+                "id" => "123",
+            ),
+            'notification' => array(
+                "body" => $notification['body'],
+                "title" =>$notification['title'],
+            )
+        );
+
+        // Firebase API Key
+        $headers = array('Authorization:key='.$this->serverKey,'Content-Type:application/json');
+        // Open connection
+        $ch = curl_init();
+        // Set the url, number of POST vars, POST data
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // Disabling SSL Certificate support temporarly
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($message));
+        $result = curl_exec($ch);
+        if ($result === FALSE) {
+            die('Curl failed: ' . curl_error($ch));
+        }
+        curl_close($ch);
     }
 
     public function sendPushNotificationToDevice($deviceToken, $title, $body)

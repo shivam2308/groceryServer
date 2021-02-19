@@ -3,6 +3,7 @@
 namespace App\BuyPbModule;
 
 use App\BaseCode\BaseModule\BaseRefConvertorAndUpdator;
+use App\BaseCode\JsonConvertor\JsonConvertor;
 use App\BaseCode\Strings;
 use App\CustomerModule\CustomerUpdator;
 use App\DeliveryManPbModule\DeliveryManUpdator;
@@ -52,6 +53,7 @@ class BuyUpdator implements IUpdator
         $pbArray = array_merge($pbArray, $this->m_customerUpdator->refUpdate($pb->getCustomerRef()));
 
         $pbArray = array_merge($pbArray, $this->m_itemUpdator->refUpdate($pb->getItemRef()));
+        $pbArray = array_merge($pbArray, $this->m_paymentUpdator->refUpdate($pb->getPaymentRef()));
         if (Strings::notEmpty($pb->getOrderId())) {
             $pbArray[BuyIndexers::getORDER_ID()] = $pb->getOrderId();
         } else {
@@ -75,9 +77,6 @@ class BuyUpdator implements IUpdator
             $pbArray[BuyIndexers::getDELIVERY_STATUS()] = DeliveryStatusEnum::name($pb->getDeliveryStatus());
         }
         $pbArray = array_merge($pbArray, $this->m_timeUpdator->update($pb->getTime()));
-
-        $pbArray = array_merge($pbArray, $this->m_devliveryManUpdator->refUpdate($pb->getDeliveryManRef()));
-        $pbArray = array_merge($pbArray, $this->m_paymentUpdator->refUpdate($pb->getPaymentRef()));
         if (Strings::notEmpty($pb->getParentOrderId())) {
             $pbArray[BuyIndexers::getPARENT_ORDER_ID()] = $pb->getParentOrderId();
         } else {

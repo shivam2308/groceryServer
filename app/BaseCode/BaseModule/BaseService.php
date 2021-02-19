@@ -2,6 +2,8 @@
 
 namespace App\BaseCode\BaseModule;
 
+use App\BaseCache\BasicCache;
+use App\CustomerModule\CustomerCache;
 use Exception;
 use App\Protobuff\EntityPb;
 use App\BaseCode\OpreationModule\AService;
@@ -21,13 +23,16 @@ class BaseService extends AService
     private $m_searchResultHandler;
     private $m_baseSearcher;
 
-    public function __construct($updator, $convertor, $searcher, $responsePb, $tableName)
+    // private $m_cache;
+
+    public function __construct($pbInstance, $updator, $convertor, $searcher, $responsePb, $tableName)
     {
         parent::__construct($tableName);
         $this->m_updator = $updator;
         $this->m_convertor = $convertor;
         $this->m_searcher = $searcher;
         $this->m_responsePb = $responsePb;
+        //  $this->m_cache = new BasicCache($pbInstance);
         $this->m_entityService = new EntityService();
         $this->m_baseSearcher = new BaseSearcher();
         $this->m_searchResultHandler = new SearchResultHandler($this->m_convertor, $this->m_responsePb);
@@ -37,6 +42,7 @@ class BaseService extends AService
     {
         return $this->m_convertor->convert($this->getEntity($id));
     }
+
     public function create($pb)
     {
 
@@ -46,6 +52,7 @@ class BaseService extends AService
         $this->createEntity($this->m_updator->update($pb));
         return $this->get($id);
     }
+
     public function update($id, $pb)
     {
         if (Strings::isEmpty($id)) {
@@ -57,12 +64,14 @@ class BaseService extends AService
         if (!Strings::notEqual($id, $pb->getDbInfo()->getId())) {
             return new Exception("id and pb id are not same !!");
         }
+        //   $this->m_cache->deletePb($id);
         $this->updateEntity($id, $this->m_updator->update($pb));
         return $this->get($id);
     }
+
     public function search($pb)
     {
-        $searchArray=$this->m_searcher->search($pb);
+        $searchArray = $this->m_searcher->search($pb);
         $searchArray = $this->m_baseSearcher->addExpression($searchArray);
         $resp = $this->searchEntity($searchArray);
         return $this->m_searchResultHandler->handleResults($resp);

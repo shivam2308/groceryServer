@@ -26,6 +26,7 @@ class RequestHandler
 
     public function handle($req, $requestType)
     {
+
         switch ($requestType) {
             case RequestMethodEnum::GET:
                 if ($this->m_helper->isSearchReq($req)) {

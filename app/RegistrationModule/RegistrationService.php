@@ -7,7 +7,9 @@ namespace App\RegistrationModule;
 use App\BaseCode\JsonConvertor\JsonConvertor;
 use App\BaseCode\Strings;
 use App\CustomerModule\CustomerService;
+use App\EmailModule\SendEmailService;
 use App\LoginPbModule\LoginService;
+use App\SendPushNotification\SendPushNotificationService;
 
 class RegistrationService
 {
@@ -15,6 +17,8 @@ class RegistrationService
     private $m_loginService;
     private $m_registrationHelper;
     private $m_registrtionProvider;
+    private $m_sendPushNotificationService;
+    private $m_sendEmailService;
 
     public function __construct()
     {
@@ -22,6 +26,8 @@ class RegistrationService
         $this->m_loginService = new LoginService();
         $this->m_registrationHelper = new RegistrationHelper();
         $this->m_registrtionProvider = new RegistrationDefaultPbProvider();
+        $this->m_sendPushNotificationService = new SendPushNotificationService();
+        $this->m_sendEmailService = new SendEmailService();
     }
 
     public function create($registrationPb)
@@ -37,6 +43,7 @@ class RegistrationService
             } else {
 
             }
+            $this->m_sendEmailService->send($this->m_registrationHelper->getEmailContent($customer));
         } else {
 
         }

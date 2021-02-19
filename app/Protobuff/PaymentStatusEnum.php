@@ -27,12 +27,17 @@ class PaymentStatusEnum
      * Generated from protobuf enum <code>SUBMITTED = 3;</code>
      */
     const SUBMITTED = 3;
+    /**
+     * Generated from protobuf enum <code>PENDING_OR_NOT_DONE_YET = 4;</code>
+     */
+    const PENDING_OR_NOT_DONE_YET = 4;
 
     private static $valueToName = [
         self::UNKNOWN_PAYMENT_STATUS => 'UNKNOWN_PAYMENT_STATUS',
         self::SUCCESS => 'SUCCESS',
         self::FAILURE => 'FAILURE',
         self::SUBMITTED => 'SUBMITTED',
+        self::PENDING_OR_NOT_DONE_YET => 'PENDING_OR_NOT_DONE_YET',
     ];
 
     public static function name($value)

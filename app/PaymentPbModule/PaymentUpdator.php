@@ -34,35 +34,27 @@ class PaymentUpdator implements IUpdator
         if (Strings::notEmpty($pb->getDbInfo()->getId())) {
             $array = array_merge($array, $this->entityUpdator->update($pb->getDbInfo()));
         }
-        if (Strings::notEmpty($pb->getTxnId())) {
-            $array[PaymentIndexers::getTRANSACTION_ID()] = $pb->getTxnId();
-        } else {
-            throw new Exception("without trancestion id Payment not cretaed");
-        }
-        if (Strings::notEmpty($pb->getResponseCode())) {
-            $array[PaymentIndexers::getRESPONSE_CODE()] = $pb->getResponseCode();
-        } else {
-            throw new Exception("without Response Code  Payment not cretaed");
+        if($pb->getMode() == PaymentModeEnum::GOOGLE_PAY) {
+            if (Strings::notEmpty($pb->getTxnId()) && $pb->getMode() == PaymentModeEnum::GOOGLE_PAY) {
+                $array[PaymentIndexers::getTRANSACTION_ID()] = $pb->getTxnId();
+            } else {
+                throw new Exception("without trancestion id Payment not cretaed");
+            }
+            if (Strings::notEmpty($pb->getResponseCode()) && $pb->getMode() == PaymentModeEnum::GOOGLE_PAY) {
+                $array[PaymentIndexers::getRESPONSE_CODE()] = $pb->getResponseCode();
+            } else {
+                throw new Exception("without Response Code  Payment not cretaed");
+            }
+            if (Strings::notEmpty($pb->getTxnRef()) && $pb->getMode() == PaymentModeEnum::GOOGLE_PAY) {
+                $array[PaymentIndexers::getTRANSACTION_REF()] = $pb->getTxnRef();
+            } else {
+                throw new Exception("TxnRef cannot be empty");
+            }
         }
         if ($pb->getStatus() != PaymentStatusEnum::UNKNOWN_PAYMENT_STATUS) {
             $array[PaymentIndexers::getPAYMENT_STATUS()] = PaymentStatusEnum::name($pb->getStatus());
         } else {
-            throw new Exception("PaymentStatus cannot be unknown");
-        }
-        if (Strings::notEmpty($pb->getTxnRef())) {
-            $array[PaymentIndexers::getTRANSACTION_REF()] = $pb->getTxnRef();
-        } else {
-            throw new Exception("TxnRef cannot be empty");
-        }
-        if (Strings::notEmpty($pb->getTxnRef())) {
-            $array[PaymentIndexers::getTRANSACTION_REF()] = $pb->getTxnRef();
-        } else {
-            throw new Exception("TxnRef cannot be empty");
-        }
-        if (Strings::notEmpty($pb->getTxnRef())) {
-            $array[PaymentIndexers::getTRANSACTION_REF()] = $pb->getTxnRef();
-        } else {
-            throw new Exception("TxnRef cannot be empty");
+            $array[PaymentIndexers::getPAYMENT_STATUS()] = PaymentStatusEnum::name(PaymentStatusEnum::PENDING_OR_NOT_DONE_YET);
         }
         $array = array_merge($array, $this->customerUpdator->refUpdate($pb->getCustomerRef()));
         if ($pb->getMode() != PaymentModeEnum::UNKNOWN_MODE) {

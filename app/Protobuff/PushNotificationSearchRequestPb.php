@@ -13,6 +13,10 @@ use Google\Protobuf\Internal\GPBUtil;
  */
 class PushNotificationSearchRequestPb extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * Generated from protobuf field <code>string customerRefId = 1;</code>
+     */
+    protected $customerRefId = '';
 
     /**
      * Constructor.
@@ -20,11 +24,34 @@ class PushNotificationSearchRequestPb extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
+     *     @type string $customerRefId
      * }
      */
     public function __construct($data = NULL) {
         \App\GPBMetadata\PushNotificationPb::initOnce();
         parent::__construct($data);
+    }
+
+    /**
+     * Generated from protobuf field <code>string customerRefId = 1;</code>
+     * @return string
+     */
+    public function getCustomerRefId()
+    {
+        return $this->customerRefId;
+    }
+
+    /**
+     * Generated from protobuf field <code>string customerRefId = 1;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setCustomerRefId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->customerRefId = $var;
+
+        return $this;
     }
 
 }

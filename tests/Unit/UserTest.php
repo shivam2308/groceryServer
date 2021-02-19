@@ -6,14 +6,22 @@ use App\BaseCode\EncryptorAndDecryptor;
 use App\BuyModule\CreateBuyRequestDefaultPbProvider;
 use App\BuyModule\CreateBuyRequestService;
 use App\ConfirmOrderDeliveryModule\ConfirmOrderDeliveryService;
+use App\EmailModule\SendEmailService;
 use App\ItemPbModule\ItemSearchRequestPbDefaultProvider;
 use App\OrderListPbModule\OrderListService;
+use App\Protobuff\EmailBuilderPb;
 use App\Protobuff\OrderedListSearchReqPb;
+use App\Protobuff\SendNotificationTypeEnum;
+use App\Protobuff\SendPushNotificationPb;
 use App\RegistrationModule\RegistrationDefaultPbProvider;
 use App\RegistrationModule\RegistrationService;
+use App\SendPushNotification\SendPushNotificationService;
+use Doctrine\Common\Cache\MemcachedCache;
 use Exception;
 use Kreait\Firebase\Messaging\CloudMessage;
 use Kreait\Firebase\Messaging\Notification;
+use Memcache;
+use Memcached;
 use PHPUnit\Framework\TestCase;
 use Kreait\Firebase\Factory;
 use App\Database\DatabaseExecutor;
@@ -66,6 +74,7 @@ class UserTest extends TestCase
      */
     public function testExample()
     {
+       // ini_set("memory_limit", -1);
         //$this->getResultsPb();
         //$this->pbJsonConvert();
         //$this->myurldecode();
@@ -83,11 +92,15 @@ class UserTest extends TestCase
         // $this->createItems();
         //$this->createRegistration();
         //$this->connectFirebase();
-        // $this->createPushNotification();
+         //$this->createPushNotification();
         //$this->createBuyItems();
         //$this->getOrderList();
        // $this->decryptEncodedString("jh&393@465&gJ|gZ|gE|gM|&393@335#1608702799940|393@334#1608702798256|393@333#1608702796591|393@332#1608702794970|&1610291795123");
-        $this->confirmOrder("eBpkl7fjleZzLa8ufAx9hgmfdm/34tEPdVIJcvO8Vkz82Pw8ee2YfM/jIc38L2KrfIJqt+6tJxi2Bl/1BUQa1tRfSirsyfG+3wg1caqtMlxYYsM9jVyXACcyo1TxTejFyDvBZyjjd/fww+95fiQja0XkWstvRoELGcTNj0PWDTI=:bjBKMmpIYTBCWExiRXpIMw==");
+        //$this->confirmOrder("eBpkl7fjleZzLa8ufAx9hgmfdm/34tEPdVIJcvO8Vkz82Pw8ee2YfM/jIc38L2KrfIJqt+6tJxi2Bl/1BUQa1tRfSirsyfG+3wg1caqtMlxYYsM9jVyXACcyo1TxTejFyDvBZyjjd/fww+95fiQja0XkWstvRoELGcTNj0PWDTI=:bjBKMmpIYTBCWExiRXpIMw==");
+        //$this->sendEmail();
+        //$this->testCache();
+       // $this->getAndUpdateLogin();
+        $this->sendPushNotification();
     }
 
     public function decryptEncodedString($data)
@@ -116,20 +129,18 @@ class UserTest extends TestCase
         echo JsonConvertor::json($service->get("mK"));
     }
 
-    // public function testCache(){
-    //     $memcache = new Memcached();
-    //     $cache = new MemcacheCache();
-    //     $cache->setMemcache($memcache);
+     public function testCache(){
+         $memcache = new Memcache();
+         $memcache->connect('localhost', 11211);
 
-    //     $cache->set('key', 'value');
+         $cache = new MemcacheCache();
+         $cache->setMemcache($memcache);
 
-    //     echo $cache->get('key') ;// prints "value"
+         $cache->save("key","h",1);
 
-    // }
-    //$this->createCustomer();
-    //$this->createDeliveryMan();
-    //echo csrf_token();
-    // }
+         echo $cache->fetch('key1') ;// prints "value"
+
+     }
 
     public function createDeliveryMan()
     {
@@ -260,7 +271,7 @@ class UserTest extends TestCase
     {
         $factory = (new Factory())->withServiceAccount('D:\ShivamProject\groceryServer\app\amazaargrocery-firebase-adminsdk-76ctx-1a7876aa27.json');
         $storage = $factory->createMessaging();
-        $message = CloudMessage::withTarget('token', 'fzRLNIquSE20D0x9TUbxuX:APA91bEc6qsFrW1uD_-1QO8sASQQ084pog_ezvXgiFpyK1HTN0F9mslPtTWsu1USXkaZBuou8Yzc89IrKm6XQain3e7LI7sHWpjZ1iYpeOIQOiCjMjYBNVFRPNiU7s30pqh6krTXABlv')
+        $message = CloudMessage::withTarget('token', 'dJcZl_kuTwGWnb4NL2WNVQ:APA91bHcN_NUqHPF0zeoTIYkObHOkakC7H2zstgRk2XqwrsqcdRcZuyDXGzfom2nlsPqKvZ5EYcfqPtV8a-LfDdQuM8lejLCTtZJ-UIuKVR6KDEKNc6LZGBnpjcYnh6_yppxG6t2iUgl')
             ->withNotification(Notification::create('Title', 'Body'));
         $bucket = $storage->send($message);
         var_dump($bucket);
@@ -341,6 +352,35 @@ class UserTest extends TestCase
     {
         $service = new ConfirmOrderDeliveryService();
         echo JsonConvertor::json($service->get($string));
+    }
+
+    private function sendEmail()
+    {
+        $service = new SendEmailService();
+        $emailbuilder = new  EmailBuilderPb();
+        $emailbuilder->setTo("shubhamtiwaricr07@gmail.com");
+        $emailbuilder->setReciverName("Shubham Tiwari");
+        $emailbuilder->setSubject("This is Test Mail");
+        $emailbuilder->setBody("Hello");
+        $service->send($emailbuilder);
+    }
+
+    private function getAndUpdateLogin()
+    {
+        $service=new LoginService();
+        $pb = $service->get("g-");
+        $service->update($pb->getDbInfo()->getId(),$pb);
+    }
+
+    private function sendPushNotification()
+    {
+        $servive = new SendPushNotificationService();
+        $pb = new SendPushNotificationPb();
+        $pb->setBody("body");
+        $pb->setSubject("title");
+        $pb->setSendType(SendNotificationTypeEnum::SINGLE);
+        $pb->setRegistrationId("ekLi07xVQyi4DZeth0HZtk:APA91bE5IVPU9XceyKBe1BF8jzJKlyHv94hdw_1VP1nVXy0sltfdQQ8fhGenvWrnsyiuN7rvkbZsGYjho1EYQZU6mvg5huMpdW-khjg91E5fmOoWEsiSuRMv_5w83rxclee1hSu0ZQEn");
+        $servive->create($pb);
     }
 
 

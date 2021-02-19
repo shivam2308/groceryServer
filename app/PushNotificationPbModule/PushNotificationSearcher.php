@@ -2,20 +2,22 @@
 
 namespace App\PushNotificationPbModule;
 
-use Exception;
+use App\BaseCode\JsonConvertor\JsonConvertor;
+use App\BaseCode\Strings;
+use App\CustomerModule\CustomerIndexers;
 use App\Interfaces\ISearcher;
-use App\PushNotificationPbModule\PushNotificationIndexers;
+use App\Protobuff\PushNotificationSearchRequestPb;
 
-class PushNotificationSearcher implements ISearcher{
+class PushNotificationSearcher implements ISearcher
+{
 
-    public function search($pb){
-        // $searchArray = array();
-        // if($pb->getPrivilege() != PrivilegeTypeEnum::UNKNOWN_PREVILAGE){
-        //     $searchArray[CustomerIndexers::getPRIVILEGE()] = PrivilegeTypeEnum::name($pb->getPrivilege());
-        // }else{
-        //     return new Exception("PrivilegeTypeEnum cannot be UNKNOWN_PREVILAGE");
-        // }
-        // return $searchArray;
+    public function search($pb)
+    {
+        $searchArray = array();
+        if (Strings::notEmpty($pb->getCustomerRefId())) {
+            $searchArray[CustomerIndexers::getCUSTOMER_REF_ID()] = $pb->getCustomerRefId();
+        }
+        return $searchArray;
     }
 }
 
