@@ -25,10 +25,10 @@ class DatabaseExecutor{
         ]);*/
         $capsule->addConnection([
             'driver'    => 'mysql',
-            'host'      => 'remotemysql.com',
-            'database'  => 'EHdyqbgTZt',
-            'username'  => 'EHdyqbgTZt',
-            'password'  => 'OV2Fj5q1iH',
+            'host'      => 'sql349.main-hosting.eu',
+            'database'  => 'u570192614_amazaar_db',
+            'username'  => 'u570192614_amazaar_db',
+            'password'  => 'Shiv@123',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
@@ -42,7 +42,7 @@ class DatabaseExecutor{
         error_log($query);
         $this->result = Capsule::select($query);
         /*if($this->result == NULL){
-           throw new Exception("Query Executing having Null value", 1);   
+           throw new Exception("Query Executing having Null value", 1);
         }else{
             var_dump($this->result);
             return $this->result;

@@ -4,6 +4,7 @@
 namespace App\AssignDeliveryManModule;
 
 
+use App\BaseCode\JsonConvertor\JsonConvertor;
 use App\BuyPbModule\BuySearchRequestPbDefaultProvider;
 use App\BuyPbModule\BuyService;
 use App\CustomerModule\CustomerService;

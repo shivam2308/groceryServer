@@ -61,6 +61,7 @@ message BuyPbRef {
 message BuySearchRequestPb {
     string parentOrderId = 1;
     string customerId = 2;
+    string deliveryManRefId =3;
 }
 message BuySearchResponsePb {
     SummaryPb summary = 1;

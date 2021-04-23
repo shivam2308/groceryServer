@@ -3,6 +3,7 @@
 namespace App\LoginPbModule;
 
 use App\BaseCode\BaseIndexer;
+use App\ContactDetailPbModule\ContactDetailIndexers;
 use App\CustomerModule\CustomerIndexers;
 use App\EntityPbModule\EntityIndexers;
 use App\Interfaces\ITableName;
@@ -25,6 +26,7 @@ class LoginTableName implements ITableName
         $indexes[EntityIndexers::getDEFAULT_TIMEZONE()] = BaseIndexer::get_Value_STRING();
         $indexes[CustomerIndexers::getCUSTOMER_REF_ID()] = BaseIndexer::get_Value_STRING();
         $indexes[CustomerIndexers::getCUSTOMER_REF()] = BaseIndexer::get_Value_STRING();
+        $indexes[ContactDetailIndexers::getMOBILENO()] = BaseIndexer::get_Value_STRING();
         $indexes[TimeIndexers::getDATE()] = BaseIndexer::get_Value_STRING();
         $indexes[TimeIndexers::getMONTH()] = BaseIndexer::get_Value_STRING();
         $indexes[TimeIndexers::getYEAR()] = BaseIndexer::get_Value_STRING();

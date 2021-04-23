@@ -21,6 +21,10 @@ class BuySearchRequestPb extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string customerId = 2;</code>
      */
     protected $customerId = '';
+    /**
+     * Generated from protobuf field <code>string deliveryManRefId = 3;</code>
+     */
+    protected $deliveryManRefId = '';
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class BuySearchRequestPb extends \Google\Protobuf\Internal\Message
      *
      *     @type string $parentOrderId
      *     @type string $customerId
+     *     @type string $deliveryManRefId
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +82,28 @@ class BuySearchRequestPb extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->customerId = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string deliveryManRefId = 3;</code>
+     * @return string
+     */
+    public function getDeliveryManRefId()
+    {
+        return $this->deliveryManRefId;
+    }
+
+    /**
+     * Generated from protobuf field <code>string deliveryManRefId = 3;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setDeliveryManRefId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->deliveryManRefId = $var;
 
         return $this;
     }

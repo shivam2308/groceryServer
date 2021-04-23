@@ -27,6 +27,13 @@ class OrderListHelper
         return $buySaerchReq;
     }
 
+    public function getBuySearchRequestUsingDeliveryManRefId($customerId)
+    {
+        $buySaerchReq = new BuySearchRequestPb();
+        $buySaerchReq->setDeliveryManRefId($customerId);
+        return $buySaerchReq;
+    }
+
     public function getOrderlistResp($resp)
     {
         $results = array();

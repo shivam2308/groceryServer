@@ -89,18 +89,18 @@ class UserTest extends TestCase
         //$this->sendMail();
         //$this->createDeliveryMan();
         //$this->createLogin();
-        // $this->createItems();
+         $this->createItems();
         //$this->createRegistration();
         //$this->connectFirebase();
          //$this->createPushNotification();
         //$this->createBuyItems();
-        //$this->getOrderList();
+       // $this->getOrderList();
        // $this->decryptEncodedString("jh&393@465&gJ|gZ|gE|gM|&393@335#1608702799940|393@334#1608702798256|393@333#1608702796591|393@332#1608702794970|&1610291795123");
         //$this->confirmOrder("eBpkl7fjleZzLa8ufAx9hgmfdm/34tEPdVIJcvO8Vkz82Pw8ee2YfM/jIc38L2KrfIJqt+6tJxi2Bl/1BUQa1tRfSirsyfG+3wg1caqtMlxYYsM9jVyXACcyo1TxTejFyDvBZyjjd/fww+95fiQja0XkWstvRoELGcTNj0PWDTI=:bjBKMmpIYTBCWExiRXpIMw==");
         //$this->sendEmail();
         //$this->testCache();
        // $this->getAndUpdateLogin();
-        $this->sendPushNotification();
+        //$this->sendPushNotification();
     }
 
     public function decryptEncodedString($data)
@@ -344,7 +344,7 @@ class UserTest extends TestCase
     {
         $service = new OrderListService();
         $req = new OrderedListSearchReqPb();
-        $req->setCustomerId("to");
+        $req->setCustomerId("te");
         echo JsonConvertor::json($service->search($req));
     }
 

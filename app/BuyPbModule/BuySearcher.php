@@ -4,6 +4,7 @@ namespace App\BuyPbModule;
 
 use App\BaseCode\Strings;
 use App\CustomerModule\CustomerIndexers;
+use App\DeliveryManPbModule\DeliveryManIndexers;
 use App\Interfaces\ISearcher;
 use App\Protobuff\BuySearchRequestPb;
 
@@ -24,6 +25,9 @@ class BuySearcher implements ISearcher
         }
         if (Strings::notEmpty($pb->getCustomerId())) {
             $searchArray[CustomerIndexers::getCUSTOMER_REF_ID()] = $pb->getCustomerId();
+        }
+        if (Strings::notEmpty($pb->getDeliveryManRefId())) {
+            $searchArray[DeliveryManIndexers::getDELIVERY_MAN_REF_ID()] = $pb->getDeliveryManRefId();
         }
         return $searchArray;
     }

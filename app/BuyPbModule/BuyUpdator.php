@@ -77,6 +77,7 @@ class BuyUpdator implements IUpdator
             $pbArray[BuyIndexers::getDELIVERY_STATUS()] = DeliveryStatusEnum::name($pb->getDeliveryStatus());
         }
         $pbArray = array_merge($pbArray, $this->m_timeUpdator->update($pb->getTime()));
+        $pbArray = array_merge($pbArray, $this->m_devliveryManUpdator->refUpdate($pb->getDeliveryManRef()));
         if (Strings::notEmpty($pb->getParentOrderId())) {
             $pbArray[BuyIndexers::getPARENT_ORDER_ID()] = $pb->getParentOrderId();
         } else {

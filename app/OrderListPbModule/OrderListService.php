@@ -26,17 +26,21 @@ class OrderListService
         $this->buyService = new BuyService();
     }
 
-    public function search($orderSearchRequest){
-        if(Strings::notEmpty($orderSearchRequest->getCustomerId())){
+    public function search($orderSearchRequest)
+    {
+        if (Strings::notEmpty($orderSearchRequest->getCustomerId())) {
             $customerPb = $this->customerService->get($orderSearchRequest->getCustomerId());
-            if($customerPb->getPrivilege()==PrivilegeTypeEnum::ADMIN){
+            if ($customerPb->getPrivilege() == PrivilegeTypeEnum::ADMIN) {
                 $resp = $this->buyService->search(new BuySearchRequestPb());
                 return $this->orderedHelper->getOrderlistResp($resp);
-            }else {
+            } elseif ($customerPb->getPrivilege() == PrivilegeTypeEnum::DELIVERY_MAN) {
+                $resp = $this->buyService->search($this->orderedHelper->getBuySearchRequestUsingDeliveryManRefId($orderSearchRequest->getCustomerId()));
+                return $this->orderedHelper->getOrderlistResp($resp);
+            } else {
                 $resp = $this->buyService->search($this->orderedHelper->getBuySearchRequestUsingCustomerId($orderSearchRequest->getCustomerId()));
                 return $this->orderedHelper->getOrderlistResp($resp);
             }
-        }elseif (Strings::notEmpty($orderSearchRequest->getOrderParentId())){
+        } elseif (Strings::notEmpty($orderSearchRequest->getOrderParentId())) {
             $resp = $this->buyService->search($this->orderedHelper->getBuySearchRequest($orderSearchRequest->getOrderParentId()));
             return $this->orderedHelper->getOrderlistResponse($resp);
         }
