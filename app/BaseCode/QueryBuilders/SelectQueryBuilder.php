@@ -13,6 +13,7 @@ class SelectQueryBuilder implements IQueryBuilder{
     Private $m_select = "SELECT * FROM";
     Private $where = "WHERE";
     Private $orderedby= "ORDER BY";
+    Private $binery = "BINARY";
 
 
     function __construct(){
@@ -37,6 +38,7 @@ class SelectQueryBuilder implements IQueryBuilder{
                 }
             }
             else if($condition==""){
+
                 $condition = $this->m_helper->getSpace() . $key . $this->m_helper->getEqual() . $this->m_helper->getStringInQuotes($value) ;
             }else{
                 $condition = $condition . $this->m_helper->getSpace() . $this->m_helper->getAND() . $this->m_helper->getSpace()  . $key . $this->m_helper->getEqual() . $this->m_helper->getStringInQuotes($value) ;

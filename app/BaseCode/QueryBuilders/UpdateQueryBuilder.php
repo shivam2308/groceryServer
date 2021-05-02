@@ -30,13 +30,17 @@ class UpdateQueryBuilder
             throw new Exception("Array is Empty Or table Missing", 1);
         } else {
             foreach ($array as $key => $value) {
+                if($key=='DBID'){
+                    continue;
+                }
                 if (Strings::isEmpty($values)) {
                     $values = $this->m_helper->getSpace() . $key . $this->m_helper->getEqual() . $this->m_helper->getStringInQuotes($value);
                 } else {
                     $values = $values . $this->m_helper->getComma() . $this->m_helper->getSpace() . $key . $this->m_helper->getEqual() . $this->m_helper->getStringInQuotes($value);
                 }
             }
-            $condition = "DBID" . $this->m_helper->getSpace() . $this->m_helper->getEqual() .  $this->m_helper->getStringInQuotes($id);
+            $splitId = explode("@", $id);
+            $condition = "id" . $this->m_helper->getSpace() . $this->m_helper->getEqual() . $this->m_helper->getStringInQuotes($splitId[0]) . $this->m_helper->getAND() . $this->m_helper->getSpace() . "DBID" . $this->m_helper->getSpace() . $this->m_helper->getEqual() . $this->m_helper->getStringInQuotes($splitId[1]);
         }
         return $query . $values . $this->m_helper->getSpace() . $this->m_where . $this->m_helper->getSpace() . $condition;
     }

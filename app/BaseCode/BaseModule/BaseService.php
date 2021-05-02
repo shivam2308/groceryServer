@@ -2,8 +2,6 @@
 
 namespace App\BaseCode\BaseModule;
 
-use App\BaseCache\BasicCache;
-use App\CustomerModule\CustomerCache;
 use Exception;
 use App\Protobuff\EntityPb;
 use App\BaseCode\OpreationModule\AService;

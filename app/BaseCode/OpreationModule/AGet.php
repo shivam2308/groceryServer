@@ -24,7 +24,13 @@ class AGet{
     public function get($id, $tableName)
     {
         $array = array();
-        $array['DBID'] = $id;
+        if(strpos($id, "@") !== false) {
+            $splitId = explode("@", $id);
+            $array['id'] = $splitId[0];
+            $array['DBID'] = $splitId[1];
+        }else{
+            $array['DBID'] = $id;
+        }
         $arrayPb = $this->m_databaseExecutor->executeQuery($this->m_queryBuilder->getQuery($array, $this->m_helper->getTableName($tableName, $this->m_serverListner->getEnvironment())));
         return json_decode(json_encode($arrayPb[0]),true);
     }

@@ -13,6 +13,10 @@ use Google\Protobuf\Internal\GPBUtil;
  */
 class ImageSearchRequestPb extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * Generated from protobuf field <code>string imageId = 1;</code>
+     */
+    protected $imageId = '';
 
     /**
      * Constructor.
@@ -20,11 +24,34 @@ class ImageSearchRequestPb extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
+     *     @type string $imageId
      * }
      */
     public function __construct($data = NULL) {
         \App\GPBMetadata\ImagePb::initOnce();
         parent::__construct($data);
+    }
+
+    /**
+     * Generated from protobuf field <code>string imageId = 1;</code>
+     * @return string
+     */
+    public function getImageId()
+    {
+        return $this->imageId;
+    }
+
+    /**
+     * Generated from protobuf field <code>string imageId = 1;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setImageId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->imageId = $var;
+
+        return $this;
     }
 
 }

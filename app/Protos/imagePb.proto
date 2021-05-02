@@ -34,7 +34,7 @@ message ImageRefPb {
 }
 
 message ImageSearchRequestPb {
-
+    string imageId = 1;
 }
 message ImageSearchResponsePb {
     SummaryPb summary = 1;

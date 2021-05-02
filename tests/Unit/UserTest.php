@@ -88,8 +88,9 @@ class UserTest extends TestCase
         //$this->searchItems();
         //$this->sendMail();
         //$this->createDeliveryMan();
-        //$this->createLogin();
-         $this->createItems();
+        $this->createLogin();
+        // $this->createItems();
+       // $this->getIems();
         //$this->createRegistration();
         //$this->connectFirebase();
          //$this->createPushNotification();
@@ -117,16 +118,8 @@ class UserTest extends TestCase
     public function createLogin()
     {
         $service = new LoginService();
-        $defaultPbProvider = new LoginPbDefaultProvider();
-        $pb = $defaultPbProvider->getDefaultPb();
-        $pb->getCustomerRef()->setId('nZ');
-        $pb->getCustomerRef()->getName()->setFirstName("Shubham");
-        $pb->getCustomerRef()->getName()->setLastName("Tiwari");
-        $pb->getCustomerRef()->getContact()->getEmail()->setLocalPart("shubhamtiwaricr07");
-        $pb->getCustomerRef()->getContact()->getEmail()->setDomainPart("gmail.com");
-        $pb->getCustomerRef()->getContact()->getMobile()->setMobileNo("9621019232");
-        $pb->getTime()->setTimezone(TimeZoneEnum::IST);
-        echo JsonConvertor::json($service->get("mK"));
+
+        echo JsonConvertor::json($service->update("1@nc",$service->get("1@nc")));
     }
 
      public function testCache(){
@@ -381,6 +374,12 @@ class UserTest extends TestCase
         $pb->setSendType(SendNotificationTypeEnum::SINGLE);
         $pb->setRegistrationId("ekLi07xVQyi4DZeth0HZtk:APA91bE5IVPU9XceyKBe1BF8jzJKlyHv94hdw_1VP1nVXy0sltfdQQ8fhGenvWrnsyiuN7rvkbZsGYjho1EYQZU6mvg5huMpdW-khjg91E5fmOoWEsiSuRMv_5w83rxclee1hSu0ZQEn");
         $servive->create($pb);
+    }
+
+    private function getIems()
+    {
+        $service = new ItemService();
+        echo JsonConvertor::json($service->get("30@W"));
     }
 
 
