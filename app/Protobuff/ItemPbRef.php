@@ -70,7 +70,17 @@ class ItemPbRef extends \Google\Protobuf\Internal\Message
      */
     public function getItemName()
     {
-        return $this->itemName;
+        return isset($this->itemName) ? $this->itemName : null;
+    }
+
+    public function hasItemName()
+    {
+        return isset($this->itemName);
+    }
+
+    public function clearItemName()
+    {
+        unset($this->itemName);
     }
 
     /**

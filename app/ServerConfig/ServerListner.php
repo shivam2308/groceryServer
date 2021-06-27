@@ -11,7 +11,7 @@ class ServerListner
 
     function __construct()
     {
-        $this::$m_evironment = EnvironmentTypeEnum::DEVEL;
+        $this::$m_evironment = EnvironmentTypeEnum::PROD;
     }
 
     function getEnvironment()

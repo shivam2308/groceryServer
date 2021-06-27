@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Database;
-use Exception;
 use PDO;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 class DatabaseExecutor{

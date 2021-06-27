@@ -43,7 +43,17 @@ class RegistrationPb extends \Google\Protobuf\Internal\Message
      */
     public function getCustomer()
     {
-        return $this->customer;
+        return isset($this->customer) ? $this->customer : null;
+    }
+
+    public function hasCustomer()
+    {
+        return isset($this->customer);
+    }
+
+    public function clearCustomer()
+    {
+        unset($this->customer);
     }
 
     /**
@@ -65,7 +75,17 @@ class RegistrationPb extends \Google\Protobuf\Internal\Message
      */
     public function getLogin()
     {
-        return $this->login;
+        return isset($this->login) ? $this->login : null;
+    }
+
+    public function hasLogin()
+    {
+        return isset($this->login);
+    }
+
+    public function clearLogin()
+    {
+        unset($this->login);
     }
 
     /**

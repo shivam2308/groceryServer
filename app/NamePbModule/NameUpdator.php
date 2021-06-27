@@ -2,7 +2,6 @@
 
 namespace App\NamePbModule;
 
-use Exception;
 use App\Interfaces\IUpdator;
 use App\BaseCode\Strings;
 use App\NamePbModule\NameIndexers;

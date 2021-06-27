@@ -2,7 +2,7 @@
 
 namespace App\ItemPbModule;
 
-use Exception;
+use PHPUnit\Framework\Exception;
 use App\Interfaces\IUpdator;
 use App\BaseCode\Strings;
 use App\ItemPbModule\ItemIndexers;

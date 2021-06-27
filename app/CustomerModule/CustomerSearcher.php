@@ -2,7 +2,7 @@
 
 namespace App\CustomerModule;
 
-use Exception;
+use PHPUnit\Framework\Exception;
 use App\Interfaces\ISearcher;
 use App\Protobuff\PrivilegeTypeEnum;
 use App\CustomerModule\CustomerIndexers;

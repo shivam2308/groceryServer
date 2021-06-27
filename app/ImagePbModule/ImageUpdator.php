@@ -9,7 +9,7 @@ use App\EntityPbModule\EntityUpdator;
 use App\Interfaces\IUpdator;
 use App\Protobuff\ImageExtensionTypeEnum;
 use App\Protobuff\ImageTypeEnum;
-use Exception;
+use PHPUnit\Framework\Exception;
 
 class ImageUpdator implements IUpdator
 {

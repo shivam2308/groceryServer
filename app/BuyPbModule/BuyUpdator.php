@@ -15,7 +15,7 @@ use App\Protobuff\BuyPb;
 use App\Protobuff\DeliveryStatusEnum;
 use App\TimePbModule\TimeUpdator;
 use App\UtilityModule\TimeUtility;
-use Exception;
+use PHPUnit\Framework\Exception;
 
 
 class BuyUpdator implements IUpdator

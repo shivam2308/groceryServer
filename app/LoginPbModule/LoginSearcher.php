@@ -4,7 +4,7 @@ namespace App\LoginPbModule;
 
 use App\BaseCode\Strings;
 use App\ContactDetailPbModule\ContactDetailIndexers;
-use Exception;
+use PHPUnit\Framework\Exception;
 use App\Interfaces\ISearcher;
 
 class LoginSearcher implements ISearcher

@@ -3,7 +3,6 @@
 namespace App\ItemPbModule;
 
 use App\TimePbModule\TimeSeacher;
-use Exception;
 use App\Interfaces\ISearcher;
 use App\Protobuff\ItemTypeEnum;
 use App\Protobuff\AvailabilityStatusEnum;

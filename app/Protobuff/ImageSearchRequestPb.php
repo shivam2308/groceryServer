@@ -17,6 +17,10 @@ class ImageSearchRequestPb extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string imageId = 1;</code>
      */
     protected $imageId = '';
+    /**
+     * Generated from protobuf field <code>.ImageTypeEnum imageType = 2;</code>
+     */
+    protected $imageType = 0;
 
     /**
      * Constructor.
@@ -25,6 +29,7 @@ class ImageSearchRequestPb extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $imageId
+     *     @type int $imageType
      * }
      */
     public function __construct($data = NULL) {
@@ -50,6 +55,28 @@ class ImageSearchRequestPb extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->imageId = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.ImageTypeEnum imageType = 2;</code>
+     * @return int
+     */
+    public function getImageType()
+    {
+        return $this->imageType;
+    }
+
+    /**
+     * Generated from protobuf field <code>.ImageTypeEnum imageType = 2;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setImageType($var)
+    {
+        GPBUtil::checkEnum($var, \App\Protobuff\ImageTypeEnum::class);
+        $this->imageType = $var;
 
         return $this;
     }

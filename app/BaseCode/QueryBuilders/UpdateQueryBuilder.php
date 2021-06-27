@@ -2,7 +2,7 @@
 
 namespace App\BaseCode\QueryBuilders;
 
-use Exception;
+use PHPUnit\Framework\Exception;
 use App\BaseCode\QueryBuilders\IQueryBuilder;
 use App\BaseCode\QueryBuilders\CommonQueryHelper;
 use App\BaseCode\Strings;

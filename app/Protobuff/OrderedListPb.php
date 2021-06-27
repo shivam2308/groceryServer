@@ -75,7 +75,17 @@ class OrderedListPb extends \Google\Protobuf\Internal\Message
      */
     public function getTime()
     {
-        return $this->time;
+        return isset($this->time) ? $this->time : null;
+    }
+
+    public function hasTime()
+    {
+        return isset($this->time);
+    }
+
+    public function clearTime()
+    {
+        unset($this->time);
     }
 
     /**
@@ -97,7 +107,17 @@ class OrderedListPb extends \Google\Protobuf\Internal\Message
      */
     public function getPaymentRef()
     {
-        return $this->paymentRef;
+        return isset($this->paymentRef) ? $this->paymentRef : null;
+    }
+
+    public function hasPaymentRef()
+    {
+        return isset($this->paymentRef);
+    }
+
+    public function clearPaymentRef()
+    {
+        unset($this->paymentRef);
     }
 
     /**

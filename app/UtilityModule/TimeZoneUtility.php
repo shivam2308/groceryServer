@@ -2,7 +2,7 @@
 
 namespace App\UtilityModule;
 
-use Exception;
+use PHPUnit\Framework\Exception;
 use App\Protobuff\TimeZoneEnum;
 
 class TimeZoneUtility

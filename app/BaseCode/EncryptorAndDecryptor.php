@@ -13,9 +13,9 @@ class EncryptorAndDecryptor {
     /**
      * Encrypt data using AES Cipher (CBC) with 128 bit key
      *
-     * @param type $key - key to use should be 16 bytes long (128 bits)
-     * @param type $iv - initialization vector
-     * @param type $data - data to encrypt
+     * @param $key - key to use should be 16 bytes long (128 bits)
+     * @param $iv - initialization vector
+     * @param $data - data to encrypt
      * @return string
      */
 
@@ -38,8 +38,8 @@ class EncryptorAndDecryptor {
     /**
      * Decrypt data using AES Cipher (CBC) with 128 bit key
      *
-     * @param type $key - key to use should be 16 bytes long (128 bits)
-     * @param type $data - data to be decrypted in base64 encoding with iv attached at the end after a :
+     * @param $key - key to use should be 16 bytes long (128 bits)
+     * @param $data - data to be decrypted in base64 encoding with iv attached at the end after a :
      * @return false|string
      */
     static function decrypt($data) {

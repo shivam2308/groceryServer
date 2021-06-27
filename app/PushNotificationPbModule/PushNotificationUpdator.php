@@ -1,7 +1,7 @@
 <?php
 
-namespace App\PushNotificationPbModule;
-use Exception;
+namespace App\PushNotificationPbModule; 
+use PHPUnit\Framework\Exception;;
 use App\Interfaces\IUpdator;
 use App\EntityPbModule\EntityUpdator;
 use App\NamePbModule\NameUpdator;

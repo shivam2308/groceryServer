@@ -17,11 +17,8 @@ use App\RegistrationModule\RegistrationDefaultPbProvider;
 use App\RegistrationModule\RegistrationService;
 use App\SendPushNotification\SendPushNotificationService;
 use Doctrine\Common\Cache\MemcachedCache;
-use Exception;
 use Kreait\Firebase\Messaging\CloudMessage;
 use Kreait\Firebase\Messaging\Notification;
-use Memcache;
-use Memcached;
 use PHPUnit\Framework\TestCase;
 use Kreait\Firebase\Factory;
 use App\Database\DatabaseExecutor;
@@ -64,6 +61,9 @@ use App\PushNotificationPbModule\PushNotificationService;
 use Swift_Mailer;
 use Swift_Message;
 use Swift_SmtpTransport;
+use App\ImagePbModule\ImageService;
+use App\Protobuff\ImageSearchRequestPb;
+use App\Protobuff\ImageTypeEnum;
 
 class UserTest extends TestCase
 {
@@ -88,7 +88,7 @@ class UserTest extends TestCase
         //$this->searchItems();
         //$this->sendMail();
         //$this->createDeliveryMan();
-        $this->createLogin();
+        //$this->createLogin();
         // $this->createItems();
        // $this->getIems();
         //$this->createRegistration();
@@ -102,6 +102,14 @@ class UserTest extends TestCase
         //$this->testCache();
        // $this->getAndUpdateLogin();
         //$this->sendPushNotification();
+        $this->searchImage();
+    }
+    
+    public function searchImage(){
+        $service = new ImageService();
+        $pb = new ImageSearchRequestPb();
+        $pb->setImageType(ImageTypeEnum::ITEM_IMAGE);
+        echo JsonConvertor::json($service->search($pb));
     }
 
     public function decryptEncodedString($data)
@@ -123,15 +131,7 @@ class UserTest extends TestCase
     }
 
      public function testCache(){
-         $memcache = new Memcache();
-         $memcache->connect('localhost', 11211);
-
-         $cache = new MemcacheCache();
-         $cache->setMemcache($memcache);
-
-         $cache->save("key","h",1);
-
-         echo $cache->fetch('key1') ;// prints "value"
+         
 
      }
 

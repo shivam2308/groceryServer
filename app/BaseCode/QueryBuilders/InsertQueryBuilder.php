@@ -2,10 +2,10 @@
 
 namespace App\BaseCode\QueryBuilders;
 
-use Exception;
 use App\BaseCode\QueryBuilders\IQueryBuilder;
 use App\BaseCode\QueryBuilders\CommonQueryHelper;
 use App\BaseCode\Strings;
+use PHPUnit\Framework\Exception;
 
 class InsertQueryBuilder implements IQueryBuilder
 {
@@ -23,7 +23,7 @@ class InsertQueryBuilder implements IQueryBuilder
     {
         $query = $this->m_insertInto . " " . $tableName;
         if (empty($array) || Strings::isEmpty($tableName)) {
-            throw new Exception("Array is Empty Or table Missing", 1);
+            throw new Exception("Array is Empty Or table Missing");
         } else {
             $keys = "";
             $values = "";

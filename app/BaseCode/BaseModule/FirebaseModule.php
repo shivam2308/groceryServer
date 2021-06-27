@@ -3,24 +3,26 @@
 
 namespace App\BaseCode\BaseModule;
 
-
+use Kreait\Firebase\ServiceAccount;
+use Kreait\Firebase\Messaging;
+use Kreait\Firebase\Factory;
 use Kreait\Firebase\Exception\FirebaseException;
 use Kreait\Firebase\Exception\MessagingException;
-use Kreait\Firebase\Factory;
 use Kreait\Firebase\Messaging\CloudMessage;
 use Kreait\Firebase\Messaging\Notification;
-use Kreait\Firebase\ServiceAccount;
+
+
 
 class FirebaseModule
 {
     private ServiceAccount $serviceAccount;
-    private \Kreait\Firebase\Messaging $firebaseCloudMessaging;
+    private Messaging $firebaseCloudMessaging;
     private $serverKey = "AAAAuWJy2vc:APA91bEptg1i3y-gMLbFgyxafYNGWV1Q7fmLJheK1cmmt9dLvavBQef_eRqtUXMkzTbgiTzbVI3KDzpq2mtAI0058CyCrh_ky82FMQz6zjKyejLlcbkgz7tWkwodrtVAUapcDWdk5RNA";
 
     public function __construct()
     {
         $this->serviceAccount = ServiceAccount::fromValue(__DIR__ . '/amazaargrocery-firebase-adminsdk-76ctx-1a7876aa27.json');
-        $this->firebaseCloudMessaging = (new Factory)
+        $this->firebaseCloudMessaging = (new Factory())
             ->withServiceAccount($this->serviceAccount)
             ->createMessaging();
     }

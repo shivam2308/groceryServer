@@ -2,12 +2,13 @@
 
 namespace App\BaseCode\BaseModule;
 
-use Exception;
+
 use App\Protobuff\EntityPb;
 use App\BaseCode\OpreationModule\AService;
 use App\BaseCode\Strings;
 use App\EntityModule\EntityService;
 use App\BaseCode\QueryBuilders\SearchResultHandler;
+use PHPUnit\Framework\Exception;
 
 
 class BaseService extends AService
@@ -54,7 +55,7 @@ class BaseService extends AService
     public function update($id, $pb)
     {
         if (Strings::isEmpty($id)) {
-            return new Exception("id is Empty");
+            return new Exception("id cannot be Empty");
         }
         if (Strings::isEmpty($pb->getDbInfo()->getId())) {
             return new Exception("Pb DbInfo id is Empty");

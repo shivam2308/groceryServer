@@ -5,8 +5,6 @@ namespace App\BaseCache;
 
 use App\BaseCode\JsonConvertor\JsonConvertor;
 use App\BaseCode\Strings;
-use Doctrine\Common\Cache\MemcacheCache;
-use Memcache;
 
 class BasicCache
 {
@@ -18,8 +16,8 @@ class BasicCache
 
     public function __construct($pbInstance)
     {
-        $this->memcache = new Memcache();
-        $this->cache = new MemcacheCache();
+       // $this->memcache = new Memcache();
+       // $this->cache = new MemcacheCache();
         $this->memcache->connect('localhost', 11211);
         $this->cache->setMemcache($this->memcache);
         $this->pb_Instance = $pbInstance;

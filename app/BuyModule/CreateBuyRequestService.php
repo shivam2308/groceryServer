@@ -11,6 +11,7 @@ use App\ItemPbModule\ItemService;
 use App\PaymentPbModule\PaymentService;
 use App\Protobuff\CreateBuyRequestPb;
 use App\Protobuff\IsOrderedPlacedEnum;
+use PHPUnit\Framework\Exception;
 
 class CreateBuyRequestService
 {
@@ -33,13 +34,13 @@ class CreateBuyRequestService
 
     public function create($createBuyRequest){
         if(Strings::isEmpty($createBuyRequest->getCustomerId())){
-            throw new \Exception("Customer Id is Empty ");
+            throw new Exception("Customer Id is Empty ");
         }
         if($createBuyRequest->getItemIdAndQuantity()->count()==0){
-            throw new \Exception( "Item list Cannot be zero");
+            throw new Exception( "Item list Cannot be zero");
         }
         if(Strings::isEmpty($createBuyRequest->getPaymentRefId())){
-            throw new \Exception("Payment Ref is is Empty");
+            throw new Exception("Payment Ref is is Empty");
         }
         $customer = $this->customerService->get($createBuyRequest->getCustomerId());
         $payment = $this->paymentService->get($createBuyRequest->getPaymentRefId());

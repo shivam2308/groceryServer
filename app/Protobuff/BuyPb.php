@@ -93,7 +93,17 @@ class BuyPb extends \Google\Protobuf\Internal\Message
      */
     public function getDbInfo()
     {
-        return $this->dbInfo;
+        return isset($this->dbInfo) ? $this->dbInfo : null;
+    }
+
+    public function hasDbInfo()
+    {
+        return isset($this->dbInfo);
+    }
+
+    public function clearDbInfo()
+    {
+        unset($this->dbInfo);
     }
 
     /**
@@ -137,7 +147,17 @@ class BuyPb extends \Google\Protobuf\Internal\Message
      */
     public function getCustomerRef()
     {
-        return $this->customerRef;
+        return isset($this->customerRef) ? $this->customerRef : null;
+    }
+
+    public function hasCustomerRef()
+    {
+        return isset($this->customerRef);
+    }
+
+    public function clearCustomerRef()
+    {
+        unset($this->customerRef);
     }
 
     /**
@@ -159,7 +179,17 @@ class BuyPb extends \Google\Protobuf\Internal\Message
      */
     public function getItemRef()
     {
-        return $this->itemRef;
+        return isset($this->itemRef) ? $this->itemRef : null;
+    }
+
+    public function hasItemRef()
+    {
+        return isset($this->itemRef);
+    }
+
+    public function clearItemRef()
+    {
+        unset($this->itemRef);
     }
 
     /**
@@ -181,7 +211,17 @@ class BuyPb extends \Google\Protobuf\Internal\Message
      */
     public function getDeliveryManRef()
     {
-        return $this->deliveryManRef;
+        return isset($this->deliveryManRef) ? $this->deliveryManRef : null;
+    }
+
+    public function hasDeliveryManRef()
+    {
+        return isset($this->deliveryManRef);
+    }
+
+    public function clearDeliveryManRef()
+    {
+        unset($this->deliveryManRef);
     }
 
     /**
@@ -269,7 +309,17 @@ class BuyPb extends \Google\Protobuf\Internal\Message
      */
     public function getTime()
     {
-        return $this->time;
+        return isset($this->time) ? $this->time : null;
+    }
+
+    public function hasTime()
+    {
+        return isset($this->time);
+    }
+
+    public function clearTime()
+    {
+        unset($this->time);
     }
 
     /**
@@ -291,7 +341,17 @@ class BuyPb extends \Google\Protobuf\Internal\Message
      */
     public function getPaymentRef()
     {
-        return $this->paymentRef;
+        return isset($this->paymentRef) ? $this->paymentRef : null;
+    }
+
+    public function hasPaymentRef()
+    {
+        return isset($this->paymentRef);
+    }
+
+    public function clearPaymentRef()
+    {
+        unset($this->paymentRef);
     }
 
     /**
@@ -335,7 +395,17 @@ class BuyPb extends \Google\Protobuf\Internal\Message
      */
     public function getDeliverytime()
     {
-        return $this->deliverytime;
+        return isset($this->deliverytime) ? $this->deliverytime : null;
+    }
+
+    public function hasDeliverytime()
+    {
+        return isset($this->deliverytime);
+    }
+
+    public function clearDeliverytime()
+    {
+        unset($this->deliverytime);
     }
 
     /**

@@ -4,7 +4,7 @@ namespace App\PaymentPbModule;
 
 use App\BaseCode\BaseModule\BaseRefConvertorAndUpdator;
 use App\TimePbModule\TimeUpdator;
-use Exception;
+use PHPUnit\Framework\Exception;
 use App\BaseCode\Strings;
 use App\CustomerModule\CustomerUpdator;
 use App\EntityPbModule\EntityUpdator;

@@ -5,7 +5,9 @@ namespace App\BaseCode\BaseCsvCode;
 use Keboola\Csv\CsvReader;
 use Keboola\Csv\CsvWriter;
 
-class BaseCsv extends CsvReader
+
+
+class BaseCSV extends CsvReader
 {
 
     private $m_reader;

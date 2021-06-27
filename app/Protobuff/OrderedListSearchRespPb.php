@@ -48,7 +48,17 @@ class OrderedListSearchRespPb extends \Google\Protobuf\Internal\Message
      */
     public function getSummary()
     {
-        return $this->summary;
+        return isset($this->summary) ? $this->summary : null;
+    }
+
+    public function hasSummary()
+    {
+        return isset($this->summary);
+    }
+
+    public function clearSummary()
+    {
+        unset($this->summary);
     }
 
     /**

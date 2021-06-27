@@ -3,7 +3,7 @@
 namespace App\BaseCode\QueryBuilders;
 
 use App\TimePbModule\TimeIndexers;
-use Exception;
+use PHPUnit\Framework\Exception;
 use App\BaseCode\QueryBuilders\IQueryBuilder;
 use App\BaseCode\QueryBuilders\CommonQueryHelper;
 
