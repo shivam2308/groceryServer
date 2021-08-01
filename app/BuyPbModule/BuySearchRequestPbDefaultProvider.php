@@ -10,7 +10,7 @@ class BuySearchRequestPbDefaultProvider implements IDefaultPbProvider{
     
     public function getDefaultPb(){
         $pb = new BuySearchRequestPb();
-        //$pb->setDeliveryStatus(DeliveryStatusEnum::UNKNOWN_DELIVERY_STATUS);
+        
         return $pb;
     }
     public function getDefaultRefPb()

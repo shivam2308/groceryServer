@@ -64,6 +64,8 @@ use Swift_SmtpTransport;
 use App\ImagePbModule\ImageService;
 use App\Protobuff\ImageSearchRequestPb;
 use App\Protobuff\ImageTypeEnum;
+use App\CloseAndOutForDeliveryModule\CloseAndOutForDeliveryService;
+use App\AssignDeliveryManModule\AssignDeliveryMenService;
 
 class UserTest extends TestCase
 {
@@ -102,8 +104,21 @@ class UserTest extends TestCase
         //$this->testCache();
        // $this->getAndUpdateLogin();
         //$this->sendPushNotification();
-        $this->searchImage();
+       // $this->searchImage();
+       //$this->closeOrder();
+       $this->assisgnDeliveryMan();
     }
+    
+    public function assisgnDeliveryMan(){
+        $service = new AssignDeliveryMenService();
+        echo JsonConvertor::json($service->get("22@238!10@242#17@mn"));
+    }
+    
+    public function closeOrder(){
+        $service = new CloseAndOutForDeliveryService();
+        echo JsonConvertor::json($service->get("12@169!9@234#CLOSED"));
+    }
+    
     
     public function searchImage(){
         $service = new ImageService();
