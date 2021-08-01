@@ -45,7 +45,7 @@ class CreateBuyRequestService
         $customer = $this->customerService->get($createBuyRequest->getCustomerId());
         $payment = $this->paymentService->get($createBuyRequest->getPaymentRefId());
         foreach ($createBuyRequest->getItemIdAndQuantity() as $value) {
-            $val = explode("@",$value);
+            $val = explode("!",$value);
             $item = $this->itemService->get($val[0]);
             $quantity = $val[1];
             $buyPb=$this->buyHelper->getBuyRequestPb($customer,$item,$quantity,$payment);
