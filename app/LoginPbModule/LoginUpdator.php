@@ -1,12 +1,10 @@
 <?php
-
 namespace App\LoginPbModule;
 
 use App\ContactDetailPbModule\ContactDetailIndexers;
 use App\Interfaces\IUpdator;
 use App\EntityPbModule\EntityUpdator;
 use App\CustomerModule\CustomerUpdator;
-
 use App\BaseCode\Strings;
 use App\Protobuff\LoginPb;
 use App\TimePbModule\TimeUpdator;
@@ -15,7 +13,9 @@ class LoginUpdator implements IUpdator
 {
 
     private $m_entityUpdator;
+
     private $m_customerUpdator;
+
     private $m_timeUpdator;
 
     public function __construct()
@@ -35,7 +35,12 @@ class LoginUpdator implements IUpdator
             $array = array_merge($array, $this->m_customerUpdator->refUpdate($pb->getCustomerRef()));
         }
         $array = array_merge($array, $this->m_timeUpdator->update($pb->getTime()));
-        $array[ContactDetailIndexers::getMOBILENO()] = $pb->getCustomerRef()->getContact()->getMobile()->getMobileNo();
+        // $array[ContactDetailIndexers::getMOBILENO()] = $pb->getCustomerRef()->getContact()->getMobile()->getMobileNo();
+        $array[LoginIndexers::getMOBILENO()] = $pb->getCustomerRef()
+            ->getContact()
+            ->getMobile()
+            ->getMobileNo();
+
         return $array;
     }
 

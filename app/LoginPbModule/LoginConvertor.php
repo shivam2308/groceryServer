@@ -31,6 +31,7 @@ class LoginConvertor implements IConvertor
         $loginPb->setDbInfo($this->m_entityConvertor->convert($array));
         $loginPb->setCustomerRef($this->m_customerConvertor->refConvert($array));
         $loginPb->setTime($this->m_timeConvertor->convert($array));
+        $loginPb->setMobileNo($array[LoginIndexers::getMOBILENO()]);
         return $loginPb;
     }
 

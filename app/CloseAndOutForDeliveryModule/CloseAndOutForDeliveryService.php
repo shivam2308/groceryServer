@@ -36,7 +36,7 @@ class CloseAndOutForDeliveryService
 
     public function get($id)
     {
-        $idSplit = explode("#", $id);
+        $idSplit = explode("$", $id);
         $buySearchReq = new BuySearchRequestPb();
         $buySearchReq->setParentOrderId($idSplit[0]);
         $buySearchResp = $this->buyService->search($buySearchReq);

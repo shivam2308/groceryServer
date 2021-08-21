@@ -28,7 +28,7 @@ class AssignDeliveryMenService
 
     public function get($id)
     {
-        $orderIdAndDeliveryManRefId = explode("#", $id);
+        $orderIdAndDeliveryManRefId = explode("$", $id);
         $buySearchRequest = $this->defaultSearchPbProvider->getDefaultPb();
         $buySearchRequest->setParentOrderId($orderIdAndDeliveryManRefId[0]);
         $searchResp = $this->buyService->search($buySearchRequest);

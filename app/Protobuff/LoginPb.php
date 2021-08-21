@@ -25,6 +25,10 @@ class LoginPb extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.TimePb time = 3;</code>
      */
     protected $time = null;
+    /**
+     * Generated from protobuf field <code>string mobileNo = 4;</code>
+     */
+    protected $mobileNo = '';
 
     /**
      * Constructor.
@@ -35,6 +39,7 @@ class LoginPb extends \Google\Protobuf\Internal\Message
      *     @type \App\Protobuff\EntityPb $dbInfo
      *     @type \App\Protobuff\CustomerPbRef $customerRef
      *     @type \App\Protobuff\TimePb $time
+     *     @type string $mobileNo
      * }
      */
     public function __construct($data = NULL) {
@@ -134,6 +139,28 @@ class LoginPb extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \App\Protobuff\TimePb::class);
         $this->time = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string mobileNo = 4;</code>
+     * @return string
+     */
+    public function getMobileNo()
+    {
+        return $this->mobileNo;
+    }
+
+    /**
+     * Generated from protobuf field <code>string mobileNo = 4;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setMobileNo($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->mobileNo = $var;
 
         return $this;
     }

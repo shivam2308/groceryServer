@@ -13,6 +13,7 @@ message LoginPb {
     EntityPb dbInfo = 1;
     CustomerPbRef customerRef =2;
     TimePb time = 3;
+    string mobileNo =4;
 }
 
 message LoginSearchRequestPb {
